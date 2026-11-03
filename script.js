@@ -48,6 +48,21 @@ if(a==="export"){let blob=new Blob([JSON.stringify({app:"StudySpace",version:1,n
 if(a==="import")document.getElementById("backup-file").click();
 });
 content.addEventListener("change",async e=>{if(e.target.id==="backup-file"&&e.target.files[0])try{let d=JSON.parse(await e.target.files[0].text());if(!Array.isArray(d.notes))throw Error();for(let n of d.notes)if(n.id&&n.title)await put({...n,html:clean(n.html||"")});listNotes();recent();alert("Backup imported.");}catch{alert("Invalid backup file.");}});
-content.addEventListener("input",e=>{if(e.target.id==="nbody"){let s=document.getElementById("save-status");if(s)s.textContent="Unsaved changes · Save Note to keep them";}});
+let autosaveTimer;
+content.addEventListener("input",e=>{
+if(["nbody","ntitle","nchapter"].includes(e.target.id)){
+let status=document.getElementById("save-status");if(status)status.textContent="Saving draft…";
+clearTimeout(autosaveTimer);
+autosaveTimer=setTimeout(async()=>{
+let title=document.getElementById("ntitle")?.value.trim();if(!title)return;
+let html=clean(document.getElementById("nbody")?.innerHTML||"");
+let id=content.dataset.id||"note-"+Date.now()+"-"+Math.random().toString(36).slice(2,7);
+let old=(await notes()).find(n=>n.id===id);
+let plain=new DOMParser().parseFromString(html,"text/html").body.textContent||"";
+await put({id,title,subject:document.getElementById("nsubject")?.value||"",chapter:document.getElementById("nchapter")?.value.trim()||"",html,text:plain,fav:old?.fav||false,created:old?.created||Date.now(),updated:Date.now()});
+content.dataset.id=id;if(status)status.textContent="Auto-saved on this device";
+},800);
+}
+});
 recent().catch(()=>{document.getElementById("recent-notes").innerHTML='<p class="muted">Local note storage is unavailable in this browser.</p>';});
 console.log("StudySpace workspace ready.");
