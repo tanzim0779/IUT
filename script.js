@@ -1,392 +1,53 @@
-/* =========================================
-   STUDYSPACE
-   PREMIUM ACADEMIC DASHBOARD
-   Main Navigation System
-========================================= */
-
-
-/* 01. SUBJECT DATABASE */
-
-const subjects = {
-
-    physics: {
-        title: "Physics",
-        description: "Explore the world of physical science.",
-        papers: ["First Paper", "Second Paper"]
-    },
-
-    chemistry: {
-        title: "Chemistry",
-        description: "Discover the science of matter.",
-        papers: ["First Paper", "Second Paper"]
-    },
-
-    math: {
-        title: "Mathematics",
-        description: "Think logically. Solve beautifully.",
-        papers: ["First Paper", "Second Paper"]
-    },
-
-    english: {
-        title: "English",
-        description: "Build your language skills.",
-        options: ["Grammar", "Vocabulary"]
-    }
-
-};
-
-
-/* 02. PAGE ELEMENTS */
-
-const homePage = document.getElementById("home-page");
-
-const dynamicPage = document.getElementById("dynamic-page");
-
-const pageContent = document.getElementById("page-content");
-
-const backButton = document.getElementById("back-button");
-
-
-/* 03. NAVIGATION HISTORY */
-
-let navigationHistory = [];
-
-
-/* 04. SHOW PAGE */
-
-function showPage() {
-
-    homePage.classList.remove("active");
-
-    dynamicPage.classList.add("active");
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-
+/* STUDYSPACE — chapter library and personal notes. Static notes are authored in the staticNotes object below. */
+"use strict";
+const data={
+physics:{title:"Physics",desc:"Explore the laws that shape our physical world.",papers:[["Physical World and Measurement","Vector","Dynamics","Newtonian Mechanics","Work, Energy and Power","Gravitation and Gravity","Structural Properties of Matter","Periodic Motion","Waves","Ideal Gas and Kinetic Theory"],["Thermodynamics","Static Electricity","Current Electricity","Magnetic Effects of Electric Current and Magnetism","Electromagnetic Induction and Alternating Current","Geometrical Optics","Physical Optics","Introduction to Modern Physics","Atomic Model and Nuclear Physics","Semiconductor and Electronics","Astronomy"]]},
+chemistry:{title:"Chemistry",desc:"Understand matter, reactions and everyday chemistry.",papers:[["Safe Use of the Laboratory","Qualitative Chemistry","Periodic Properties and Chemical Bonding","Chemical Changes","Vocational Chemistry"],["Environmental Chemistry","Organic Chemistry","Quantitative Chemistry","Electrochemistry","Economic Chemistry"]]},
+math:{title:"Mathematics",desc:"Build mathematical thinking through concepts and problem solving.",papers:[["Matrices and Determinants","Vectors","Straight Lines","Circle","Permutations and Combinations","Trigonometric Ratios","Associated Angles","Functions and Graphs","Differentiation","Integration"],["Real Numbers and Inequalities","Linear Programming","Complex Numbers","Polynomials and Polynomial Equations","Binomial Expansion","Conics","Inverse Trigonometric Functions","Statics","Dynamics","Probability"]]},
+english:{title:"English",desc:"Strengthen your language skills.",options:["Grammar","Vocabulary"]}};
+/* Example static note. Add more entries using keys like physics-0-1 (subject-paperIndex-chapterIndex). */
+const staticNotes={"physics-0-1":{intro:"A vector is a physical quantity that has both magnitude and direction.",html:"<h3>Core idea</h3><p>Examples include displacement, velocity, acceleration and force. A scalar has magnitude only, such as mass, time and temperature.</p><h3>Key properties</h3><ul><li>Vectors are represented by directed line segments.</li><li>The length represents magnitude; the arrow indicates direction.</li><li>Equal vectors have the same magnitude and direction.</li></ul><h3>Remember</h3><p>Resolve vectors along suitable perpendicular axes before combining components.</p>"}};
+const home=document.getElementById("home-page"),dynamic=document.getElementById("dynamic-page"),content=document.getElementById("page-content");
+let route={type:"home"},stack=[],dbPromise;
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+function go(r){stack.push(route);route=r;home.classList.remove("active");dynamic.classList.add("active");render();scrollTo({top:0,behavior:"smooth"});}
+function back(){route=stack.pop()||{type:"home"};if(route.type==="home"){dynamic.classList.remove("active");home.classList.add("active");}else render();scrollTo({top:0,behavior:"smooth"});}
+function head(t,d){return '<div class="dynamic-heading"><p class="eyebrow">YOUR PERSONAL STUDY LIBRARY</p><h1>'+esc(t)+'</h1><p class="dynamic-description">'+esc(d)+'</p></div>';}
+function render(){let r=route;
+if(r.type==="subject"){let s=data[r.subject],arr=s.papers||s.options;content.innerHTML=head(s.title,s.desc)+'<div class="selection-grid">'+arr.map((x,i)=>'<button class="selection-card" data-a="'+(s.papers?"paper":"english")+'" data-i="'+i+'"><span class="selection-number">0'+(i+1)+'</span><span class="selection-icon">◈</span><span class="selection-title">'+esc(s.papers?(i?"Second":"First")+" Paper":x)+'</span><span class="selection-description">'+(s.papers?x.length+" chapters":"Explore "+x+" materials")+'</span><span class="card-arrow">↗</span></button>').join("")+'</div>';}
+if(r.type==="paper"){let s=data[r.subject],chap=s.papers[r.paper];content.innerHTML=head(s.title+" — "+(r.paper?"Second":"First")+" Paper","Select a chapter to explore its notes.")+'<div class="chapter-list">'+chap.map((x,i)=>'<button class="chapter-row" data-a="chapter" data-i="'+i+'"><span class="chapter-count">'+String(i+1).padStart(2,"0")+'</span><span class="chapter-label">'+esc(x)+'</span><span class="chapter-meta">Open ↗</span></button>').join("")+'</div>';}
+if(r.type==="chapter"){let s=data[r.subject],title=s.papers[r.paper][r.index],n=staticNotes[r.subject+"-"+r.paper+"-"+r.index];content.innerHTML=head(title,s.title+" · "+(r.paper?"Second":"First")+" Paper")+'<article class="note-content-card"><div class="note-card-top"><span class="note-tag">STATIC STUDY NOTES</span><span class="note-tag subtle-tag">CURATED CONTENT</span></div><h2>'+esc(title)+'</h2><p class="muted">'+(n?n.intro:"Static notes for this chapter can be added in the staticNotes object in script.js.")+'</p>'+(n?'<div class="static-note-body">'+n.html+'</div>':'<div class="empty-chapter-state"><h2>Notes coming soon</h2><p>Add definitions, explanations, formulas and worked examples to this chapter.</p></div>')+'<button class="primary-button" data-a="new" data-sub="'+r.subject+'" data-ch="'+esc(title)+'">＋ Write a personal note</button></article>';}
+if(r.type==="english"){content.innerHTML=head("English — "+r.option,"Explore your language learning materials.")+'<div class="empty-chapter-state"><h2>'+esc(r.option)+' Library</h2><p>Your lessons and practice materials will appear here.</p><button class="primary-button" data-a="new" data-sub="english" data-ch="'+esc(r.option)+'">＋ Create a study note</button></div>';}
+if(r.type==="notes")listNotes();
+if(r.type==="editor")editor(r.id||null,r.ctx||{});
 }
-
-
-/* 05. GO TO HOME */
-
-function goHome() {
-
-    homePage.classList.add("active");
-
-    dynamicPage.classList.remove("active");
-
-    navigationHistory = [];
-
-    pageContent.innerHTML = "";
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-
+function openDB(){if(!dbPromise)dbPromise=new Promise((ok,no)=>{let q=indexedDB.open("StudySpaceDB",1);q.onupgradeneeded=()=>{if(!q.result.objectStoreNames.contains("notes"))q.result.createObjectStore("notes",{keyPath:"id"});};q.onsuccess=()=>ok(q.result);q.onerror=()=>no(q.error);});return dbPromise;}
+async function notes(){let d=await openDB();return new Promise((ok,no)=>{let q=d.transaction("notes","readonly").objectStore("notes").getAll();q.onsuccess=()=>ok(q.result.sort((a,b)=>b.updated-a.updated));q.onerror=()=>no(q.error);});}
+async function put(n){let d=await openDB();return new Promise((ok,no)=>{let q=d.transaction("notes","readwrite").objectStore("notes").put(n);q.onsuccess=ok;q.onerror=()=>no(q.error);});}
+async function del(id){let d=await openDB();return new Promise((ok,no)=>{let q=d.transaction("notes","readwrite").objectStore("notes").delete(id);q.onsuccess=ok;q.onerror=()=>no(q.error);});}
+function clean(html){let d=new DOMParser().parseFromString(html,"text/html"),allow=["P","BR","B","STRONG","I","EM","U","H2","H3","H4","UL","OL","LI","BLOCKQUOTE","PRE","CODE","HR","SUB","SUP"];function walk(node){[...node.childNodes].forEach(c=>{if(c.nodeType===8)c.remove();else if(c.nodeType===1){if(!allow.includes(c.tagName)){c.replaceWith(...c.childNodes);return;}[...c.attributes].forEach(a=>c.removeAttribute(a.name));walk(c);}});}walk(d.body);return d.body.innerHTML;}
+function editor(id,ctx){content.innerHTML=head(id?"Edit Personal Note":"Create Personal Note","Personal notes are saved in this browser on this device.")+'<div class="editor-card"><label class="field-label">Note title<input id="ntitle" class="field-input" maxlength="120" placeholder="e.g. Newton’s Laws — Quick Revision"></label><div class="editor-meta"><label class="field-label">Subject<select id="nsubject" class="field-input"><option value="">General</option><option value="physics">Physics</option><option value="chemistry">Chemistry</option><option value="math">Mathematics</option><option value="english">English</option></select></label><label class="field-label">Chapter<input id="nchapter" class="field-input" maxlength="120" placeholder="Chapter name"></label></div><div class="editor-toolbar"><button data-f="bold"><b>B</b></button><button data-f="italic"><i>I</i></button><button data-f="underline"><u>U</u></button><button data-f="formatBlock" data-v="H2">Heading</button><button data-f="insertUnorderedList">• List</button><button data-f="insertOrderedList">1. List</button></div><div id="nbody" class="rich-editor" contenteditable="true" data-placeholder="Write your ideas, definitions, formulas and revision points..."></div><div class="editor-footer"><span class="muted" id="save-status">Ready to write</span><div><button class="secondary-button" data-a="cancel">Cancel</button> <button class="primary-button" data-a="save">Save Note</button></div></div></div>';
+document.getElementById("nsubject").value=ctx.subject||"";document.getElementById("nchapter").value=ctx.chapter||"";content.dataset.id=id||"";
+if(id)notes().then(ns=>{let n=ns.find(x=>x.id===id);if(n){document.getElementById("ntitle").value=n.title;document.getElementById("nsubject").value=n.subject;document.getElementById("nchapter").value=n.chapter;document.getElementById("nbody").innerHTML=clean(n.html);}});
 }
-
-
-/* 06. CREATE PAGE HEADER */
-
-function createPageHeader(title, description) {
-
-    return `
-        <div class="dynamic-heading">
-
-            <p class="eyebrow">
-                YOUR PERSONAL STUDY LIBRARY
-            </p>
-
-            <h1>${title}</h1>
-
-            <p class="dynamic-description">
-                ${description}
-            </p>
-
-        </div>
-    `;
-
-}
-
-
-/* 07. SUBJECT PAGE */
-
-function openSubject(subjectKey) {
-
-    const subject = subjects[subjectKey];
-
-    if (!subject) return;
-
-    navigationHistory.push("home");
-
-    showPage();
-
-    let content = createPageHeader(
-        subject.title,
-        subject.description
-    );
-
-
-    if (subject.papers) {
-
-        content += `
-            <div class="selection-grid">
-
-                ${subject.papers.map((paper, index) => `
-
-                    <button
-                        class="selection-card"
-                        data-paper="${index}"
-                        data-subject="${subjectKey}">
-
-                        <span class="selection-number">
-                            0${index + 1}
-                        </span>
-
-                        <span class="selection-icon">
-                            ◈
-                        </span>
-
-                        <span class="selection-title">
-                            ${paper}
-                        </span>
-
-                        <span class="selection-description">
-                            Explore chapters and notes
-                        </span>
-
-                        <span class="card-arrow">↗</span>
-
-                    </button>
-
-                `).join("")}
-
-            </div>
-        `;
-
-    } else {
-
-        content += `
-            <div class="selection-grid">
-
-                ${subject.options.map((option, index) => `
-
-                    <button
-                        class="selection-card"
-                        data-option="${option}"
-                        data-subject="${subjectKey}">
-
-                        <span class="selection-number">
-                            0${index + 1}
-                        </span>
-
-                        <span class="selection-icon">
-                            ${index === 0 ? "Aa" : "✧"}
-                        </span>
-
-                        <span class="selection-title">
-                            ${option}
-                        </span>
-
-                        <span class="selection-description">
-                            Explore ${option.toLowerCase()} notes
-                        </span>
-
-                        <span class="card-arrow">↗</span>
-
-                    </button>
-
-                `).join("")}
-
-            </div>
-        `;
-
-    }
-
-    pageContent.innerHTML = content;
-
-}
-
-
-/* 08. PAPER PAGE */
-
-function openPaper(subjectKey, paperIndex) {
-
-    const subject = subjects[subjectKey];
-
-    if (!subject || !subject.papers) return;
-
-    const paperName = subject.papers[paperIndex];
-
-    if (!paperName) return;
-
-    navigationHistory.push("subject");
-
-    let content = createPageHeader(
-        `${subject.title} — ${paperName}`,
-        "Choose a chapter to explore your study materials."
-    );
-
-    content += `
-        <div class="empty-chapter-state">
-
-            <div class="empty-icon">✦</div>
-
-            <h2>Chapter Library</h2>
-
-            <p>
-                Your chapter list will appear here
-                in the next development step.
-            </p>
-
-        </div>
-    `;
-
-    pageContent.innerHTML = content;
-
-    showPage();
-
-}
-
-
-/* 09. ENGLISH OPTION PAGE */
-
-function openEnglishOption(option) {
-
-    navigationHistory.push("subject");
-
-    let content = createPageHeader(
-        `English — ${option}`,
-        `Explore your ${option.toLowerCase()} learning materials.`
-    );
-
-    content += `
-        <div class="empty-chapter-state">
-
-            <div class="empty-icon">✦</div>
-
-            <h2>${option} Library</h2>
-
-            <p>
-                Your ${option.toLowerCase()} materials
-                will be added here.
-            </p>
-
-        </div>
-    `;
-
-    pageContent.innerHTML = content;
-
-    showPage();
-
-}
-
-
-/* 10. SUBJECT BUTTON EVENTS */
-
-document.querySelectorAll(".subject-card").forEach(button => {
-
-    button.addEventListener("click", () => {
-
-        const subjectKey = button.dataset.page;
-
-        openSubject(subjectKey);
-
-    });
-
+async function listNotes(q=""){let ns=await notes(),f=ns.filter(n=>(n.title+" "+n.chapter+" "+n.subject).toLowerCase().includes(q.toLowerCase()));content.innerHTML=head("My Notes","Your personal notes, stored locally in this browser.")+'<div class="notes-toolbar"><input id="lib-search" class="search-input" type="search" placeholder="Search notes..." value="'+esc(q)+'"><button class="primary-button" data-a="new">＋ New Note</button><button class="secondary-button" data-a="export">Export Backup</button><button class="secondary-button" data-a="import">Import Backup</button><input id="backup-file" type="file" accept="application/json" hidden></div>'+(f.length?'<div class="notes-grid">'+f.map(n=>'<article class="personal-note-card"><div class="note-card-top"><span class="note-tag">'+esc(n.subject||"General")+'</span><button class="icon-button" data-a="fav" data-id="'+n.id+'">'+(n.fav?"★":"☆")+'</button></div><h3>'+esc(n.title)+'</h3><p class="muted">'+esc(n.chapter||"No chapter")+'</p><p class="note-preview">'+esc(n.text.slice(0,120))+'</p><div class="note-actions"><button class="text-button" data-a="edit" data-id="'+n.id+'">Edit</button><button class="text-button danger" data-a="delete" data-id="'+n.id+'">Delete</button><span class="muted">'+new Date(n.updated).toLocaleDateString()+'</span></div></article>').join("")+'</div>':'<div class="empty-chapter-state"><h2>No notes found</h2><p>Create your first personal note.</p><button class="primary-button" data-a="new">＋ Create Note</button></div>');document.getElementById("lib-search").addEventListener("input",e=>listNotes(e.target.value));}
+async function recent(q=""){let el=document.getElementById("recent-notes");if(!el)return;let ns=(await notes()).filter(n=>(n.title+" "+n.chapter+" "+n.subject).toLowerCase().includes(q.toLowerCase())).slice(0,3);el.innerHTML=ns.length?ns.map(n=>'<button class="recent-note" data-open="'+n.id+'"><span><b>'+esc(n.title)+'</b><small>'+esc(n.subject||"General")+' · '+esc(n.chapter||"")+'</small></span><span>↗</span></button>').join(""):'<p class="muted">No personal notes yet. Create one to get started.</p>';}
+document.querySelectorAll(".subject-card").forEach(b=>b.addEventListener("click",()=>go({type:"subject",subject:b.dataset.page})));
+document.getElementById("back-button").addEventListener("click",back);document.getElementById("brand-home").addEventListener("click",e=>{e.preventDefault();stack=[];route={type:"home"};dynamic.classList.remove("active");home.classList.add("active");});
+document.getElementById("open-my-notes").onclick=()=>go({type:"editor"});document.getElementById("view-all-notes").onclick=()=>go({type:"notes"});document.getElementById("note-search-home").oninput=e=>recent(e.target.value);
+document.getElementById("recent-notes").addEventListener("click",e=>{let b=e.target.closest("[data-open]");if(b)go({type:"editor",id:b.dataset.open});});
+content.addEventListener("click",async e=>{let f=e.target.closest("[data-f]");if(f){document.execCommand(f.dataset.f,false,f.dataset.v||null);document.getElementById("nbody")?.focus();return;}let b=e.target.closest("[data-a]");if(!b)return;let a=b.dataset.a;
+if(a==="paper")go({type:"paper",subject:route.subject,paper:+b.dataset.i});if(a==="english")go({type:"english",option:b.dataset.option});
+if(a==="chapter")go({type:"chapter",subject:route.subject,paper:route.paper,index:+b.dataset.i});
+if(a==="new")go({type:"editor",ctx:{subject:b.dataset.sub||"",chapter:b.dataset.ch||""}});
+if(a==="cancel")back();
+if(a==="save"){let title=document.getElementById("ntitle").value.trim();if(!title){alert("Please enter a note title.");return;}let html=clean(document.getElementById("nbody").innerHTML),id=content.dataset.id||"note-"+Date.now()+"-"+Math.random().toString(36).slice(2,7),old=(await notes()).find(n=>n.id===id),textContent=new DOMParser().parseFromString(html,"text/html").body.textContent||"";await put({id,title,subject:document.getElementById("nsubject").value,chapter:document.getElementById("nchapter").value.trim(),html,text:textContent,fav:old?.fav||false,created:old?.created||Date.now(),updated:Date.now()});back();recent();}
+if(a==="edit")go({type:"editor",id:b.dataset.id});if(a==="delete"&&confirm("Delete this note from this browser?")){await del(b.dataset.id);listNotes();recent();}
+if(a==="fav"){let n=(await notes()).find(x=>x.id===b.dataset.id);n.fav=!n.fav;await put(n);listNotes(document.getElementById("lib-search")?.value||"");}
+if(a==="export"){let blob=new Blob([JSON.stringify({app:"StudySpace",version:1,notes:await notes()},null,2)],{type:"application/json"}),url=URL.createObjectURL(blob),link=document.createElement("a");link.href=url;link.download="studyspace-notes-backup.json";link.click();URL.revokeObjectURL(url);}
+if(a==="import")document.getElementById("backup-file").click();
 });
-
-
-/* 11. DYNAMIC BUTTON EVENTS */
-
-pageContent.addEventListener("click", event => {
-
-    const paperButton = event.target.closest("[data-paper]");
-
-    const optionButton = event.target.closest("[data-option]");
-
-
-    if (paperButton) {
-
-        const subjectKey = paperButton.dataset.subject;
-
-        const paperIndex = Number(paperButton.dataset.paper);
-
-        openPaper(subjectKey, paperIndex);
-
-        return;
-
-    }
-
-
-    if (optionButton) {
-
-        const option = optionButton.dataset.option;
-
-        openEnglishOption(option);
-
-    }
-
-});
-
-
-/* 12. BACK BUTTON */
-
-backButton.addEventListener("click", () => {
-
-    const previousPage = navigationHistory.pop();
-
-    if (previousPage === "subject") {
-
-        // Return to the subject selection page.
-        // The previous subject is stored for restoration.
-        const previousSubject = window.currentSubject;
-
-        if (previousSubject) {
-
-            navigationHistory.push("home");
-
-            openSubject(previousSubject);
-
-            window.currentSubject = previousSubject;
-
-        } else {
-
-            goHome();
-
-        }
-
-    } else {
-
-        goHome();
-
-    }
-
-});
-
-
-/* 13. SAVE CURRENT SUBJECT */
-
-const originalOpenSubject = openSubject;
-
-window.currentSubject = null;
-
-document.querySelectorAll(".subject-card").forEach(button => {
-
-    button.addEventListener("click", () => {
-
-        window.currentSubject = button.dataset.page;
-
-    });
-
-});
-
-
-/* 14. INITIALIZATION */
-
-console.log("StudySpace initialized successfully.");
-
-console.log("Welcome to your personal study library!");
-
+content.addEventListener("change",async e=>{if(e.target.id==="backup-file"&&e.target.files[0])try{let d=JSON.parse(await e.target.files[0].text());if(!Array.isArray(d.notes))throw Error();for(let n of d.notes)if(n.id&&n.title)await put({...n,html:clean(n.html||"")});listNotes();recent();alert("Backup imported.");}catch{alert("Invalid backup file.");}});
+content.addEventListener("input",e=>{if(e.target.id==="nbody"){let s=document.getElementById("save-status");if(s)s.textContent="Unsaved changes · Save Note to keep them";}});
+recent().catch(()=>{document.getElementById("recent-notes").innerHTML='<p class="muted">Local note storage is unavailable in this browser.</p>';});
+console.log("StudySpace workspace ready.");
