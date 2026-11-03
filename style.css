@@ -1,241 +1,210 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <meta name="theme-color" content="#0B1220">
-
-    <title>My Study Space | Premium Dashboard</title>
-
-    <!-- Main CSS File -->
-    <link rel="stylesheet" href="style.css">
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
-          rel="stylesheet">
-
-</head>
-
-<body>
-
-    <!-- =========================
-         MAIN APPLICATION
-    ========================== -->
-
-    <div class="app-container">
-
-        <!-- HEADER SECTION -->
-
-        <header class="header">
-
-            <div class="logo">
-                <span class="logo-icon">✦</span>
-                <span>STUDY<span class="gold">SPACE</span></span>
-            </div>
-
-            <div class="header-right">
-                <span class="status">MY PERSONAL LIBRARY</span>
-            </div>
-
-        </header>
-
-
-        <!-- MAIN CONTENT -->
-
-        <main id="app">
-
-            <!-- HOME PAGE -->
-
-            <section id="home-page" class="page active">
-
-                <div class="hero-section">
-
-                    <p class="eyebrow">
-                        YOUR PERSONAL LEARNING SPACE
-                    </p>
-
-                    <h1>
-                        Welcome to Your
-                        <span class="gold">Study Space.</span>
-                    </h1>
-
-                    <p class="hero-description">
-                        Organize your knowledge.
-                        Focus on your goals.
-                        Build your future.
-                    </p>
-
-                </div>
-
-
-                <!-- SUBJECT CARDS -->
-
-                <div class="subject-section">
-
-                    <div class="section-heading">
-                        <h2>Your Subjects</h2>
-
-                        <p>
-                            Choose a subject to explore your notes.
-                        </p>
-                    </div>
-
-
-                    <div class="subject-grid">
-
-                        <!-- PHYSICS -->
-
-                        <button class="subject-card physics-card"
-                                data-page="physics">
-
-                            <span class="subject-number">01</span>
-
-                            <span class="subject-icon">⚛</span>
-
-                            <span class="subject-name">
-                                Physics
-                            </span>
-
-                            <span class="subject-info">
-                                First & Second Paper
-                            </span>
-
-                            <span class="card-arrow">↗</span>
-
-                        </button>
-
-
-                        <!-- CHEMISTRY -->
-
-                        <button class="subject-card chemistry-card"
-                                data-page="chemistry">
-
-                            <span class="subject-number">02</span>
-
-                            <span class="subject-icon">⚗</span>
-
-                            <span class="subject-name">
-                                Chemistry
-                            </span>
-
-                            <span class="subject-info">
-                                First & Second Paper
-                            </span>
-
-                            <span class="card-arrow">↗</span>
-
-                        </button>
-
-
-                        <!-- MATHEMATICS -->
-
-                        <button class="subject-card math-card"
-                                data-page="math">
-
-                            <span class="subject-number">03</span>
-
-                            <span class="subject-icon">∑</span>
-
-                            <span class="subject-name">
-                                Mathematics
-                            </span>
-
-                            <span class="subject-info">
-                                First & Second Paper
-                            </span>
-
-                            <span class="card-arrow">↗</span>
-
-                        </button>
-
-
-                        <!-- ENGLISH -->
-
-                        <button class="subject-card english-card"
-                                data-page="english">
-
-                            <span class="subject-number">04</span>
-
-                            <span class="subject-icon">Aa</span>
-
-                            <span class="subject-name">
-                                English
-                            </span>
-
-                            <span class="subject-info">
-                                Grammar & Vocabulary
-                            </span>
-
-                            <span class="card-arrow">↗</span>
-
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-
-            <!-- DYNAMIC PAGE CONTAINER -->
-
-            <!--
-                JavaScript will load:
-                1. Subject pages
-                2. Paper selection
-                3. Chapter lists
-                4. Individual chapter notes
-
-                All dynamic pages will appear here.
-            -->
-
-            <section id="dynamic-page" class="page">
-
-                <button id="back-button" class="back-button">
-                    ← Back
-                </button>
-
-                <div id="page-content">
-
-                    <!-- Dynamic content goes here -->
-
-                </div>
-
-            </section>
-
-        </main>
-
-
-        <!-- FOOTER -->
-
-        <footer class="footer">
-
-            <p>
-                Designed for Focus.
-                Built for Knowledge.
-            </p>
-
-            <span>MY STUDY SPACE © 2026</span>
-
-        </footer>
-
-    </div>
-
-
-    <!-- Main JavaScript File -->
-    <script src="script.js"></script>
-
-</body>
-
-</html>
-
-/* PREMIUM WORKSPACE + PERSONAL NOTES */
-.workspace-welcome{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:25px 28px;margin:0 0 48px;border:1px solid var(--border);border-radius:var(--radius);background:linear-gradient(120deg,rgba(231,201,139,.09),rgba(255,255,255,.025))}.workspace-welcome h2{font:600 24px 'Playfair Display',serif;margin:5px 0}.workspace-welcome p:not(.eyebrow){color:var(--text-secondary);font-size:13px}.primary-button,.secondary-button{padding:11px 15px;border-radius:10px;font:600 12px 'DM Sans',sans-serif;cursor:pointer;transition:var(--transition)}.primary-button{background:var(--gold);color:#111827;border:1px solid var(--gold)}.secondary-button{background:var(--glass);border:1px solid var(--border);color:var(--gold)}.search-input,.field-input{width:100%;padding:12px 14px;border:1px solid var(--border);border-radius:10px;background:var(--bg-secondary);color:var(--text-primary);font:13px 'DM Sans',sans-serif}.search-input{max-width:420px}.personal-panel{padding-bottom:65px}.personal-toolbar,.notes-toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:17px}.recent-notes,.notes-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.recent-note,.personal-note-card{padding:17px;border:1px solid var(--border);border-radius:13px;background:var(--glass);color:var(--text-primary)}.recent-note{display:flex;justify-content:space-between;text-align:left;cursor:pointer}.recent-note b,.recent-note small{display:block}.recent-note small{color:var(--text-muted);font-size:10px;margin-top:5px}.chapter-list{display:grid;gap:9px;padding-bottom:65px}.chapter-row{display:flex;align-items:center;gap:14px;padding:16px 18px;border:1px solid var(--border);border-radius:12px;background:var(--glass);color:var(--text-primary);text-align:left;cursor:pointer}.chapter-row:hover{border-color:var(--gold);background:var(--bg-card-hover)}.chapter-count{color:var(--gold);font-size:12px}.chapter-label{flex:1;font-size:13px;font-weight:600}.chapter-meta,.muted{color:var(--text-muted);font-size:10px}.note-content-card,.editor-card{padding:clamp(18px,4vw,30px);border:1px solid var(--border);border-radius:var(--radius);background:var(--glass);margin-bottom:65px}.note-card-top,.editor-footer,.note-actions{display:flex;align-items:center;justify-content:space-between;gap:10px}.note-tag{font-size:9px;letter-spacing:1px;color:var(--gold);background:rgba(231,201,139,.09);padding:6px 9px;border-radius:6px}.subtle-tag{color:var(--text-muted)}.note-content-card h2,.personal-note-card h3{font:600 23px 'Playfair Display',serif;margin:18px 0 8px}.static-note-body{color:var(--text-secondary);font-size:14px;line-height:1.85;margin:20px 0}.static-note-body h3{color:var(--gold-light);font:600 18px 'Playfair Display',serif;margin:18px 0 7px}.static-note-body ul{padding-left:22px}.field-label{display:block;color:var(--text-secondary);font-size:12px;margin-bottom:10px}.field-input{display:block;margin-top:7px}.editor-meta{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin:17px 0}.editor-toolbar{display:flex;flex-wrap:wrap;gap:7px;padding:9px;border:1px solid var(--border);border-bottom:0;border-radius:10px 10px 0 0;background:var(--bg-secondary)}.editor-toolbar button{padding:7px 10px;border:1px solid var(--border);border-radius:7px;background:var(--glass);color:var(--gold);cursor:pointer}.rich-editor{min-height:240px;padding:17px;border:1px solid var(--border);border-radius:0 0 10px 10px;background:rgba(0,0,0,.12);color:var(--text-primary);outline:none;line-height:1.8}.rich-editor:empty:before{content:attr(data-placeholder);color:var(--text-muted)}.note-preview{font-size:12px;color:var(--text-secondary);line-height:1.7;margin:12px 0;min-height:34px}.note-actions{justify-content:flex-start;border-top:1px solid var(--border);padding-top:11px}.note-actions .muted{margin-left:auto}.text-button,.icon-button{border:0;background:none;color:var(--gold);cursor:pointer;font:600 11px 'DM Sans',sans-serif}.danger{color:#e58b8b}.icon-button{font-size:20px}
-@media(max-width:650px){.workspace-welcome{align-items:flex-start;flex-direction:column;padding:20px}.workspace-welcome h2{font-size:21px}.recent-notes,.notes-grid{grid-template-columns:1fr}.personal-toolbar .search-input{max-width:none}.editor-meta{grid-template-columns:1fr}.chapter-row{padding:14px 12px;gap:9px}.chapter-label{font-size:12px}.chapter-meta{font-size:9px}.notes-toolbar>*{flex:1}.notes-toolbar .search-input{max-width:none}}
+/* =========================================================
+   STUDYSPACE — Premium responsive study workspace
+   Theme: Midnight Academia / Champagne Gold
+   Edit this file to customize colors, spacing and layout.
+========================================================= */
+
+:root {
+  color-scheme: dark;
+  --bg: #090f1b;
+  --bg-secondary: #101827;
+  --bg-card: rgba(20, 31, 49, .82);
+  --bg-card-hover: rgba(28, 43, 65, .96);
+  --glass: rgba(255,255,255,.035);
+  --border: rgba(210, 222, 240, .12);
+  --border-strong: rgba(231, 201, 139, .42);
+  --gold: #e7c98b;
+  --gold-light: #f3dfb2;
+  --text-primary: #f3f5f8;
+  --text-secondary: #aab5c5;
+  --text-muted: #758297;
+  --blue: #8fb9ed;
+  --radius: 18px;
+  --transition: .22s ease;
+  --shadow: 0 18px 55px rgba(0,0,0,.22);
+}
+
+* { box-sizing: border-box; }
+html { min-width: 320px; scroll-behavior: smooth; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at 15% 0%, rgba(75, 111, 160, .15), transparent 38%),
+    radial-gradient(ellipse at 90% 25%, rgba(184, 146, 82, .09), transparent 34%),
+    var(--bg);
+  color: var(--text-primary);
+  font-family: 'DM Sans', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+button, input, select, textarea { font: inherit; }
+button { -webkit-tap-highlight-color: transparent; }
+button:focus-visible, input:focus-visible, select:focus-visible, [contenteditable="true"]:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+.app-container { width: min(1160px, calc(100% - 44px)); margin: 0 auto; }
+.header {
+  min-height: 76px; display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; border-bottom: 1px solid var(--border); margin-bottom: 42px;
+}
+.logo { display: inline-flex; align-items: center; gap: 10px; color: var(--text-primary); text-decoration: none; font-size: 14px; font-weight: 700; letter-spacing: 2px; }
+.logo-icon { color: var(--gold); font-size: 24px; }
+.gold { color: var(--gold); }
+.status, .eyebrow { color: var(--gold); font-size: 10px; letter-spacing: 2px; font-weight: 700; }
+.status { padding: 8px 11px; border: 1px solid var(--border); border-radius: 30px; }
+.page { display: none; }
+.page.active { display: block; animation: page-in .32s ease both; }
+@keyframes page-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+.hero-section { padding: 38px 0 48px; max-width: 720px; }
+.hero-section .eyebrow { margin-bottom: 18px; }
+.hero-section h1, .dynamic-heading h1 {
+  margin: 0; font: 600 clamp(38px, 6vw, 64px)/1.12 'Playfair Display', Georgia, serif;
+  letter-spacing: -.8px;
+}
+.hero-description, .dynamic-description { color: var(--text-secondary); font-size: 15px; line-height: 1.8; max-width: 590px; margin-top: 18px; }
+.workspace-welcome {
+  display: flex; align-items: center; justify-content: space-between; gap: 20px;
+  padding: 25px 28px; margin: 0 0 48px; border: 1px solid var(--border);
+  border-radius: var(--radius); background: linear-gradient(120deg,rgba(231,201,139,.10),rgba(255,255,255,.025));
+  box-shadow: var(--shadow);
+}
+.workspace-welcome h2 { font: 600 24px 'Playfair Display', serif; margin: 5px 0 8px; }
+.workspace-welcome p:not(.eyebrow) { color: var(--text-secondary); font-size: 13px; line-height: 1.7; margin: 0; }
+.section-heading { margin-bottom: 20px; }
+.section-heading h2 { font: 600 27px 'Playfair Display', serif; margin: 0 0 7px; }
+.section-heading p { color: var(--text-muted); font-size: 12px; margin: 0; }
+.subject-section { margin-bottom: 58px; }
+.subject-grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 14px; }
+.subject-card, .selection-card {
+  position: relative; min-height: 190px; display: flex; flex-direction: column; align-items: flex-start;
+  padding: 20px; text-align: left; color: var(--text-primary); border: 1px solid var(--border);
+  border-radius: 16px; background: linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.018));
+  cursor: pointer; overflow: hidden; transition: transform var(--transition), border-color var(--transition), background var(--transition);
+}
+.subject-card::after, .selection-card::after { content: ""; position: absolute; width: 130px; height: 130px; border-radius: 50%; right: -55px; bottom: -70px; background: rgba(231,201,139,.07); filter: blur(3px); }
+.subject-card:hover, .selection-card:hover { transform: translateY(-4px); border-color: var(--border-strong); background: var(--bg-card-hover); }
+.subject-number, .selection-number { color: var(--text-muted); font-size: 10px; letter-spacing: 1px; }
+.subject-icon, .selection-icon { color: var(--gold); font-size: 27px; margin: 20px 0 12px; }
+.subject-name { font: 600 21px 'Playfair Display', serif; }
+.subject-info, .selection-description { color: var(--text-muted); font-size: 11px; margin-top: 7px; }
+.card-arrow { position: absolute; right: 18px; top: 17px; color: var(--gold); font-size: 17px; }
+.physics-card { border-top: 2px solid rgba(143,185,237,.55); }
+.chemistry-card { border-top: 2px solid rgba(125,194,166,.55); }
+.math-card { border-top: 2px solid rgba(198,157,224,.55); }
+.english-card { border-top: 2px solid rgba(231,201,139,.65); }
+
+.personal-panel { padding-bottom: 58px; }
+.personal-toolbar, .notes-toolbar { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-bottom: 17px; }
+.search-input, .field-input {
+  width: 100%; padding: 12px 14px; border: 1px solid var(--border); border-radius: 10px;
+  background: var(--bg-secondary); color: var(--text-primary); font: 13px 'DM Sans', sans-serif;
+}
+.search-input { max-width: 420px; }
+.search-input::placeholder, .field-input::placeholder { color: var(--text-muted); }
+.primary-button, .secondary-button {
+  padding: 11px 15px; border-radius: 10px; font: 600 12px 'DM Sans', sans-serif;
+  cursor: pointer; transition: var(--transition); white-space: nowrap;
+}
+.primary-button { background: var(--gold); color: #111827; border: 1px solid var(--gold); }
+.primary-button:hover { background: var(--gold-light); transform: translateY(-1px); }
+.secondary-button { background: var(--glass); border: 1px solid var(--border); color: var(--gold); }
+.secondary-button:hover { border-color: var(--border-strong); background: rgba(231,201,139,.07); }
+.recent-notes, .notes-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; }
+.recent-note, .personal-note-card {
+  padding: 17px; border: 1px solid var(--border); border-radius: 13px;
+  background: var(--glass); color: var(--text-primary);
+}
+.recent-note { display: flex; justify-content: space-between; text-align: left; cursor: pointer; }
+.recent-note:hover, .personal-note-card:hover { border-color: var(--border-strong); }
+.recent-note b, .recent-note small { display: block; }
+.recent-note small { color: var(--text-muted); font-size: 10px; margin-top: 5px; }
+.muted, .chapter-meta { color: var(--text-muted); font-size: 10px; }
+
+.dynamic-heading { padding: 16px 0 30px; }
+.dynamic-heading .eyebrow { margin-bottom: 13px; }
+.dynamic-heading h1 { font-size: clamp(32px,5vw,48px); }
+.dynamic-description { margin-top: 12px; font-size: 13px; }
+.back-button {
+  border: 1px solid var(--border); border-radius: 9px; padding: 9px 13px;
+  background: var(--glass); color: var(--gold); cursor: pointer; font-size: 12px;
+}
+.back-button:hover { border-color: var(--border-strong); }
+.selection-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 14px; padding-bottom: 60px; }
+.selection-card { min-height: 175px; }
+.selection-title { font: 600 22px 'Playfair Display', serif; }
+.chapter-list { display: grid; gap: 9px; padding-bottom: 65px; }
+.chapter-row {
+  display: flex; align-items: center; gap: 14px; padding: 16px 18px;
+  border: 1px solid var(--border); border-radius: 12px; background: var(--glass);
+  color: var(--text-primary); text-align: left; cursor: pointer; transition: var(--transition);
+}
+.chapter-row:hover { border-color: var(--gold); background: var(--bg-card-hover); transform: translateX(2px); }
+.chapter-count { color: var(--gold); font-size: 12px; min-width: 22px; }
+.chapter-label { flex: 1; font-size: 13px; font-weight: 600; }
+.note-content-card, .editor-card, .empty-chapter-state {
+  padding: clamp(18px,4vw,30px); border: 1px solid var(--border); border-radius: var(--radius);
+  background: var(--bg-card); margin-bottom: 65px; box-shadow: var(--shadow);
+}
+.note-card-top, .editor-footer, .note-actions { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.note-tag { font-size: 9px; letter-spacing: 1px; color: var(--gold); background: rgba(231,201,139,.09); padding: 6px 9px; border-radius: 6px; }
+.subtle-tag { color: var(--text-muted); }
+.note-content-card h2, .personal-note-card h3 { font: 600 23px 'Playfair Display', serif; margin: 18px 0 8px; }
+.static-note-body { color: var(--text-secondary); font-size: 14px; line-height: 1.85; margin: 20px 0; overflow-wrap: anywhere; }
+.static-note-body h3 { color: var(--gold-light); font: 600 18px 'Playfair Display', serif; margin: 18px 0 7px; }
+.static-note-body ul, .static-note-body ol { padding-left: 22px; }
+.empty-chapter-state h2 { font: 600 22px 'Playfair Display', serif; }
+.empty-chapter-state p { color: var(--text-secondary); line-height: 1.7; font-size: 13px; }
+.editor-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; margin: 17px 0; }
+.field-label { display: block; color: var(--text-secondary); font-size: 12px; margin-bottom: 10px; }
+.field-input { display: block; margin-top: 7px; }
+.editor-toolbar { display: flex; flex-wrap: wrap; gap: 7px; padding: 9px; border: 1px solid var(--border); border-bottom: 0; border-radius: 10px 10px 0 0; background: var(--bg-secondary); }
+.editor-toolbar button { padding: 7px 10px; border: 1px solid var(--border); border-radius: 7px; background: var(--glass); color: var(--gold); cursor: pointer; }
+.editor-toolbar button:hover { background: rgba(231,201,139,.1); }
+.rich-editor {
+  min-height: 240px; padding: 17px; border: 1px solid var(--border); border-radius: 0 0 10px 10px;
+  background: rgba(0,0,0,.12); color: var(--text-primary); outline: none; line-height: 1.8;
+  overflow-wrap: anywhere;
+}
+.rich-editor:empty:before { content: attr(data-placeholder); color: var(--text-muted); }
+.rich-editor h2, .rich-editor h3 { color: var(--gold-light); font-family: 'Playfair Display',serif; }
+.editor-footer { margin-top: 16px; flex-wrap: wrap; }
+.note-preview { font-size: 12px; color: var(--text-secondary); line-height: 1.7; margin: 12px 0; min-height: 34px; overflow-wrap: anywhere; }
+.note-actions { justify-content: flex-start; border-top: 1px solid var(--border); padding-top: 11px; }
+.note-actions .muted { margin-left: auto; }
+.text-button, .icon-button { border: 0; background: none; color: var(--gold); cursor: pointer; font: 600 11px 'DM Sans',sans-serif; }
+.danger { color: #e58b8b; }
+.icon-button { font-size: 20px; }
+.footer { display: flex; justify-content: space-between; gap: 15px; padding: 22px 0 30px; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 10px; letter-spacing: .4px; }
+.footer p { margin: 0; }
+
+@media (max-width: 850px) {
+  .subject-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+@media (max-width: 600px) {
+  .app-container { width: min(100% - 30px, 520px); }
+  .header { min-height: 64px; margin-bottom: 22px; }
+  .status { font-size: 8px; letter-spacing: 1px; padding: 7px 8px; }
+  .hero-section { padding: 25px 0 30px; }
+  .hero-section h1 { font-size: clamp(38px,11vw,52px); }
+  .hero-description { font-size: 13px; }
+  .workspace-welcome { align-items: flex-start; flex-direction: column; padding: 20px; margin-bottom: 38px; }
+  .workspace-welcome h2 { font-size: 21px; }
+  .workspace-welcome p:not(.eyebrow) { line-height: 1.65; }
+  .subject-grid { gap: 10px; }
+  .subject-card { min-height: 166px; padding: 15px; }
+  .subject-icon { margin: 16px 0 10px; }
+  .subject-name { font-size: 19px; }
+  .subject-info { font-size: 10px; }
+  .section-heading h2 { font-size: 24px; }
+  .recent-notes, .notes-grid, .selection-grid { grid-template-columns: 1fr; }
+  .personal-toolbar .search-input { max-width: none; }
+  .editor-meta { grid-template-columns: 1fr; }
+  .chapter-row { padding: 14px 12px; gap: 9px; }
+  .chapter-label { font-size: 12px; }
+  .chapter-meta { font-size: 9px; }
+  .notes-toolbar > * { flex: 1; }
+  .notes-toolbar .search-input { max-width: none; }
+  .footer { flex-direction: column; }
+}
