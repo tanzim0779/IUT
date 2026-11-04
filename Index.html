@@ -1,0 +1,398 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Higher Mathematics | Study Portal</title>
+
+    <style>
+        /* =========================
+           1. GLOBAL SETTINGS
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #07111f;
+            --card: #101f33;
+            --card-hover: #172b45;
+            --text: #f1f5f9;
+            --muted: #9aacc3;
+            --accent: #60a5fa;
+            --border: #263b55;
+        }
+
+        html {
+            scroll-behavior: auto;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* =========================
+           2. HEADER
+        ========================= */
+
+        .header {
+            padding: 28px 20px;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+            background: #0b1829;
+        }
+
+        .logo {
+            font-size: 14px;
+            letter-spacing: 3px;
+            color: var(--accent);
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .header h1 {
+            font-size: clamp(26px, 5vw, 42px);
+            line-height: 1.25;
+            margin-bottom: 12px;
+        }
+
+        .header p {
+            color: var(--muted);
+            font-size: 15px;
+        }
+
+        /* =========================
+           3. MAIN CONTAINER
+        ========================= */
+
+        .container {
+            width: min(1100px, 92%);
+            margin: 45px auto;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .section-heading h2 {
+            font-size: 26px;
+            margin-bottom: 8px;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* =========================
+           4. SET CARDS
+        ========================= */
+
+        .sets-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .set-card {
+            display: flex;
+            flex-direction: column;
+            min-height: 225px;
+            padding: 24px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            transition:
+                transform 0.2s ease,
+                background 0.2s ease,
+                border-color 0.2s ease;
+        }
+
+        .set-card:hover {
+            transform: translateY(-5px);
+            background: var(--card-hover);
+            border-color: var(--accent);
+        }
+
+        .set-number {
+            width: 43px;
+            height: 43px;
+            display: grid;
+            place-items: center;
+            background: #1d3b5e;
+            color: #93c5fd;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 18px;
+        }
+
+        .set-card h3 {
+            font-size: 19px;
+            line-height: 1.4;
+            margin-bottom: 10px;
+        }
+
+        .set-card p {
+            color: var(--muted);
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .open-link {
+            margin-top: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: var(--accent);
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .arrow {
+            font-size: 20px;
+            transition: transform 0.2s ease;
+        }
+
+        .set-card:hover .arrow {
+            transform: translateX(5px);
+        }
+
+        /* =========================
+           5. FOOTER
+        ========================= */
+
+        .footer {
+            text-align: center;
+            padding: 25px 15px;
+            color: var(--muted);
+            border-top: 1px solid var(--border);
+            font-size: 13px;
+            margin-top: 55px;
+        }
+
+        /* =========================
+           6. TABLET RESPONSIVENESS
+        ========================= */
+
+        @media (max-width: 850px) {
+            .sets-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        /* =========================
+           7. MOBILE RESPONSIVENESS
+        ========================= */
+
+        @media (max-width: 520px) {
+            .header {
+                padding: 24px 15px;
+            }
+
+            .container {
+                width: 90%;
+                margin: 30px auto;
+            }
+
+            .sets-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .set-card {
+                min-height: 190px;
+                padding: 21px;
+            }
+
+            .section-heading h2 {
+                font-size: 23px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header class="header">
+        <div class="logo">Mathematics Learning Portal</div>
+
+        <h1>Higher Mathematics</h1>
+
+        <p>
+            Learn concepts, explore formulas,
+            and practice mathematics step by step.
+        </p>
+    </header>
+
+
+    <!-- =========================
+         MAIN CONTENT
+         Each Set opens a separate HTML page.
+    ========================== -->
+
+    <main class="container">
+
+        <div class="section-heading">
+            <h2>Choose Your Set</h2>
+            <p>Select a set to explore its chapters.</p>
+        </div>
+
+        <div class="sets-grid">
+
+            <!-- SET 1 -->
+            <a href="set1.html" class="set-card">
+                <div class="set-number">01</div>
+
+                <h3>Functions and Calculus</h3>
+
+                <p>
+                    Functions, graphs, differentiation,
+                    and integration.
+                </p>
+
+                <div class="open-link">
+                    <span>Explore Set 1</span>
+                    <span class="arrow">&rarr;</span>
+                </div>
+            </a>
+
+
+            <!-- SET 2 -->
+            <a href="set2.html" class="set-card">
+                <div class="set-number">02</div>
+
+                <h3>Trigonometry</h3>
+
+                <p>
+                    Trigonometric ratios, associated angles,
+                    and trigonometric equations.
+                </p>
+
+                <div class="open-link">
+                    <span>Explore Set 2</span>
+                    <span class="arrow">&rarr;</span>
+                </div>
+            </a>
+
+
+            <!-- SET 3 -->
+            <a href="set3.html" class="set-card">
+                <div class="set-number">03</div>
+
+                <h3>Coordinate Geometry</h3>
+
+                <p>
+                    Straight lines, circles,
+                    and conic sections.
+                </p>
+
+                <div class="open-link">
+                    <span>Explore Set 3</span>
+                    <span class="arrow">&rarr;</span>
+                </div>
+            </a>
+
+
+            <!-- SET 4 -->
+            <a href="set4.html" class="set-card">
+                <div class="set-number">04</div>
+
+                <h3>Algebra and Number Systems</h3>
+
+                <p>
+                    Real numbers, complex numbers,
+                    polynomials, and linear programming.
+                </p>
+
+                <div class="open-link">
+                    <span>Explore Set 4</span>
+                    <span class="arrow">&rarr;</span>
+                </div>
+            </a>
+
+
+            <!-- SET 5 -->
+            <a href="set5.html" class="set-card">
+                <div class="set-number">05</div>
+
+                <h3>Counting, Statistics and Probability</h3>
+
+                <p>
+                    Permutations, combinations, binomial
+                    expansion, statistics, and probability.
+                </p>
+
+                <div class="open-link">
+                    <span>Explore Set 5</span>
+                    <span class="arrow">&rarr;</span>
+                </div>
+            </a>
+
+
+            <!-- SET 6 -->
+            <a href="set6.html" class="set-card">
+                <div class="set-number">06</div>
+
+                <h3>Vectors and Mechanics</h3>
+
+                <p>
+                    Vectors, statics,
+                    and motion of particles in a plane.
+                </p>
+
+                <div class="open-link">
+                    <span>Explore Set 6</span>
+                    <span class="arrow">&rarr;</span>
+                </div>
+            </a>
+
+        </div>
+
+        <!--
+        =========================================
+        FUTURE HTML INSERTION AREA
+
+        Add any new home-page section here.
+
+        Example:
+        <section class="extra-section">
+            Your new content goes here.
+        </section>
+        =========================================
+        -->
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer class="footer">
+        <p>Higher Mathematics Learning Portal</p>
+        <p>Learn • Practice • Improve</p>
+    </footer>
+
+</body>
+</html>
