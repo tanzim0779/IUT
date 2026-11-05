@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>আমার পড়াশোনার লাইব্রেরি</title>
+  <style>
+    :root {
+      --bg: #080c14;
+      --panel: #151d2c;
+      --panel-hover: #202c41;
+      --text: #eef3ff;
+      --muted: #aab7cc;
+      --border: #2d3a51;
+      --blue: #76a9ff;
+      --cyan: #5bd6df;
+      --purple: #b79aff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100vh; padding: 28px 16px;
+      display: grid; place-items: center;
+      color: var(--text); background:
+        radial-gradient(ellipse at top, #182844 0%, var(--bg) 58%);
+      font-family: "Noto Sans Bengali", "Hind Siliguri", "SolaimanLipi", Arial, sans-serif;
+    }
+    .wrap { width: min(100%, 980px); }
+    header { text-align: center; margin-bottom: 32px; }
+    .eyebrow {
+      display: inline-block; padding: 5px 13px; border-radius: 30px;
+      color: #c8dcff; background: #1c2d49; border: 1px solid #344d73;
+      font-size: 13px;
+    }
+    h1 { margin: 14px 0 8px; font-size: clamp(27px, 5vw, 42px); }
+    header p { color: var(--muted); margin: 0; }
+    .subjects {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+    }
+    .subject {
+      min-height: 235px; padding: 25px 20px; border-radius: 22px;
+      display: flex; flex-direction: column; justify-content: space-between;
+      text-decoration: none; color: var(--text);
+      background: linear-gradient(155deg, #1b2639, var(--panel));
+      border: 1px solid var(--border);
+      box-shadow: 0 15px 35px rgba(0,0,0,.22);
+      transition: transform .2s ease, border-color .2s ease, background .2s ease;
+    }
+    .subject:hover, .subject:focus-visible {
+      transform: translateY(-6px); background: var(--panel-hover);
+      outline: none; border-color: var(--blue);
+    }
+    .icon {
+      width: 58px; height: 58px; border-radius: 17px;
+      display: grid; place-items: center; font-size: 30px;
+      background: #263b5b; margin-bottom: 18px;
+    }
+    .chem .icon { background: #173f43; }
+    .math .icon { background: #382c57; }
+    .subject h2 { margin: 0 0 7px; font-size: 25px; }
+    .subject p { color: var(--muted); margin: 0; line-height: 1.6; font-size: 14px; }
+    .open { margin-top: 23px; color: var(--blue); font-weight: 700; font-size: 14px; }
+    .chem .open { color: var(--cyan); }
+    .math .open { color: var(--purple); }
+    footer { text-align: center; color: #8290a7; font-size: 12px; margin-top: 28px; }
+    @media (max-width: 700px) {
+      .subjects { grid-template-columns: 1fr; }
+      .subject { min-height: 175px; }
+      header { margin-bottom: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <span class="eyebrow">STUDY DASHBOARD</span>
+      <h1>আমার পড়াশোনার লাইব্রেরি</h1>
+      <p>যে বিষয়টি পড়তে চাও, সেই বাক্সে ক্লিক করো</p>
+    </header>
+
+    <section class="subjects">
+      <a class="subject physics" href="physics.html">
+        <div>
+          <div class="icon">⚛️</div>
+          <h2>পদার্থবিজ্ঞান</h2>
+          <p>Physics — সূত্র, তত্ত্ব ও গাণিতিক সমস্যা</p>
+        </div>
+        <div class="open">পড়া শুরু করো →</div>
+      </a>
+
+      <a class="subject chem" href="chemistry.html">
+        <div>
+          <div class="icon">🧪</div>
+          <h2>রসায়ন</h2>
+          <p>Chemistry — বিক্রিয়া, তাপসায়ন ও ধারণা</p>
+        </div>
+        <div class="open">পড়া শুরু করো →</div>
+      </a>
+
+      <a class="subject math" href="math.html">
+        <div>
+          <div class="icon">∑</div>
+          <h2>গণিত</h2>
+          <p>Mathematics — সূত্র, অধ্যায় ও সমাধান</p>
+        </div>
+        <div class="open">পড়া শুরু করো →</div>
+      </a>
+    </section>
+
+    <footer>তোমার বিষয়ভিত্তিক HTML স্টাডি লাইব্রেরি</footer>
+  </main>
+</body>
+</html>
