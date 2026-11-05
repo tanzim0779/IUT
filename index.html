@@ -92,6 +92,80 @@
     display: block;
 }
 
+
+
+
+
+
+
+
+    
+/* FULL IUT MODEL TEST BUTTON */
+
+.model-test-section {
+    margin-top: 25px;
+}
+
+.model-test-btn {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 25px;
+    min-height: 150px;
+    border-radius: 18px;
+    text-decoration: none;
+    color: var(--text);
+    background: linear-gradient(135deg, #302343, #17243a);
+    border: 1px solid #7355a5;
+    transition: 0.2s ease;
+}
+
+.model-test-btn:hover {
+    transform: translateY(-4px);
+    border-color: var(--purple);
+    background: #382b50;
+}
+
+.model-test-icon {
+    min-width: 55px;
+    height: 55px;
+    display: grid;
+    place-items: center;
+    border-radius: 15px;
+    background: #493765;
+    color: #e0caff;
+    font-size: 30px;
+}
+
+.model-test-content h2 {
+    margin: 0 0 8px;
+    font-size: 20px;
+}
+
+.model-test-content p {
+    color: var(--purple);
+    margin: 0 0 12px;
+    font-weight: bold;
+}
+
+.model-test-warning {
+    color: #c4cde0;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+@media (max-width: 600px) {
+    .model-test-btn {
+        padding: 18px;
+        gap: 13px;
+    }
+
+    .model-test-content h2 {
+        font-size: 16px;
+    }
+}
+    
+
     
     
   </style>
