@@ -1,181 +1,186 @@
+
 <!DOCTYPE html>
 <html lang="bn">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Limit Calculator | Standard Exponential Limit</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- KaTeX CDN for Math Rendering -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+    <title>Standard Exponential Limit | IUT Mathematics</title>
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        navy: {
-                            900: '#0a0f1d',
-                            800: '#0f172a',
-                            700: '#1e293b',
-                            600: '#334155',
-                            accent: '#38bdf8'
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+    <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+
     <style>
         body {
-            background-color: #05070f;
+            background: #05070f;
             color: #f1f5f9;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 25px 15px;
         }
-        .glow-effect {
-            box-shadow: 0 0 25px rgba(56, 189, 248, 0.15);
+
+        .container {
+            max-width: 850px;
+            margin: auto;
+        }
+
+        h1 {
+            color: #38bdf8;
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: #94a3b8;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: #0f172a;
+            border: 1px solid #263449;
+            border-radius: 14px;
+            padding: 22px;
+            margin-bottom: 22px;
+        }
+
+        h2 {
+            color: #38bdf8;
+            font-size: 19px;
+            margin-top: 0;
+        }
+
+        .formula {
+            background: #080d19;
+            border: 1px solid #263449;
+            border-radius: 10px;
+            padding: 20px 10px;
+            text-align: center;
+            overflow-x: auto;
+            margin: 18px 0;
+        }
+
+        p, li {
+            color: #cbd5e1;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .example {
+            border-left: 3px solid #38bdf8;
+            padding-left: 15px;
+        }
+
+        .answer {
+            color: #34d399;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            color: #64748b;
+            font-size: 12px;
+            margin-top: 35px;
+        }
+
+        @media (max-width: 500px) {
+            h1 { font-size: 23px; }
+            .card { padding: 17px; }
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between p-4 md:p-8">
 
-    <!-- Header Section -->
-    <header class="max-w-5xl mx-auto w-full text-center py-6 border-b border-navy-700">
-        <h1 class="text-3xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-blue-600 mb-2">
-            Mathematical Limit Visualizer
-        </h1>
-        <p class="text-slate-400 text-sm md:text-base">
-            $$\lim_{x \to 0} \frac{a^x - 1}{x} = \ln(a)$$ সমীকরণের জন্য প্রফেশনাল অ্যানালিটিক্স টুল
+<body>
+
+<div class="container">
+
+    <h1>Standard Exponential Limit</h1>
+    <p class="subtitle">IUT Mathematics | Calculus</p>
+
+    <!-- Main Formula -->
+    <section class="card">
+        <h2>01. Standard Formula</h2>
+
+        <div class="formula">
+            \[
+            \boxed{
+            \lim_{x\to 0}\frac{a^x-1}{x}=\ln a
+            }
+            \]
+        </div>
+
+        <p><b>শর্ত:</b> \(a>0\)</p>
+
+        <p>
+            এখানে \(a\) হলো ধ্রুবক এবং \(x\) শূন্যের
+            দিকে অগ্রসরশীল চলক। এই Limit-এর মান হলো
+            \(a\)-এর Natural Logarithm।
         </p>
-    </header>
+    </section>
 
-    <!-- Main Content -->
-    <main class="max-w-5xl mx-auto w-full my-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
-        
-        <!-- Left Column: Controls & Dynamic Calculator -->
-        <div class="lg:col-span-5 bg-navy-800 p-6 rounded-2xl border border-navy-700 glow-effect flex flex-col justify-between">
-            <div>
-                <h2 class="text-xl font-bold text-sky-400 mb-6 flex items-center gap-2">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
-                    ইনপুট কন্ট্রোলার
-                </h2>
-                
-                <!-- Input 'a' -->
-                <div class="mb-6">
-                    <label class="block text-slate-300 text-sm font-semibold mb-2">ধ্রুবক মান ($a > 0, a \neq 1$):</label>
-                    <input type="number" id="baseA" value="2" step="0.1" min="0.1" class="w-full bg-navy-900 border border-navy-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-sky-400 transition-all">
-                </div>
+    <!-- Example -->
+    <section class="card">
+        <h2>02. Example</h2>
 
-                <!-- Input 'x' for Approaching Zero -->
-                <div class="mb-6">
-                    <label class="block text-slate-300 text-sm font-semibold mb-2">$x$-এর ক্ষুদ্র মান ($x \to 0$):</label>
-                    <input type="number" id="valX" value="0.001" step="0.0001" class="w-full bg-navy-900 border border-navy-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-sky-400 transition-all">
-                </div>
+        <div class="example">
+
+            <p><b>প্রশ্ন:</b> নির্ণয় করো,</p>
+
+            <div class="formula">
+                \[
+                \lim_{x\to 0}\frac{2^x-1}{x}
+                \]
             </div>
 
-            <!-- Result Box -->
-            <div class="bg-navy-900 p-5 rounded-xl border border-navy-700">
-                <div class="text-xs text-slate-400 uppercase tracking-wider mb-1">ক্যালকুলেটেড ফলাফল</div>
-                <div class="flex justify-between items-center my-2">
-                    <span class="text-sm text-slate-300">ফাংশনের মান:</span>
-                    <span id="funcVal" class="text-lg font-mono font-bold text-sky-400">0.0000</span>
-                </div>
-                <div class="flex justify-between items-center">
-                    <span class="text-sm text-slate-300">আদর্শ সীমার মান $\ln(a)$:</span>
-                    <span id="exactVal" class="text-lg font-mono font-bold text-emerald-400">0.0000</span>
-                </div>
+            <p><b>সমাধান:</b></p>
+
+            <p>আমরা জানি,</p>
+
+            <div class="formula">
+                \[
+                \lim_{x\to 0}\frac{a^x-1}{x}
+                =\ln a
+                \]
             </div>
+
+            <p>এখানে, \(a=2\)। সুতরাং,</p>
+
+            <div class="formula">
+                \[
+                =\ln 2
+                \]
+            </div>
+
+            <p class="answer">উত্তর:</p>
+
+            <div class="formula">
+                \[
+                \boxed{\ln 2\approx 0.6931}
+                \]
+            </div>
+
         </div>
+    </section>
 
-        <!-- Right Column: Convergence Table & Steps -->
-        <div class="lg:col-span-7 flex flex-col gap-6">
-            
-            <!-- Convergence Table -->
-            <div class="bg-navy-800 p-6 rounded-2xl border border-navy-700 glow-effect">
-                <h3 class="text-lg font-bold text-sky-400 mb-4 flex items-center gap-2">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                    $x \to 0$ এর মান যাচাইকরণ টেবিল
-                </h3>
-                <div class="overflow-x-auto">
-                    <table class="w-full text-left text-sm text-slate-300">
-                        <thead class="bg-navy-900 text-sky-400 border-b border-navy-700">
-                            <tr>
-                                <th class="p-3">x এর দিক</th>
-                                <th class="p-3">x এর মান</th>
-                                <th class="p-3">$\frac{a^x - 1}{x}$ এর ফলাফল</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tableBody" class="divide-y divide-navy-700 font-mono">
-                            <!-- JS વડે পূর্ণ হবে -->
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- Theory Card -->
-            <div class="bg-navy-800 p-6 rounded-2xl border border-navy-700">
-                <h3 class="text-lg font-bold text-sky-400 mb-3">সংক্ষিপ্ত টেকনিক্যাল টিপস</h3>
-                <p class="text-slate-300 text-sm leading-relaxed">
-                    এই লিমিটটিকে বলা হয় **Standard Exponential Limit**। এটি মোটামুটি ক্যালকুলাসের ভিত্তি তৈরি করে। বিশেষ করে যখন $a = e$ হয়, তখন 
-                    $$\lim_{x \to 0} \frac{e^x - 1}{x} = \ln(e) = 1$$ 
-                    উৎপন্ন হয়।
-                </p>
-            </div>
-        </div>
-    </main>
-
-    <!-- Footer -->
-    <footer class="max-w-5xl mx-auto w-full text-center py-4 border-t border-navy-700 text-slate-500 text-xs">
-        &copy; 2026 Advanced Limit Calculator | Developed for Academic & Professional Use
+    <footer>
+        © 2026 IUT Mathematics | Learning Resources
     </footer>
 
-    <!-- Interactive Script -->
-    <script>
-        const baseAInput = document.getElementById('baseA');
-        const valXInput = document.getElementById('valX');
-        const funcValEl = document.getElementById('funcVal');
-        const exactValEl = document.getElementById('exactVal');
-        const tableBody = document.getElementById('tableBody');
+</div>
 
-        function calculateLimit() {
-            const a = parseFloat(baseAInput.value);
-            const x = parseFloat(valXInput.value);
+<script>
+    window.addEventListener("load", function () {
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: "$$", right: "$$", display: true},
+                {left: "\\[", right: "\\]", display: true},
+                {left: "\\(", right: "\\)", display: false}
+            ],
+            throwOnError: false
+        });
+    });
+</script>
 
-            if (isNaN(a) || a <= 0 || a === 1) {
-                funcValEl.innerText = "অসংজ্ঞায়িত (a > 0 & a ≠ 1)";
-                exactValEl.innerText = "N/A";
-                return;
-            }
-
-            const funcResult = (Math.pow(a, x) - 1) / x;
-            const exactResult = Math.log(a);
-
-            funcValEl.innerText = isNaN(funcResult) ? "0.0000" : funcResult.toFixed(6);
-            exactValEl.innerText = exactResult.toFixed(6);
-
-            // Populate Table
-            tableBody.innerHTML = '';
-            const steps = [0.1, 0.01, 0.001, 0.0001, 0.00001];
-            
-            steps.forEach(stepX => {
-                const resPlus = (Math.pow(a, stepX) - 1) / stepX;
-                const row = `<tr class="hover:bg-navy-700/50 transition-colors">
-                    <td class="p-3 text-emerald-400">+x (ডান দিক)</td>
-                    <td class="p-3">+${stepX}</td>
-                    <td class="p-3">${resPlus.toFixed(7)}</td>
-                </tr>`;
-                tableBody.innerHTML += row;
-            });
-        }
-
-        baseAInput.addEventListener('input', calculateLimit);
-        valXInput.addEventListener('input', calculateLimit);
-
-        // Initial Calculation
-        calculateLimit();
-    </script>
 </body>
-                          </html>
-                          
+</html>
