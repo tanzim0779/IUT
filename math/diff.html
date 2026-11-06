@@ -281,7 +281,54 @@
 
 
 
+<!-- Question 04 -->
+<div class="formula-card">
+    <h3>Question 04</h3>
 
+    <div class="formula">
+        \[
+        \lim_{x \to -3}
+        \left(\frac{x+5}{x+3}\right)^{x+3} = ?
+        \]
+    </div>
+
+    <div class="options">
+        <p>(a) \(1\)</p>
+        <p>(b) \(-1\)</p>
+        <p>(c) \(3\)</p>
+        <p>(d) \(\frac{5}{3}\)</p>
+    </div>
+
+    <div class="solution">
+        <h4>Solution</h4>
+
+        ধরি, \(t=x+3\)। তাহলে \(x=t-3\) এবং \(t\to0\)।
+
+        \[
+        \begin{aligned}
+        L&=\lim_{t\to0}
+        \left(\frac{t+2}{t}\right)^t\\
+        &=\lim_{t\to0}
+        \exp\left[t\ln\left(\frac{t+2}{t}\right)\right]
+        \end{aligned}
+        \]
+
+        যেহেতু,
+        \[
+        \lim_{t\to0^+}
+        t\ln\left(\frac{t+2}{t}\right)=0
+        \]
+
+        তাই,
+        \[
+        L=e^0=1
+        \]
+    </div>
+
+    <div class="answer">
+        Correct Answer: (a) \(1\)
+    </div>
+</div>
 
         
         
