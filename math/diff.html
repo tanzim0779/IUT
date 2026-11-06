@@ -4,21 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Standard Exponential Limit | IUT Mathematics</title>
+    <title>Limit Formulas | IUT Mathematics</title>
 
-    <link rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
 
     <style>
         body {
+            margin: 0;
+            padding: 25px 15px;
             background: #05070f;
             color: #f1f5f9;
             font-family: 'Segoe UI', sans-serif;
-            margin: 0;
-            padding: 25px 15px;
         }
 
         .container {
@@ -29,7 +27,6 @@
         h1 {
             color: #38bdf8;
             font-size: 28px;
-            margin-bottom: 8px;
         }
 
         .subtitle {
@@ -37,134 +34,56 @@
             margin-bottom: 30px;
         }
 
-        .card {
+        .formula-card {
             background: #0f172a;
             border: 1px solid #263449;
-            border-radius: 14px;
-            padding: 22px;
-            margin-bottom: 22px;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
         }
 
-        h2 {
+        .formula-card h2 {
             color: #38bdf8;
-            font-size: 19px;
+            font-size: 16px;
             margin-top: 0;
         }
 
         .formula {
             background: #080d19;
-            border: 1px solid #263449;
-            border-radius: 10px;
-            padding: 20px 10px;
+            border-radius: 8px;
+            padding: 16px 8px;
             text-align: center;
             overflow-x: auto;
-            margin: 18px 0;
-        }
-
-        p, li {
-            color: #cbd5e1;
-            line-height: 1.8;
-            font-size: 15px;
-        }
-
-        .example {
-            border-left: 3px solid #38bdf8;
-            padding-left: 15px;
-        }
-
-        .answer {
-            color: #34d399;
-            font-weight: bold;
         }
 
         footer {
             text-align: center;
             color: #64748b;
             font-size: 12px;
-            margin-top: 35px;
-        }
-
-        @media (max-width: 500px) {
-            h1 { font-size: 23px; }
-            .card { padding: 17px; }
+            margin-top: 30px;
         }
     </style>
 </head>
 
 <body>
-
 <div class="container">
 
-    <h1>Standard Exponential Limit</h1>
-    <p class="subtitle">IUT Mathematics | Calculus</p>
+    <h1>Limit Formulas</h1>
+    <p class="subtitle">IUT Mathematics | Formula Notes</p>
 
-    <!-- Main Formula -->
-    <section class="card">
-        <h2>01. Standard Formula</h2>
-
+    <section class="formula-card">
+        <h2>01. Standard Exponential Limit</h2>
         <div class="formula">
             \[
-            \boxed{
-            \lim_{x\to 0}\frac{a^x-1}{x}=\ln a
-            }
+            \boxed{\lim_{x\to 0}\frac{a^x-1}{x}=\ln a}
             \]
         </div>
-
-        <p><b>শর্ত:</b> \(a>0\)</p>
-
-        <p>
-            এখানে \(a\) হলো ধ্রুবক এবং \(x\) শূন্যের
-            দিকে অগ্রসরশীল চলক। এই Limit-এর মান হলো
-            \(a\)-এর Natural Logarithm।
-        </p>
     </section>
 
-    <!-- Example -->
-    <section class="card">
-        <h2>02. Example</h2>
-
-        <div class="example">
-
-            <p><b>প্রশ্ন:</b> নির্ণয় করো,</p>
-
-            <div class="formula">
-                \[
-                \lim_{x\to 0}\frac{2^x-1}{x}
-                \]
-            </div>
-
-            <p><b>সমাধান:</b></p>
-
-            <p>আমরা জানি,</p>
-
-            <div class="formula">
-                \[
-                \lim_{x\to 0}\frac{a^x-1}{x}
-                =\ln a
-                \]
-            </div>
-
-            <p>এখানে, \(a=2\)। সুতরাং,</p>
-
-            <div class="formula">
-                \[
-                =\ln 2
-                \]
-            </div>
-
-            <p class="answer">উত্তর:</p>
-
-            <div class="formula">
-                \[
-                \boxed{\ln 2\approx 0.6931}
-                \]
-            </div>
-
-        </div>
-    </section>
+    <!-- নতুন Limit Formula এখানে যোগ করবে -->
 
     <footer>
-        © 2026 IUT Mathematics | Learning Resources
+        © 2026 IUT Mathematics
     </footer>
 
 </div>
