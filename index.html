@@ -1,22 +1,26 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>IUT Admission Note</title>
+    <title>IUT Admission Note | Learning Portal</title>
+    <meta name="description" content="A premium learning portal for IUT admission preparation.">
 
-    <meta name="description" content="Physics, Chemistry and Mathematics learning resources for IUT admission preparation.">
+    <meta name="theme-color" content="#070d1a">
 
     <style>
         :root {
-            --bg: #f3f6fb;
-            --panel: #ffffff;
-            --text: #172033;
-            --muted: #64748b;
-            --primary: #2457a7;
-            --border: #e2e8f0;
-            --shadow: 0 8px 25px rgba(15, 23, 42, 0.08);
+            --bg: #070d1a;
+            --surface: #0d1729;
+            --surface-light: #12213a;
+            --blue: #3185ff;
+            --blue-light: #65b3ff;
+            --text: #f4f7ff;
+            --muted: #9aabc4;
+            --border: rgba(133, 170, 220, 0.16);
+            --shadow: 0 18px 45px rgba(0, 0, 0, 0.28);
         }
 
         * {
@@ -25,255 +29,442 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: var(--bg);
-            color: var(--text);
             min-height: 100vh;
+            font-family: Inter, "Segoe UI", Arial, sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(
+                    ellipse at 50% -15%,
+                    rgba(36, 103, 190, 0.22),
+                    transparent 48%
+                ),
+                var(--bg);
             display: flex;
             flex-direction: column;
         }
 
+        a {
+            color: inherit;
+        }
+
         .wrap {
-            width: min(1100px, 92%);
+            width: min(1120px, 91%);
             margin: 0 auto;
-            padding: 45px 0;
+            padding: 65px 0 55px;
             flex: 1;
         }
 
         /* HEADER */
 
-        header {
+        .header {
             text-align: center;
-            margin-bottom: 38px;
+            margin-bottom: 48px;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            color: var(--blue-light);
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 17px;
         }
 
         .site-title {
-            font-size: clamp(28px, 5vw, 42px);
-            font-weight: 800;
-            color: #173b70;
-            letter-spacing: 1px;
+            font-size: clamp(32px, 6vw, 55px);
+            font-weight: 850;
+            letter-spacing: -1.8px;
+            line-height: 1.12;
+            background: linear-gradient(
+                110deg,
+                #ffffff 15%,
+                #a8d4ff 55%,
+                #438cff 100%
+            );
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
         .subtitle {
+            max-width: 550px;
+            margin: 17px auto 0;
             color: var(--muted);
-            margin-top: 12px;
             font-size: 15px;
-            line-height: 1.6;
+            line-height: 1.8;
         }
 
-        .header-line {
-            width: 75px;
-            height: 4px;
-            background: #e0a33a;
+        .title-line {
+            width: 65px;
+            height: 3px;
             border-radius: 10px;
-            margin: 18px auto 0;
+            margin: 24px auto 0;
+            background: linear-gradient(
+                90deg,
+                #2369d9,
+                #66baff
+            );
+            box-shadow: 0 0 18px rgba(49, 133, 255, 0.55);
         }
 
-        /* SUBJECT CARDS */
+        /* SECTION HEADING */
+
+        .section-heading {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            margin-bottom: 20px;
+        }
+
+        .section-heading::before {
+            content: "";
+            width: 4px;
+            height: 23px;
+            border-radius: 5px;
+            background: var(--blue);
+            box-shadow: 0 0 12px rgba(49, 133, 255, 0.6);
+        }
+
+        .section-heading h2 {
+            font-size: 15px;
+            font-weight: 750;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        /* SUBJECT GRID */
 
         .subjects {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 22px;
-            margin-bottom: 30px;
+            gap: 20px;
         }
 
         .subject {
-            background: var(--panel);
-            border: 1px solid var(--border);
-            border-radius: 18px;
-            padding: 28px 20px;
-            text-decoration: none;
-            color: var(--text);
-            text-align: center;
-            box-shadow: var(--shadow);
-            transition: 0.25s ease;
+            position: relative;
+            isolation: isolate;
+            overflow: hidden;
+            min-height: 205px;
+            padding: 27px 23px;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            min-height: 190px;
+            align-items: flex-start;
+            text-decoration: none;
+            background: linear-gradient(
+                145deg,
+                rgba(20, 39, 68, 0.96),
+                rgba(11, 22, 40, 0.98)
+            );
+            border: 1px solid var(--border);
+            border-radius: 17px;
+            box-shadow: var(--shadow);
+            transition:
+                transform 0.3s ease,
+                border-color 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+        .subject::after {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            width: 150px;
+            height: 150px;
+            right: -55px;
+            bottom: -70px;
+            border-radius: 50%;
+            background: rgba(49, 133, 255, 0.12);
+            filter: blur(5px);
+            transition: transform 0.35s ease;
         }
 
         .subject:hover {
-            transform: translateY(-6px);
-            border-color: var(--primary);
-            box-shadow: 0 14px 30px rgba(36, 87, 167, 0.13);
+            transform: translateY(-7px);
+            border-color: rgba(78, 155, 255, 0.65);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35),
+                        0 0 25px rgba(49, 133, 255, 0.09);
+        }
+
+        .subject:hover::after {
+            transform: scale(1.5);
         }
 
         .icon {
-            width: 62px;
-            height: 62px;
+            width: 55px;
+            height: 55px;
             display: grid;
             place-items: center;
-            border-radius: 17px;
-            font-size: 30px;
-            margin-bottom: 17px;
+            border-radius: 15px;
+            margin-bottom: 22px;
+            font-size: 27px;
+            background: rgba(49, 133, 255, 0.13);
+            border: 1px solid rgba(86, 157, 255, 0.2);
+            color: #8fc5ff;
         }
 
-        .physics .icon {
-            background: #e4efff;
-            color: #2457a7;
-        }
-
-        .chem .icon {
-            background: #e2f8ed;
-            color: #16834b;
-        }
-
-        .math .icon {
-            background: #fff0df;
-            color: #d97706;
-        }
-
-        .subject h2 {
-            font-size: 21px;
+        .subject h3 {
+            font-size: 19px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
             margin-bottom: 9px;
         }
 
         .subject p {
             color: var(--muted);
-            font-size: 14px;
-            line-height: 1.6;
+            font-size: 13px;
+            line-height: 1.75;
         }
 
-        /* IUT OFFICIAL CARD */
+        .card-arrow {
+            margin-top: auto;
+            padding-top: 18px;
+            color: var(--blue-light);
+            font-size: 12px;
+            font-weight: 750;
+            letter-spacing: 0.7px;
+        }
 
-        .iut-card {
-            display: block;
-            text-decoration: none;
-            color: var(--text);
-            background: var(--panel);
-            border: 1px solid var(--border);
-            border-radius: 20px;
+        /* IUT IMAGE HERO */
+
+        .iut-section {
+            margin-top: 42px;
+        }
+
+        .iut-hero {
+            position: relative;
+            isolation: isolate;
+            min-height: 310px;
+            display: flex;
+            align-items: center;
             overflow: hidden;
+            padding: 45px;
+            border-radius: 20px;
+            border: 1px solid rgba(111, 169, 244, 0.25);
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(4, 12, 27, 0.94) 0%,
+                    rgba(4, 15, 34, 0.76) 43%,
+                    rgba(4, 15, 34, 0.08) 100%
+                ),
+                url("iut-campus.png") center 48% / cover no-repeat,
+                #142b4a;
             box-shadow: var(--shadow);
-            margin-bottom: 24px;
-            transition: 0.25s ease;
+            text-decoration: none;
+            transition: border-color 0.3s ease,
+                        transform 0.3s ease;
         }
 
-        .iut-card:hover {
+        .iut-hero:hover {
             transform: translateY(-4px);
-            box-shadow: 0 15px 32px rgba(15, 23, 42, 0.13);
+            border-color: rgba(83, 160, 255, 0.7);
         }
 
-        .iut-image {
-            width: 100%;
-            height: 260px;
-            display: block;
-            object-fit: cover;
-            object-position: center;
+        .iut-content {
+            position: relative;
+            z-index: 1;
+            max-width: 460px;
         }
 
-        .iut-info {
-            padding: 23px;
-            text-align: center;
+        .iut-label {
+            display: inline-block;
+            padding: 7px 12px;
+            margin-bottom: 17px;
+            border: 1px solid rgba(111, 177, 255, 0.45);
+            border-radius: 30px;
+            color: #a9d4ff;
+            background: rgba(20, 80, 155, 0.22);
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 2px;
         }
 
-        .iut-info h2 {
-            font-size: 23px;
-            color: #173b70;
-            margin-bottom: 9px;
+        .iut-content h2 {
+            font-size: clamp(29px, 5vw, 43px);
+            font-weight: 850;
+            letter-spacing: -1px;
+            line-height: 1.15;
+            margin-bottom: 12px;
         }
 
-        .iut-info p {
-            color: var(--muted);
+        .iut-content p {
+            color: #c4d3e8;
             font-size: 14px;
-            line-height: 1.6;
+            line-height: 1.8;
+            margin-bottom: 24px;
         }
 
-        .image-credit {
-            display: block;
-            margin-top: 12px;
-            color: #94a3b8;
-            font-size: 11px;
+        .visit-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 13px;
+            padding: 13px 21px;
+            border-radius: 9px;
+            background: linear-gradient(
+                110deg,
+                #1769df,
+                #399cff
+            );
+            color: #fff;
+            font-size: 13px;
+            font-weight: 800;
+            box-shadow: 0 7px 25px rgba(34, 116, 232, 0.3);
+            transition: gap 0.25s ease;
         }
 
-        .image-credit a {
-            color: #64748b;
+        .iut-hero:hover .visit-button {
+            gap: 20px;
         }
 
-        /* MODEL TEST BUTTON */
+        /* MODEL TEST */
 
-        .model-test-section {
+        .model-section {
             margin-top: 25px;
         }
 
-        .model-test-btn {
+        .model-test {
+            position: relative;
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 16px;
-            width: 100%;
-            padding: 25px 20px;
-            border-radius: 17px;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 27px 30px;
+            overflow: hidden;
+            border-radius: 16px;
+            border: 1px solid rgba(76, 145, 239, 0.35);
+            background: linear-gradient(
+                110deg,
+                #102b50,
+                #103b70 58%,
+                #12549a
+            );
             text-decoration: none;
-            color: white;
-            text-align: center;
-            background: linear-gradient(120deg, #173b70, #2874c8);
-            box-shadow: 0 9px 24px rgba(36, 87, 167, 0.2);
-            transition: 0.25s ease;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.24);
+            transition: transform 0.25s ease,
+                        box-shadow 0.25s ease;
         }
 
-        .model-test-btn:hover {
+        .model-test:hover {
             transform: translateY(-4px);
-            box-shadow: 0 14px 30px rgba(36, 87, 167, 0.28);
+            box-shadow: 0 17px 38px rgba(0, 0, 0, 0.32);
         }
 
-        .model-test-icon {
-            font-size: 34px;
+        .model-left {
+            display: flex;
+            align-items: center;
+            gap: 19px;
         }
 
-        .model-test-content h2 {
-            font-size: clamp(17px, 3vw, 23px);
+        .model-icon {
+            width: 56px;
+            height: 56px;
+            flex-shrink: 0;
+            display: grid;
+            place-items: center;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.12);
+            font-size: 25px;
+        }
+
+        .model-test h2 {
+            font-size: clamp(16px, 2.5vw, 21px);
             margin-bottom: 7px;
         }
 
-        .model-test-content p {
-            font-size: 14px;
-            opacity: 0.88;
+        .model-test p {
+            color: #c2d9f7;
+            font-size: 13px;
+        }
+
+        .model-arrow {
+            font-size: 24px;
+            color: #b8dcff;
         }
 
         /* FOOTER */
 
         footer {
+            border-top: 1px solid var(--border);
+            padding: 26px 15px;
             text-align: center;
-            padding: 25px 15px;
-            color: #64748b;
-            background: #e9eef6;
-            font-size: 13px;
-            line-height: 1.8;
+            color: #71839e;
+            background: rgba(5, 11, 22, 0.8);
+            font-size: 12px;
+            line-height: 1.9;
+            letter-spacing: 0.5px;
         }
 
         footer strong {
-            color: #173b70;
+            color: #b6d8ff;
+            letter-spacing: 1.2px;
         }
 
         /* RESPONSIVE */
 
-        @media (max-width: 700px) {
+        @media (max-width: 760px) {
             .wrap {
-                padding: 30px 0;
+                padding-top: 45px;
             }
 
             .subjects {
                 grid-template-columns: 1fr;
-                gap: 16px;
             }
 
             .subject {
-                min-height: 160px;
-                padding: 23px 18px;
+                min-height: 175px;
             }
 
-            .iut-image {
-                height: 190px;
+            .iut-hero {
+                min-height: 330px;
+                padding: 30px 24px;
+                background-position: center;
             }
 
-            .model-test-btn {
-                flex-direction: column;
-                gap: 9px;
-                padding: 23px 15px;
+            .model-test {
+                padding: 22px 18px;
+            }
+        }
+
+        @media (max-width: 430px) {
+            .wrap {
+                width: 90%;
+            }
+
+            .header {
+                margin-bottom: 35px;
+            }
+
+            .iut-hero {
+                min-height: 340px;
+                background-position: 58% center;
+            }
+
+            .model-left {
+                gap: 12px;
+            }
+
+            .model-icon {
+                width: 45px;
+                height: 45px;
+            }
+
+            .model-arrow {
+                font-size: 20px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
             }
         }
     </style>
@@ -285,127 +476,148 @@
 
         <!-- HEADER -->
 
-        <header>
+        <header class="header">
+            <span class="eyebrow">Your Admission Journey Starts Here</span>
+
             <h1 class="site-title">IUT ADMISSION NOTE</h1>
 
             <p class="subtitle">
-                Your Learning Companion for IUT Admission Preparation
+                A focused learning platform for your
+                IUT admission preparation.
             </p>
 
-            <div class="header-line"></div>
+            <div class="title-line"></div>
         </header>
 
 
-        <!-- MAIN SUBJECTS -->
+        <!-- SUBJECTS -->
 
-        <section class="subjects">
+        <section aria-labelledby="subjects-title">
 
-            <!-- PHYSICS -->
+            <div class="section-heading">
+                <h2 id="subjects-title">Study Resources</h2>
+            </div>
 
-            <a href="physics/6group.html" class="subject physics">
-                <div class="icon">⚛</div>
+            <div class="subjects">
 
-                <h2>PHYSICS</h2>
+                <!-- PHYSICS -->
 
-                <p>
-                    Explore Physics topics, concepts
-                    and admission preparation materials.
-                </p>
-            </a>
+                <a href="physics/6group.html" class="subject">
+                    <div class="icon">⚛</div>
 
+                    <h3>PHYSICS</h3>
 
-            <!-- CHEMISTRY -->
+                    <p>
+                        Explore concepts, important topics
+                        and organized Physics resources.
+                    </p>
 
-            <a href="chemistry.html" class="subject chem">
-                <div class="icon">🧪</div>
-
-                <h2>CHEMISTRY</h2>
-
-                <p>
-                    Learn Chemistry concepts and
-                    prepare with organized study materials.
-                </p>
-            </a>
+                    <span class="card-arrow">
+                        EXPLORE PHYSICS →
+                    </span>
+                </a>
 
 
-            <!-- MATHEMATICS -->
+                <!-- CHEMISTRY -->
 
-            <a href="math/6set.html" class="subject math">
-                <div class="icon">∑</div>
+                <a href="chemistry.html" class="subject">
+                    <div class="icon">⚗</div>
 
-                <h2>MATHEMATICS</h2>
+                    <h3>CHEMISTRY</h3>
 
-                <p>
-                    Practice mathematical problems,
-                    formulas and important topics.
-                </p>
-            </a>
+                    <p>
+                        Build your Chemistry knowledge
+                        with structured learning materials.
+                    </p>
 
+                    <span class="card-arrow">
+                        EXPLORE CHEMISTRY →
+                    </span>
+                </a>
+
+
+                <!-- MATHEMATICS -->
+
+                <a href="math/6set.html" class="subject">
+                    <div class="icon">∑</div>
+
+                    <h3>MATHEMATICS</h3>
+
+                    <p>
+                        Strengthen your mathematical skills
+                        through formulas and practice.
+                    </p>
+
+                    <span class="card-arrow">
+                        EXPLORE MATHEMATICS →
+                    </span>
+                </a>
+
+            </div>
         </section>
 
 
         <!-- IUT OFFICIAL WEBSITE -->
 
-        <a
-            href="https://www.iutoic-dhaka.edu/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="iut-card"
-        >
+        <section class="iut-section">
 
-            <img
-                class="iut-image"
-                src="https://commons.wikimedia.org/wiki/Special:FilePath/Islamic_University_of_Technology,_Bangladesh.jpg"
-                alt="Islamic University of Technology campus"
-                loading="lazy"
+            <a
+                href="https://www.iutoic-dhaka.edu/"
+                class="iut-hero"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Visit IUT Official Website"
             >
 
-            <div class="iut-info">
+                <div class="iut-content">
 
-                <h2>IUT OFFICIAL WEBSITE ↗</h2>
-
-                <p>
-                    Visit the official website of
-                    Islamic University of Technology.
-                </p>
-
-                <span class="image-credit">
-                    Campus photo by Nabil Zawad ·
-                    <a
-                        href="https://commons.wikimedia.org/wiki/File:Islamic_University_of_Technology,_Bangladesh.jpg"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onclick="event.stopPropagation();"
-                    >
-                        Image source and license
-                    </a>
-                    (CC BY-SA 4.0)
-                </span>
-
-            </div>
-
-        </a>
-
-
-        <!-- FULL IUT STANDARD MODEL TEST -->
-
-        <section class="model-test-section">
-
-            <a href="model-test.html" class="model-test-btn">
-
-                <div class="model-test-icon">✦</div>
-
-                <div class="model-test-content">
+                    <span class="iut-label">
+                        OFFICIAL UNIVERSITY PORTAL
+                    </span>
 
                     <h2>
-                        MODEL TEST – FULL IUT STANDARD →
+                        Islamic University<br>
+                        of Technology
                     </h2>
 
                     <p>
-                        For Home Practice
+                        Discover the university, explore
+                        academic information and stay connected
+                        with official IUT updates.
                     </p>
 
+                    <span class="visit-button">
+                        VISIT OFFICIAL WEBSITE <span>↗</span>
+                    </span>
+
                 </div>
+
+            </a>
+
+        </section>
+
+
+        <!-- MODEL TEST -->
+
+        <section class="model-section">
+
+            <a href="model-test.html" class="model-test">
+
+                <div class="model-left">
+
+                    <div class="model-icon">✦</div>
+
+                    <div>
+                        <h2>FULL IUT STANDARD MODEL TEST</h2>
+
+                        <p>
+                            For Home Practice · Test Your Preparation
+                        </p>
+                    </div>
+
+                </div>
+
+                <span class="model-arrow">→</span>
 
             </a>
 
@@ -417,7 +629,6 @@
     <!-- FOOTER -->
 
     <footer>
-
         <strong>PHYSICS LEARNING PORTAL</strong>
 
         <br>
@@ -427,7 +638,6 @@
         <br><br>
 
         © Created by Tanzim Ahmmed
-
     </footer>
 
 </body>
