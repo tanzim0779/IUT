@@ -1,612 +1,434 @@
-
 <!DOCTYPE html>
-<html lang="bn">
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> IUT ADMISSION NOTE </title></title>
-  <style>
-    :root {
-      --bg: #080c14;
-      --panel: #151d2c;
-      --panel-hover: #202c41;
-      --text: #eef3ff;
-      --muted: #aab7cc;
-      --border: #2d3a51;
-      --blue: #76a9ff;
-      --cyan: #5bd6df;
-      --purple: #b79aff;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0; min-height: 100vh; padding: 28px 16px;
-      display: grid; place-items: center;
-      color: var(--text); background:
-        radial-gradient(ellipse at top, #182844 0%, var(--bg) 58%);
-      font-family: "Noto Sans Bengali", "Hind Siliguri", "SolaimanLipi", Arial, sans-serif;
-    }
-    .wrap { width: min(100%, 980px); }
-    header { text-align: center; margin-bottom: 32px; }
-    .eyebrow {
-      display: inline-block; padding: 5px 13px; border-radius: 30px;
-      color: #c8dcff; background: #1c2d49; border: 1px solid #344d73;
-      font-size: 13px;
-    }
-    h1 { margin: 14px 0 8px; font-size: clamp(27px, 5vw, 42px); }
-    header p { color: var(--muted); margin: 0; }
-    .subjects {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
-    }
-    .subject {
-      min-height: 235px; padding: 25px 20px; border-radius: 22px;
-      display: flex; flex-direction: column; justify-content: space-between;
-      text-decoration: none; color: var(--text);
-      background: linear-gradient(155deg, #1b2639, var(--panel));
-      border: 1px solid var(--border);
-      box-shadow: 0 15px 35px rgba(0,0,0,.22);
-      transition: transform .2s ease, border-color .2s ease, background .2s ease;
-    }
-    .subject:hover, .subject:focus-visible {
-      transform: translateY(-6px); background: var(--panel-hover);
-      outline: none; border-color: var(--blue);
-    }
-    .icon {
-      width: 58px; height: 58px; border-radius: 17px;
-      display: grid; place-items: center; font-size: 30px;
-      background: #263b5b; margin-bottom: 18px;
-    }
-    .chem .icon { background: #173f43; }
-    .math .icon { background: #382c57; }
-    .subject h2 { margin: 0 0 7px; font-size: 25px; }
-    .subject p { color: var(--muted); margin: 0; line-height: 1.6; font-size: 14px; }
-    .open { margin-top: 23px; color: var(--blue); font-weight: 700; font-size: 14px; }
-    .chem .open { color: var(--cyan); }
-    .math .open { color: var(--purple); }
-    footer { text-align: center; color: #8290a7; font-size: 12px; margin-top: 28px; }
-    @media (max-width: 700px) {
-      .subjects { grid-template-columns: 1fr; }
-      .subject { min-height: 175px; }
-      header { margin-bottom: 24px; }
-    }
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#080b14">
-<title>Physics | Learning Portal</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
+    <title>IUT Admission Note</title>
 
-/* ==============================
-   GLOBAL SETTINGS
-============================== */
+    <meta name="description" content="Physics, Chemistry and Mathematics learning resources for IUT admission preparation.">
 
-/*iut website adding*/
-    
-/* MATH Button - IUT Logo */
-.math .icon {
-    width: 58px;
-    height: 58px;
-    margin-bottom: 18px;
-* {
-    margin: 0;
-    padding: 0;
-    background: transparent;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    box-sizing: border-box;
-}
+    <style>
+        :root {
+            --bg: #f3f6fb;
+            --panel: #ffffff;
+            --text: #172033;
+            --muted: #64748b;
+            --primary: #2457a7;
+            --border: #e2e8f0;
+            --shadow: 0 8px 25px rgba(15, 23, 42, 0.08);
+        }
 
-.math .icon img {
-    width: 50px;
-    height: 50px;
-    object-fit: contain;
-    display: block;
-:root {
-    --background: #080b14;
-    --card: #161e2d;
-    --card-hover: #202e43;
-    --blue: #80adff;
-    --text: #ffffff;
-    --muted: #a3aec1;
-    --border: #29364b;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-html {
-    scroll-behavior: smooth;
-}
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
 
-body {
-    background: var(--background);
-    color: var(--text);
-    font-family: Arial, Helvetica, sans-serif;
-    min-height: 100vh;
-}
+        .wrap {
+            width: min(1100px, 92%);
+            margin: 0 auto;
+            padding: 45px 0;
+            flex: 1;
+        }
 
-/* ==============================
-   MAIN CONTAINER
-============================== */
+        /* HEADER */
 
-.container {
-    width: 100%;
-    max-width: 850px;
-    margin: auto;
-    padding: 0 22px;
-}
+        header {
+            text-align: center;
+            margin-bottom: 38px;
+        }
 
-/* ==============================
-   HERO SECTION
-============================== */
+        .site-title {
+            font-size: clamp(28px, 5vw, 42px);
+            font-weight: 800;
+            color: #173b70;
+            letter-spacing: 1px;
+        }
 
-.hero {
-    text-align: center;
-    padding: 58px 0 72px;
-}
+        .subtitle {
+            color: var(--muted);
+            margin-top: 12px;
+            font-size: 15px;
+            line-height: 1.6;
+        }
 
-.hero h1 {
-    font-size: clamp(34px, 7vw, 54px);
-    font-weight: 800;
-    letter-spacing: -1.5px;
-    color: #ffffff;
-}
+        .header-line {
+            width: 75px;
+            height: 4px;
+            background: #e0a33a;
+            border-radius: 10px;
+            margin: 18px auto 0;
+        }
 
-    
-/* FULL IUT MODEL TEST BUTTON */
-.model-test-section {
-    margin-top: 25px;
-.hero p {
-    max-width: 600px;
-    margin: 25px auto 0;
-    color: var(--muted);
-    font-size: clamp(16px, 3vw, 22px);
-    line-height: 1.65;
-}
+        /* SUBJECT CARDS */
 
-.model-test-btn {
-/* ==============================
-   GROUP CARDS
-============================== */
-.groups {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    padding: 25px;
-    min-height: 150px;
-    border-radius: 18px;
-    flex-direction: column;
-    gap: 32px;
-    padding-bottom: 70px;
-}
-.group-card {
-    display: block;
-    width: 100%;
-    text-decoration: none;
-    color: var(--text);
-    background: linear-gradient(135deg, #302343, #17243a);
-    border: 1px solid #7355a5;
-    transition: 0.2s ease;
-    color: inherit;
-    background: var(--card);
-    border: 2px solid var(--border);
-    border-radius: 31px;
-    padding: 52px 52px 48px;
-    transition:
-        background .25s ease,
-        border-color .25s ease,
-        transform .25s ease,
-        box-shadow .25s ease;
-}
+        .subjects {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+            margin-bottom: 30px;
+        }
 
-.model-test-btn:hover {
-    transform: translateY(-4px);
-    border-color: var(--purple);
-    background: #382b50;
-/* CARD HOVER EFFECT */
-.group-card:hover {
-    background: var(--card-hover);
-    border-color: #568cff;
-    transform: translateY(-3px);
-    box-shadow: 0 12px 35px rgba(0,0,0,.2);
-}
+        .subject {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 28px 20px;
+            text-decoration: none;
+            color: var(--text);
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: 0.25s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 190px;
+        }
 
-.model-test-icon {
-    min-width: 55px;
-    height: 55px;
-    display: grid;
-    place-items: center;
-    border-radius: 15px;
-    background: #493765;
-    color: #e0caff;
-    font-size: 30px;
-/* GROUP TITLE */
-.group-card h2 {
-    color: var(--blue);
-    font-size: clamp(23px, 4vw, 36px);
-    font-weight: 750;
-    line-height: 1.35;
-    margin-bottom: 22px;
-}
+        .subject:hover {
+            transform: translateY(-6px);
+            border-color: var(--primary);
+            box-shadow: 0 14px 30px rgba(36, 87, 167, 0.13);
+        }
 
-.model-test-content h2 {
-    margin: 0 0 8px;
-    font-size: 20px;
-/* GROUP DESCRIPTION */
-.group-card p {
-    color: var(--muted);
-    font-size: clamp(16px, 3vw, 23px);
-    line-height: 1.85;
-    margin-bottom: 40px;
-}
-/* CHAPTER PREVIEW */
-.chapter-preview {
-    color: #8190a8;
-    font-size: 14px;
-    line-height: 1.9;
-    margin-top: -23px;
-    margin-bottom: 32px;
-}
-/* EXPLORE BUTTON */
-.explore {
-    display: inline-block;
-    color: var(--blue);
-    font-size: clamp(16px, 3vw, 21px);
-    font-weight: 750;
-    transition: .2s ease;
-}
+        .icon {
+            width: 62px;
+            height: 62px;
+            display: grid;
+            place-items: center;
+            border-radius: 17px;
+            font-size: 30px;
+            margin-bottom: 17px;
+        }
 
-.model-test-content p {
-    color: var(--purple);
-    margin: 0 0 12px;
-    font-weight: bold;
-.group-card:hover .explore {
-    letter-spacing: .5px;
-}
+        .physics .icon {
+            background: #e4efff;
+            color: #2457a7;
+        }
 
-.model-test-warning {
-    color: #c4cde0;
-    font-size: 13px;
-    line-height: 1.7;
-/* ==============================
-   FOOTER
-============================== */
-footer {
-    text-align: center;
-    padding: 25px 15px 35px;
-    color: #657187;
-    font-size: 12px;
-    letter-spacing: 1px;
-    border-top: 1px solid #1c2534;
-}
+        .chem .icon {
+            background: #e2f8ed;
+            color: #16834b;
+        }
 
-/* ==============================
-   MOBILE RESPONSIVE
-============================== */
-@media (max-width: 600px) {
-    .model-test-btn {
-        padding: 18px;
-        gap: 13px;
-    .container {
-        padding: 0 22px;
-    }
-    .hero {
-        padding: 57px 0 75px;
-    }
-    .hero h1 {
-        font-size: 36px;
-    }
-    .hero p {
-        margin-top: 25px;
-        font-size: 18px;
-        line-height: 1.5;
-    }
-    .groups {
-        gap: 32px;
-    }
-    .group-card {
-        padding: 50px 54px 48px;
-        border-radius: 31px;
-        min-height: 310px;
-    }
-    .group-card h2 {
-        font-size: 30px;
-        margin-bottom: 23px;
-    }
+        .math .icon {
+            background: #fff0df;
+            color: #d97706;
+        }
 
-    .model-test-content h2 {
-        font-size: 16px;
-    .group-card p {
-        font-size: 20px;
-        line-height: 1.85;
-        margin-bottom: 40px;
-    }
-    .chapter-preview {
-        font-size: 14px;
-    }
-    .explore {
-        font-size: 19px;
-    }
-}
-    
+        .subject h2 {
+            font-size: 21px;
+            margin-bottom: 9px;
+        }
 
-    
-    
-  </style>
-/* SMALL MOBILE */
-@media (max-width: 380px) {
-    .container {
-        padding: 0 16px;
-    }
-    .group-card {
-        padding: 35px 27px;
-    }
-    .group-card h2 {
-        font-size: 26px;
-    }
-    .group-card p {
-        font-size: 17px;
-    }
-}
-</style>
+        .subject p {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* IUT OFFICIAL CARD */
+
+        .iut-card {
+            display: block;
+            text-decoration: none;
+            color: var(--text);
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            margin-bottom: 24px;
+            transition: 0.25s ease;
+        }
+
+        .iut-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 32px rgba(15, 23, 42, 0.13);
+        }
+
+        .iut-image {
+            width: 100%;
+            height: 260px;
+            display: block;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .iut-info {
+            padding: 23px;
+            text-align: center;
+        }
+
+        .iut-info h2 {
+            font-size: 23px;
+            color: #173b70;
+            margin-bottom: 9px;
+        }
+
+        .iut-info p {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .image-credit {
+            display: block;
+            margin-top: 12px;
+            color: #94a3b8;
+            font-size: 11px;
+        }
+
+        .image-credit a {
+            color: #64748b;
+        }
+
+        /* MODEL TEST BUTTON */
+
+        .model-test-section {
+            margin-top: 25px;
+        }
+
+        .model-test-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            width: 100%;
+            padding: 25px 20px;
+            border-radius: 17px;
+            text-decoration: none;
+            color: white;
+            text-align: center;
+            background: linear-gradient(120deg, #173b70, #2874c8);
+            box-shadow: 0 9px 24px rgba(36, 87, 167, 0.2);
+            transition: 0.25s ease;
+        }
+
+        .model-test-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 30px rgba(36, 87, 167, 0.28);
+        }
+
+        .model-test-icon {
+            font-size: 34px;
+        }
+
+        .model-test-content h2 {
+            font-size: clamp(17px, 3vw, 23px);
+            margin-bottom: 7px;
+        }
+
+        .model-test-content p {
+            font-size: 14px;
+            opacity: 0.88;
+        }
+
+        /* FOOTER */
+
+        footer {
+            text-align: center;
+            padding: 25px 15px;
+            color: #64748b;
+            background: #e9eef6;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        footer strong {
+            color: #173b70;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 700px) {
+            .wrap {
+                padding: 30px 0;
+            }
+
+            .subjects {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .subject {
+                min-height: 160px;
+                padding: 23px 18px;
+            }
+
+            .iut-image {
+                height: 190px;
+            }
+
+            .model-test-btn {
+                flex-direction: column;
+                gap: 9px;
+                padding: 23px 15px;
+            }
+        }
+    </style>
 </head>
+
 <body>
-  <main class="wrap">
-    <header>
-      <span class="eyebrow">STUDY DASHBOARD</span>
-      <h1>IUT ADMISSION NOTE</h1>
-      <p>Select a Subject</p>
-    </header>
-    <section class="subjects">
-      <a class="subject physics" href="physics/6group.html">
-        <div>
-          <div class="icon">⚛️</div>
-          <h2>PHYSICS</h2>
-          <p>Physics — সূত্র, তত্ত্ব ও গাণিতিক সমস্যা</p>
-        </div>
-        <div class="open">পড়া শুরু করো →</div>
-      </a>
-      <a class="subject chem" href="chemistry.html">
-        <div>
-          <div class="icon">🧪</div>
-          <h2>CHEMISTRY</h2>
-          <p>Chemistry — বিক্রিয়া, তাপসায়ন ও ধারণা</p>
-        </div>
-        <div class="open">পড়া শুরু করো →</div>
-      </a>
-      <a class="subject math" href="math/6set.html">
-        <div>
-          <div class="icon">∑</div>
-          <h2>MATH</h2>
-          <p>Mathematics —Theory & practice</p>
-        </div>
-        <div class="open"> start →</div>
-      </a>
-<a class="subject math" href="https://www.iutoic-dhaka.edu/" target="_blank">
-    <div>
-        <div class="icon">
+
+    <main class="wrap">
+
+        <!-- HEADER -->
+
+        <header>
+            <h1 class="site-title">IUT ADMISSION NOTE</h1>
+
+            <p class="subtitle">
+                Your Learning Companion for IUT Admission Preparation
+            </p>
+
+            <div class="header-line"></div>
+        </header>
+
+
+        <!-- MAIN SUBJECTS -->
+
+        <section class="subjects">
+
+            <!-- PHYSICS -->
+
+            <a href="physics/6group.html" class="subject physics">
+                <div class="icon">⚛</div>
+
+                <h2>PHYSICS</h2>
+
+                <p>
+                    Explore Physics topics, concepts
+                    and admission preparation materials.
+                </p>
+            </a>
+
+
+            <!-- CHEMISTRY -->
+
+            <a href="chemistry.html" class="subject chem">
+                <div class="icon">🧪</div>
+
+                <h2>CHEMISTRY</h2>
+
+                <p>
+                    Learn Chemistry concepts and
+                    prepare with organized study materials.
+                </p>
+            </a>
+
+
+            <!-- MATHEMATICS -->
+
+            <a href="math/6set.html" class="subject math">
+                <div class="icon">∑</div>
+
+                <h2>MATHEMATICS</h2>
+
+                <p>
+                    Practice mathematical problems,
+                    formulas and important topics.
+                </p>
+            </a>
+
+        </section>
+
+
+        <!-- IUT OFFICIAL WEBSITE -->
+
+        <a
+            href="https://www.iutoic-dhaka.edu/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="iut-card"
+        >
+
             <img
-                src="data:image/webp;base64,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"
-                alt="IUT Logo">
-        </div>
-        <h2>IUT OFFICIAL WEBSITE</h2>
-<div class="container">
-    <!-- ==================================
-         MAIN HEADING
-    =================================== -->
-    <section class="hero">
-        <h1>Physics</h1>
-        <p>
-        •Admission 
-        •Notice &
-        •Other All Information 
-            Select a topic to explore concepts and
-            solutions.
-        </p>
-    </div>
+                class="iut-image"
+                src="https://commons.wikimedia.org/wiki/Special:FilePath/Islamic_University_of_Technology,_Bangladesh.jpg"
+                alt="Islamic University of Technology campus"
+                loading="lazy"
+            >
 
-    <div class="open">Click Here→</div>
-</a>
-      
-    </section>
+            <div class="iut-info">
 
-    <!-- ==================================
-         PHYSICS GROUPS
-         TOTAL: 06 GROUPS
-    =================================== -->
+                <h2>IUT OFFICIAL WEBSITE ↗</h2>
 
-    <main class="groups">
+                <p>
+                    Visit the official website of
+                    Islamic University of Technology.
+                </p>
 
+                <span class="image-credit">
+                    Campus photo by Nabil Zawad ·
+                    <a
+                        href="https://commons.wikimedia.org/wiki/File:Islamic_University_of_Technology,_Bangladesh.jpg"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onclick="event.stopPropagation();"
+                    >
+                        Image source and license
+                    </a>
+                    (CC BY-SA 4.0)
+                </span>
 
-        <!-- ==================================
-             GROUP 01
-             PAGE: group-1.html
-             CONTENT: Classical Mechanics
-        =================================== -->
-
-      
-    </section>
-        <a href="group-1.html" class="group-card">
-            <h2>Classical Mechanics</h2>
-            <p>
-                Vectors, dynamics, Newton's laws,
-                work, energy, power and gravitation.
-            </p>
-            <div class="chapter-preview">
-                Vector · Dynamics · Newtonian Mechanics ·
-                Work, Energy and Power · Gravitation and Gravity
             </div>
-            <span class="explore">
-                Explore Topic →
-            </span>
-        </a>
-        <!-- ==================================
-             GROUP 02
-             PAGE: group-2.html
-             CONTENT: Electricity & Magnetism
-        =================================== -->
-        <a href="group-2.html" class="group-card">
-            <h2>Electricity & Magnetism</h2>
-
-            <p>
-                Electronics, electric charges, current,
-                magnetic fields and electromagnetic induction.
-            </p>
-
-            <div class="chapter-preview">
-                Semiconductor and Electronics · Static Electricity ·
-                Current Electricity · Magnetic Effect of Current and
-                Magnetism · Electromagnetic Induction and Alternating Current
-            </div>
-            <span class="explore">
-                Explore Topic →
-            </span>
-        </a>
-        <!-- ==================================
-             GROUP 03
-             PAGE: group-3.html
-             CONTENT: Waves & Optics
-        =================================== -->
-        <a href="group-3.html" class="group-card">
-            <h2>Waves & Optics</h2>
-            <p>
-                Periodic motion, wave phenomena, light,
-                reflection, refraction and optical principles.
-            </p>
-            <div class="chapter-preview">
-                Periodic Motion · Wave ·
-                Geometrical Optics · Physical Optics
-            </div>
-            <span class="explore">
-                Explore Topic →
-            </span>
-        </a>
-        <!-- ==================================
-             GROUP 04
-             PAGE: group-4.html
-             CONTENT: Modern Physics & Astronomy
-        =================================== -->
-
-        <a href="group-4.html" class="group-card">
-
-            <h2>Modern Physics & Astronomy</h2>
-
-            <p>
-                Physical measurements, the universe,
-                astronomical phenomena and modern physics.
-            </p>
-
-            <div class="chapter-preview">
-                Physical World and Measurement ·
-                Astronomy · Introduction to Modern Physics
-            </div>
-            <span class="explore">
-                Explore Topic →
-            </span>
-        </a>
-        <!-- ==================================
-             GROUP 05
-             PAGE: group-5.html
-             CONTENT: Thermal Physics
-        =================================== -->
-        <a href="group-5.html" class="group-card">
-            <h2>Thermal Physics</h2>
-
-            <p>
-                Gas laws, molecular motion, temperature,
-                heat, internal energy and thermodynamics.
-            </p>
-
-            <div class="chapter-preview">
-                Ideal Gas and Kinetic Theory of Gases ·
-                Thermodynamics
-            </div>
-
-            <span class="explore">
-                Explore Topic →
-            </span>
 
         </a>
 
-    
-<!-- FULL IUT STANDARD MODEL TEST BUTTON -->
-<section class="model-test-section">
 
-    <a class="model-test-btn" href="model-test.html">
-        <!-- ==================================
-             GROUP 06
-             PAGE: group-6.html
-             CONTENT: Matter & Nuclear Physics
-        =================================== -->
+        <!-- FULL IUT STANDARD MODEL TEST -->
 
-        <div class="model-test-icon">✦</div>
-        <a href="group-6.html" class="group-card">
+        <section class="model-test-section">
 
-        <div class="model-test-content">
-            <h2>MODEL TEST – FULL IUT STANDARD →</h2>
-            <h2>Matter & Nuclear Physics</h2>
+            <a href="model-test.html" class="model-test-btn">
 
-            <p>For Home Practice</p>
-            <p>
-                Structure of matter, atomic models,
-                nuclei and fundamental nuclear phenomena.
-            </p>
+                <div class="model-test-icon">✦</div>
 
-            <div class="model-test-warning">
-                ⚠️ Important Notice:
-                This model test is advised not to be wasted.
-                It is specially designed for practice shortly
-                before IUT Exam Day.
-            <div class="chapter-preview">
-                Structural Properties of Matter ·
-                Atomic Model and Nuclear Physics
-            </div>
-        </div>
+                <div class="model-test-content">
 
-    </a>
-            <span class="explore">
-                Explore Topic →
-            </span>
-        </a>
-        <!-- ==================================
-             ADD NEW GROUPS HERE
-             নতুন গ্রুপ যোগ করতে চাইলে
-             উপরের group-card এর মতো
-             নতুন HTML card তৈরি করবে।
-        =================================== -->
+                    <h2>
+                        MODEL TEST – FULL IUT STANDARD →
+                    </h2>
 
-</section>
+                    <p>
+                        For Home Practice
+                    </p>
+
+                </div>
+
+            </a>
+
+        </section>
+
     </main>
 
-</div>
 
-
-<!-- ==================================
-     FOOTER
-=================================== -->
-
-<footer>
-
-    PHYSICS LEARNING PORTAL
-
-    <br><br>
-
-    EXPLORE · LEARN · DISCOVER
-
-    
-</footer>
+    <!-- FOOTER -->
 
     <footer>
-      
-      
-     © created by tanzim ahmmed 
-    
-    
-    
+
+        <strong>PHYSICS LEARNING PORTAL</strong>
+
+        <br>
+
+        EXPLORE · LEARN · DISCOVER
+
+        <br><br>
+
+        © Created by Tanzim Ahmmed
+
     </footer>
-  </main>
+
 </body>
 </html>
-
-
-
-   
