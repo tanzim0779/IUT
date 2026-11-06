@@ -4,16 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mathematics Formula Notes | IUT</title>
+    <title>Mathematics Notes | IUT</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
 
     <style>
-        * {
-            box-sizing: border-box;
-        }
+        * { box-sizing: border-box; }
 
         body {
             margin: 0;
@@ -24,11 +22,11 @@
 
         header {
             padding: 22px;
-            border-bottom: 1px solid #263449;
             background: #0a1020;
+            border-bottom: 1px solid #263449;
         }
 
-        .header-content {
+        .header-content, .container {
             max-width: 1000px;
             margin: auto;
         }
@@ -42,10 +40,7 @@
         header p {
             color: #94a3b8;
             font-size: 13px;
-            margin-bottom: 0;
         }
-
-        /* TOPIC MENU */
 
         .menu {
             background: #0f172a;
@@ -73,22 +68,15 @@
             padding: 9px 15px;
             white-space: nowrap;
             font-size: 13px;
-            transition: 0.2s;
         }
 
-        .menu a:hover,
-        .menu a.active {
+        .menu a:hover, .menu a.active {
             color: #38bdf8;
             border-color: #38bdf8;
-            background: #102338;
         }
 
-        /* FORMULA CONTENT */
-
         .container {
-            max-width: 1000px;
-            margin: 30px auto;
-            padding: 0 15px;
+            padding: 30px 15px;
         }
 
         .topic-title {
@@ -107,8 +95,7 @@
 
         .formula-card h3 {
             color: #94a3b8;
-            font-size: 13px;
-            font-weight: 600;
+            font-size: 14px;
             margin: 0 0 15px;
         }
 
@@ -118,169 +105,166 @@
             padding: 18px 8px;
             text-align: center;
             overflow-x: auto;
+            margin-bottom: 15px;
+        }
+
+        .options {
+            color: #cbd5e1;
+            line-height: 2;
+            text-align: left;
+            padding-left: 15px;
+        }
+
+        .solution {
+            color: #cbd5e1;
+            line-height: 1.8;
+        }
+
+        .answer {
+            color: #34d399;
+            font-weight: bold;
         }
 
         @media (max-width: 500px) {
-            header h1 {
-                font-size: 21px;
-            }
-
-            .formula-card {
-                padding: 15px;
-            }
+            header h1 { font-size: 21px; }
+            .formula-card { padding: 15px; }
         }
     </style>
 </head>
 
 <body>
 
-    <!-- HEADER -->
+<header>
+    <div class="header-content">
+        <h1>Mathematics Formula Notes</h1>
+        <p>IUT Mathematics | Formula Collection</p>
+    </div>
+</header>
 
-    <header>
-        <div class="header-content">
-            <h1>Mathematics Formula Notes</h1>
-            <p>IUT Mathematics | Formula Collection</p>
+<!-- TOPIC MENU -->
+<nav class="menu">
+    <div class="menu-content">
+        <a href="#limit" class="active">Limit</a>
+        <a href="#continuity">Continuity</a>
+        <a href="#differentiation">Differentiation</a>
+        <a href="#integration">Integration</a>
+    </div>
+</nav>
+
+<main class="container">
+
+    <!-- LIMIT TOPIC -->
+    <section id="limit">
+
+        <h2 class="topic-title">Limit</h2>
+
+        <!-- Formula 01 -->
+        <div class="formula-card">
+            <h3>01. Standard Exponential Limit</h3>
+
+            <div class="formula">
+                \[
+                \boxed{
+                \lim_{x\to 0}\frac{a^x-1}{x}=\ln a
+                }
+                \]
+            </div>
         </div>
-    </header>
 
+        <!-- Question 01 -->
+        <div class="formula-card">
 
-    <!-- TOPIC MENU -->
+            <h3>Question 01</h3>
 
-    <nav class="menu">
-        <div class="menu-content">
-
-            <a href="#limit" class="active">Limit</a>
-
-            <!-- নতুন Topic যোগ করার জায়গা -->
-            <a href="#continuity">Continuity</a>
-            <a href="#differentiation">Differentiation</a>
-            <a href="#integration">Integration</a>
-
-        </div>
-    </nav>
-
-
-    <!-- FORMULA NOTES -->
-
-    <main class="container">
-
-        <!-- LIMIT TOPIC -->
-
-        <section id="limit">
-
-            <h2 class="topic-title">Limit Formulas</h2>
-
-            <div class="formula-card">
-                <h3>01. Standard Exponential Limit</h3>
-
-                <div class="formula">
-                    \[
-                    \boxed{
-                    \lim_{x\to 0}\frac{a^x-1}{x}=\ln a
-                    }
-                    \]
-                </div>
+            <div class="formula">
+                \[
+                \lim_{h\to 0}
+                \frac{(a+h)^2\sin(a+h)-a^2\sin a}{h}
+                =?
+                \]
             </div>
 
-            <!-- নতুন Limit Formula এখানে যোগ করবে -->
+            <div class="options">
+                (a) \(2a^2\cos a+a\sin a\)<br>
+                (b) \(a^2\cos a+2a\sin a\)<br>
+                (c) \(2\alpha^2\cos a+a\sin a\)<br>
+                (d) কোনটিই নয়
+            </div>
 
-        </section>
+            <h3>Solution</h3>
+
+            <div class="solution">
+                \[
+                =\frac{d}{da}(a^2\sin a)
+                \]
+
+                \[
+                =2a\sin a+a^2\cos a
+                \]
+
+                \[
+                \boxed{a^2\cos a+2a\sin a}
+                \]
+            </div>
+
+            <p class="answer">Correct Answer: (b)</p>
+
+        </div>
+
+        <!-- নতুন Limit Formula / Question এখানে যোগ করবে -->
+
+    </section>
 
 
-        <!-- FUTURE TOPICS -->
+    <!-- CONTINUITY TOPIC -->
+    <section id="continuity">
+        <h2 class="topic-title">Continuity</h2>
 
-        <section id="continuity">
-            <h2 class="topic-title">Continuity</h2>
+        <!-- Continuity-এর Formula / Question এখানে যোগ করবে -->
 
-            <!-- Continuity-এর সূত্র এখানে যোগ করবে -->
-
-        </section>
-
-        <section id="differentiation">
-            <h2 class="topic-title">Differentiation</h2>
-
-            <!-- Differentiation-এর সূত্র এখানে যোগ করবে -->
+    </section>
 
 
+    <!-- DIFFERENTIATION TOPIC -->
+    <section id="differentiation">
+        <h2 class="topic-title">Differentiation</h2>
+
+        <!-- Differentiation-এর Formula / Question এখানে যোগ করবে -->
+
+    </section>
 
 
+    <!-- INTEGRATION TOPIC -->
+    <section id="integration">
+        <h2 class="topic-title">Integration</h2>
 
+        <!-- Integration-এর Formula / Question এখানে যোগ করবে -->
 
-
-
-
-
-
-
-            
-
-
-       <section id="limit">
-
-    <h2 class="topic-title">Limit</h2>
-
-    <!-- এখানে Question + Solution কোড বসাবে -->
-
-</section>
-
-<section id="differentiation">
-    <h2 class="topic-title">Differentiation</h2>
-    <!-- পরে Differentiation-এর প্রশ্ন যোগ করবে -->
-</section>
-
-<section id="integration">
-    <h2 class="topic-title">Integration</h2>
-    <!-- পরে Integration-এর প্রশ্ন যোগ করবে -->
-</section>
+    </section>
 
 </main>
-            
 
-
-
-
-
-
-            
-
-        </section>
-
-        <section id="integration">
-            <h2 class="topic-title">Integration</h2>
-
-            <!-- Integration-এর সূত্র এখানে যোগ করবে -->
-
-        </section>
-
-    </main>
-
-
-    <!-- MATHEMATICAL FORMULA RENDERING -->
-
-    <script>
-        window.addEventListener("load", function () {
-
-            renderMathInElement(document.body, {
-                delimiters: [
-                    {left: "$$", right: "$$", display: true},
-                    {left: "\\[", right: "\\]", display: true},
-                    {left: "\\(", right: "\\)", display: false}
-                ],
-                throwOnError: false
-            });
-
+<script>
+    window.addEventListener("load", function () {
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: "$$", right: "$$", display: true},
+                {left: "\\[", right: "\\]", display: true},
+                {left: "\\(", right: "\\)", display: false}
+            ],
+            throwOnError: false
         });
+    });
 
-        // Menu active state
-        document.querySelectorAll(".menu a").forEach(link => {
-            link.addEventListener("click", function () {
-                document.querySelectorAll(".menu a")
-                    .forEach(item => item.classList.remove("active"));
+    document.querySelectorAll(".menu a").forEach(link => {
+        link.addEventListener("click", function () {
+            document.querySelectorAll(".menu a")
+                .forEach(item => item.classList.remove("active"));
 
-                this.classList.add("active");
-            });
+            this.classList.add("active");
         });
-    </script>
+    });
+</script>
 
 </body>
 </html>
