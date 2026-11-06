@@ -4,34 +4,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Limit Formulas | IUT MATHEMATICS</title>
+    <title>Mathematics Formula Notes | IUT</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
 
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
-            padding: 25px 15px;
             background: #05070f;
             color: #f1f5f9;
             font-family: 'Segoe UI', sans-serif;
         }
 
-        .container {
-            max-width: 850px;
+        header {
+            padding: 22px;
+            border-bottom: 1px solid #263449;
+            background: #0a1020;
+        }
+
+        .header-content {
+            max-width: 1000px;
             margin: auto;
         }
 
-        h1 {
+        header h1 {
             color: #38bdf8;
-            font-size: 28px;
+            font-size: 25px;
+            margin: 0;
         }
 
-        .subtitle {
+        header p {
             color: #94a3b8;
-            margin-bottom: 30px;
+            font-size: 13px;
+            margin-bottom: 0;
+        }
+
+        /* TOPIC MENU */
+
+        .menu {
+            background: #0f172a;
+            border-bottom: 1px solid #263449;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .menu-content {
+            max-width: 1000px;
+            margin: auto;
+            padding: 12px 15px;
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #cbd5e1;
+            background: #172238;
+            border: 1px solid #263449;
+            border-radius: 8px;
+            padding: 9px 15px;
+            white-space: nowrap;
+            font-size: 13px;
+            transition: 0.2s;
+        }
+
+        .menu a:hover,
+        .menu a.active {
+            color: #38bdf8;
+            border-color: #38bdf8;
+            background: #102338;
+        }
+
+        /* FORMULA CONTENT */
+
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 15px;
+        }
+
+        .topic-title {
+            color: #38bdf8;
+            font-size: 21px;
+            margin-bottom: 18px;
         }
 
         .formula-card {
@@ -39,69 +102,143 @@
             border: 1px solid #263449;
             border-radius: 12px;
             padding: 20px;
-            margin-bottom: 16px;
+            margin-bottom: 15px;
         }
 
-        .formula-card h2 {
-            color: #38bdf8;
-            font-size: 16px;
-            margin-top: 0;
+        .formula-card h3 {
+            color: #94a3b8;
+            font-size: 13px;
+            font-weight: 600;
+            margin: 0 0 15px;
         }
 
         .formula {
             background: #080d19;
             border-radius: 8px;
-            padding: 16px 8px;
+            padding: 18px 8px;
             text-align: center;
             overflow-x: auto;
         }
 
-        footer {
-            text-align: center;
-            color: #64748b;
-            font-size: 12px;
-            margin-top: 30px;
+        @media (max-width: 500px) {
+            header h1 {
+                font-size: 21px;
+            }
+
+            .formula-card {
+                padding: 15px;
+            }
         }
     </style>
 </head>
 
 <body>
-<div class="container">
 
-    <h1>Limit Formulas</h1>
-    <p class="subtitle">IUT Mathematics | Formula Notes</p>
+    <!-- HEADER -->
 
-    <section class="formula-card">
-        <h2>01. Standard Exponential Limit</h2>
-        <div class="formula">
-            \[
-            \boxed{\lim_{x\to 0}\frac{a^x-1}{x}=\ln a}
-            \]
+    <header>
+        <div class="header-content">
+            <h1>Mathematics Formula Notes</h1>
+            <p>IUT Mathematics | Formula Collection</p>
         </div>
-    </section>
+    </header>
 
-    <!-- নতুন Limit Formula এখানে যোগ করবে -->
 
-    <footer>
-        © 2026 IUT Mathematics
-    </footer>
+    <!-- TOPIC MENU -->
 
-</div>
+    <nav class="menu">
+        <div class="menu-content">
 
-<script>
-    window.addEventListener("load", function () {
-        renderMathInElement(document.body, {
-            delimiters: [
-                {left: "$$", right: "$$", display: true},
-                {left: "\\[", right: "\\]", display: true},
-                {left: "\\(", right: "\\)", display: false}
-            ],
-            throwOnError: false
+            <a href="#limit" class="active">Limit</a>
+
+            <!-- নতুন Topic যোগ করার জায়গা -->
+            <a href="#continuity">Continuity</a>
+            <a href="#differentiation">Differentiation</a>
+            <a href="#integration">Integration</a>
+
+        </div>
+    </nav>
+
+
+    <!-- FORMULA NOTES -->
+
+    <main class="container">
+
+        <!-- LIMIT TOPIC -->
+
+        <section id="limit">
+
+            <h2 class="topic-title">Limit Formulas</h2>
+
+            <div class="formula-card">
+                <h3>01. Standard Exponential Limit</h3>
+
+                <div class="formula">
+                    \[
+                    \boxed{
+                    \lim_{x\to 0}\frac{a^x-1}{x}=\ln a
+                    }
+                    \]
+                </div>
+            </div>
+
+            <!-- নতুন Limit Formula এখানে যোগ করবে -->
+
+        </section>
+
+
+        <!-- FUTURE TOPICS -->
+
+        <section id="continuity">
+            <h2 class="topic-title">Continuity</h2>
+
+            <!-- Continuity-এর সূত্র এখানে যোগ করবে -->
+
+        </section>
+
+        <section id="differentiation">
+            <h2 class="topic-title">Differentiation</h2>
+
+            <!-- Differentiation-এর সূত্র এখানে যোগ করবে -->
+
+        </section>
+
+        <section id="integration">
+            <h2 class="topic-title">Integration</h2>
+
+            <!-- Integration-এর সূত্র এখানে যোগ করবে -->
+
+        </section>
+
+    </main>
+
+
+    <!-- MATHEMATICAL FORMULA RENDERING -->
+
+    <script>
+        window.addEventListener("load", function () {
+
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: "$$", right: "$$", display: true},
+                    {left: "\\[", right: "\\]", display: true},
+                    {left: "\\(", right: "\\)", display: false}
+                ],
+                throwOnError: false
+            });
+
         });
-    });
-</script>
+
+        // Menu active state
+        document.querySelectorAll(".menu a").forEach(link => {
+            link.addEventListener("click", function () {
+                document.querySelectorAll(".menu a")
+                    .forEach(item => item.classList.remove("active"));
+
+                this.classList.add("active");
+            });
+        });
+    </script>
 
 </body>
 </html>
-
-
