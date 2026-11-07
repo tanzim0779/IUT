@@ -333,10 +333,10 @@
         
         
 
-        <!-- Question 01 -->
+        <!-- Question 05 -->
         <div class="formula-card">
 
-            <h3>Question 01</h3>
+            <h3>Question 05</h3>
 
             <div class="formula">
                 \[
@@ -378,6 +378,16 @@
     </section>
 
 
+
+
+
+
+
+
+
+    
+
+
     <!-- CONTINUITY TOPIC -->
     <section id="continuity">
         <h2 class="topic-title">Continuity</h2>
@@ -387,11 +397,21 @@
     </section>
 
 
+
+
+
+
+
+
+
+    
+
+
     <!-- DIFFERENTIATION TOPIC -->
     <section id="differentiation">
         <h2 class="topic-title">Differentiation</h2>
 
-        <!-- Differentiation-এর Formula / Question এখানে যোগ করবে -->
+    
 
 
 <!-- Question 01 -->
@@ -448,22 +468,185 @@
 </div>
 
 
-
-
-
+       <!-- Differentiation-এর Formula / Question এখানে যোগ করবে -->
         
-        
-
     </section>
 
+
+
+
+
+
+
+
+    
 
     <!-- INTEGRATION TOPIC -->
     <section id="integration">
         <h2 class="topic-title">Integration</h2>
 
+
+        
+
         <!-- Integration-এর Formula / Question এখানে যোগ করবে -->
 
     </section>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+<!-- Concept TOPIC -->
+    <section id="Theory/Concept">
+        <h2 class="topic-title">Theory/Concept</h2>
+
+
+<!-- Point of Inflection -->
+<div class="formula-card">
+
+    <h3>Point of Inflection</h3>
+
+    <p>
+        কোনো বিন্দুতে Function-এর Concavity পরিবর্তন হলে
+        সেই বিন্দুকে Point of Inflection বলে।
+    </p>
+
+    <h4>Step 1: Second Derivative বের করো</h4>
+
+    \[
+    f'(x), \quad f''(x)
+    \]
+
+    <h4>Step 2: সম্ভাব্য Inflection Point নির্ণয়</h4>
+
+    \[
+    f''(x)=0
+    \]
+
+    অথবা যেখানে \(f''(x)\) undefined,
+    সেই বিন্দুগুলো চিহ্নিত করো।
+
+    <h4>Step 3: Sign Test করো</h4>
+
+    প্রতিটি সম্ভাব্য বিন্দুর বাম ও ডান পাশে
+    \(f''(x)\)-এর চিহ্ন পরীক্ষা করো।
+
+    <div class="formula">
+        <p><b>Case 1: Positive → Negative</b></p>
+        \[
+        f''(x): + \rightarrow -
+        \]
+        Concave Up → Concave Down
+        <p><b>এটি Inflection Point।</b></p>
+    </div>
+
+    <div class="formula">
+        <p><b>Case 2: Negative → Positive</b></p>
+        \[
+        f''(x): - \rightarrow +
+        \]
+        Concave Down → Concave Up
+        <p><b>এটিও Inflection Point।</b></p>
+    </div>
+
+    <div class="formula">
+        <p><b>Case 3: Positive → Positive</b></p>
+        \[
+        f''(x): + \rightarrow +
+        \]
+        Concavity পরিবর্তন হয়নি।
+        <p><b>Inflection Point নয়।</b></p>
+    </div>
+
+    <div class="formula">
+        <p><b>Case 4: Negative → Negative</b></p>
+        \[
+        f''(x): - \rightarrow -
+        \]
+        Concavity পরিবর্তন হয়নি।
+        <p><b>Inflection Point নয়।</b></p>
+    </div>
+
+    <h4>Step 4: বিশেষ পরিস্থিতি</h4>
+
+    <ul>
+        <li>
+            <b>যদি \(f''(a)=0\):</b>
+            সরাসরি Inflection Point ধরে নেবে না।
+            Sign Test করতে হবে।
+        </li>
+
+        <li>
+            <b>যদি \(f''(a)\) undefined:</b>
+            বিন্দুটি Function-এর Domain-এ আছে কি না দেখো।
+            তারপর দুই পাশের Concavity পরীক্ষা করো।
+        </li>
+
+        <li>
+            <b>যদি \(f''(a)=0\), কিন্তু Sign পরিবর্তন না হয়:</b>
+            সেটি Inflection Point নয়।
+        </li>
+
+        <li>
+            <b>যদি Function ওই বিন্দুতে undefined:</b>
+            সেটি Inflection Point হতে পারে না।
+        </li>
+    </ul>
+
+    <h4>Step 5: Coordinate বের করো</h4>
+
+    Inflection Point-এর \(x=a\) পাওয়া গেলে,
+
+    \[
+    y=f(a)
+    \]
+
+    অতএব Inflection Point:
+
+    \[
+    \boxed{(a,f(a))}
+    \]
+
+    <div class="answer">
+        <b>Final Checklist:</b>
+        <ol>
+            <li>Second Derivative বের করো।</li>
+            <li>\(f''(x)=0\) বা undefined বিন্দু বের করো।</li>
+            <li>বাম ও ডান পাশের Sign Test করো।</li>
+            <li>Concavity পরিবর্তন হয়েছে কি না দেখো।</li>
+            <li>Function-এর Domain যাচাই করো।</li>
+            <li>Coordinate \((a,f(a))\) লেখো।</li>
+        </ol>
+    </div>
+
+</div>
+
+          
+
+        <!-- nwe concept এর Formula এখানে যোগ করবে -->
+
+    </section>
+    
+
+
+
+
+
+
+
+    
+
 
 </main>
 
