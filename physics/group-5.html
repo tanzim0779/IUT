@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Heat Conduction - IUT 24-25</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #070d1a;
+    color: #f4f7ff;
+    line-height: 1.7;
+    padding: 20px;
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+}
+
+header {
+    text-align: center;
+    padding: 25px 15px;
+    margin-bottom: 25px;
+    background: #0d1729;
+    border: 1px solid rgba(49,133,255,0.3);
+    border-radius: 15px;
+}
+
+header h1 {
+    color: #65b3ff;
+    font-size: 27px;
+}
+
+.subtitle {
+    color: #9aabc4;
+    margin-top: 8px;
+}
+
+.card {
+    background: #0d1729;
+    padding: 22px;
+    margin-bottom: 20px;
+    border-radius: 13px;
+    border: 1px solid rgba(49,133,255,0.2);
+}
+
+h2 {
+    color: #65b3ff;
+    font-size: 21px;
+    margin-bottom: 14px;
+}
+
+h3 {
+    color: #65b3ff;
+    margin: 16px 0 8px;
+}
+
+.question {
+    color: #f4f7ff;
+    font-size: 16px;
+}
+
+.formula {
+    background: #101f37;
+    border-left: 4px solid #3185ff;
+    padding: 14px;
+    margin: 14px 0;
+    border-radius: 7px;
+    text-align: center;
+    font-size: 19px;
+    overflow-x: auto;
+}
+
+.explanation {
+    color: #c5d2e5;
+    margin: 10px 0;
+}
+
+.step {
+    border-left: 3px solid #3185ff;
+    padding: 5px 0 5px 16px;
+    margin: 20px 0;
+}
+
+.step h3 {
+    margin-top: 0;
+}
+
+.diagram {
+    text-align: center;
+    margin: 15px 0;
+    overflow-x: auto;
+}
+
+.diagram svg {
+    max-width: 100%;
+    height: auto;
+}
+
+.result {
+    background: #102b36;
+    border: 1px solid #3185ff;
+    padding: 18px;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 18px;
+}
+
+.result h2 {
+    color: #65b3ff;
+}
+
+.answer {
+    color: #65b3ff;
+    font-size: 27px;
+    font-weight: bold;
+}
+
+.option {
+    padding: 10px;
+    margin: 7px 0;
+    background: #101f37;
+    border-radius: 7px;
+}
+
+.correct {
+    border: 1px solid #39c98a;
+    color: #39c98a;
+}
+
+.note {
+    color: #9aabc4;
+    font-size: 14px;
+}
+
+footer {
+    text-align: center;
+    color: #71839e;
+    padding: 20px;
+    font-size: 13px;
+}
+
+@media(max-width:600px) {
+    body {
+        padding: 10px;
+    }
+
+    .card {
+        padding: 16px;
+    }
+
+    header h1 {
+        font-size: 22px;
+    }
+
+    .formula {
+        font-size: 16px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+    <h1>Heat Conduction</h1>
+    <p class="subtitle">IUT Admission Question | 2024-25</p>
+</header>
+
+<!-- QUESTION -->
+<section class="card">
+    <h2>Question 61</h2>
+
+    <p class="question">
+    Steam at 100°C is passed into one end of a 10 mm thick
+    and 200 cm² area copper cylinder. Water at 100°C is
+    collected at the other end of the cylinder at the rate
+    of 150 g min⁻¹. Find the temperature of the outer surface
+    if the conductivity of copper is 0.8 cal s⁻¹ cm⁻¹ °C⁻¹
+    and the latent heat of steam is 540 cal g⁻¹.
+    </p>
+
+    <br>
+
+    <p>(a) 108°C</p>
+    <p>(b) 8.4°C</p>
+    <p>(c) 98.4°C</p>
+    <p>(d) 91.6°C</p>
+</section>
+
+<!-- CONCEPT -->
+<section class="card">
+    <h2>1. Physical Concept</h2>
+
+    <p class="explanation">
+    এখানে বাষ্প 100°C তাপমাত্রায় তামার সিলিন্ডারের এক প্রান্তে
+    প্রবেশ করছে। বাষ্প ঘনীভূত হয়ে পানি তৈরি হওয়ার সময়
+    সুপ্ত তাপ (Latent Heat) নির্গত করছে।
+    </p>
+
+    <p class="explanation">
+    এই তাপ তামার সিলিন্ডারের মধ্য দিয়ে পরিবাহিত হয়।
+    আমাদের কাজ হলো সিলিন্ডারের অন্য প্রান্তের পৃষ্ঠের
+    তাপমাত্রা নির্ণয় করা।
+    </p>
+
+    <div class="diagram">
+    <svg viewBox="0 0 650 220" xmlns="http://www.w3.org/2000/svg">
+
+        <rect x="170" y="65" width="310" height="90"
+              rx="8" fill="#9aabc4" opacity="0.25"
+              stroke="#65b3ff" stroke-width="2"/>
+
+        <rect x="170" y="65" width="310" height="90"
+              rx="8" fill="none" stroke="#65b3ff"
+              stroke-width="2"/>
+
+        <path d="M40 110 H160" stroke="#ff9b55"
+              stroke-width="4" fill="none"/>
+        <path d="M150 100 L165 110 L150 120"
+              fill="none" stroke="#ff9b55" stroke-width="3"/>
+
+        <path d="M490 110 H610" stroke="#65b3ff"
+              stroke-width="4" fill="none"/>
+        <path d="M600 100 L615 110 L600 120"
+              fill="none" stroke="#65b3ff" stroke-width="3"/>
+
+        <text x="40" y="85" fill="#ffb47e" font-size="15">
+            Steam
+        </text>
+        <text x="40" y="145" fill="#ffb47e" font-size="14">
+            100°C
+        </text>
+
+        <text x="325" y="105" fill="#f4f7ff"
+              text-anchor="middle" font-size="17">
+            Copper Cylinder
+        </text>
+        <text x="325" y="130" fill="#65b3ff"
+              text-anchor="middle" font-size="14">
+            Thickness = 1 cm
+        </text>
+
+        <text x="520" y="85" fill="#65b3ff" font-size="15">
+            Water
+        </text>
+        <text x="520" y="145" fill="#65b3ff" font-size="14">
+            100°C
+        </text>
+
+        <text x="325" y="195" fill="#9aabc4"
+              text-anchor="middle" font-size="13">
+            Heat flows through the copper cylinder
+        </text>
+    </svg>
+    </div>
+
+    <p class="note">
+    চিত্রটি ধারণাগত। সিলিন্ডারের মধ্য দিয়ে তাপ প্রবাহের
+    দিক বোঝানোর জন্য এটি দেখানো হয়েছে।
+    </p>
+</section>
+
+<!-- FORMULA -->
+<section class="card">
+    <h2>2. Required Formula</h2>
+
+    <p class="explanation">
+    Fourier's law অনুযায়ী তাপ পরিবাহনের হার:
+    </p>
+
+    <div class="formula">
+        Q/t = kA(ΔT)/L
+    </div>
+
+    <p class="explanation"><b>যেখানে,</b></p>
+
+    <p>Q/t = প্রতি সেকেন্ডে পরিবাহিত তাপের পরিমাণ</p>
+    <p>k = তাপ পরিবাহিতা (Thermal Conductivity)</p>
+    <p>A = সিলিন্ডারের প্রস্থচ্ছেদের ক্ষেত্রফল</p>
+    <p>ΔT = দুই প্রান্তের তাপমাত্রার পার্থক্য</p>
+    <p>L = সিলিন্ডারের পুরুত্ব</p>
+
+    <div class="formula">
+        Q/t = mL<sub>v</sub>/t
+    </div>
+
+    <p class="explanation">
+    এখানে m হলো প্রতি t সময়ে ঘনীভূত হওয়া বাষ্পের ভর
+    এবং L<sub>v</sub> হলো বাষ্পের সুপ্ত তাপ।
+    </p>
+</section>
+
+<!-- SOLUTION -->
+<section class="card">
+    <h2>3. Step-by-Step Solution</h2>
+
+    <div class="step">
+        <h3>Step 1: Given Data</h3>
+
+        <p>সিলিন্ডারের পুরুত্ব,</p>
+        <div class="formula">d = 10 mm = 1 cm</div>
+
+        <p>ক্ষেত্রফল,</p>
+        <div class="formula">A = 200 cm²</div>
+
+        <p>তাপ পরিবাহিতা,</p>
+        <div class="formula">
+            k = 0.8 cal s⁻¹ cm⁻¹ °C⁻¹
+        </div>
+
+        <p>বাষ্পের ঘনীভবনের হার,</p>
+        <div class="formula">
+            m/t = 150/60 = 2.5 g/s
+        </div>
+
+        <p>বাষ্পের সুপ্ত তাপ,</p>
+        <div class="formula">
+            L<sub>v</sub> = 540 cal/g
+        </div>
+
+        <p>বাষ্পের তাপমাত্রা,</p>
+        <div class="formula">T₁ = 100°C</div>
+    </div>
+
+    <div class="step">
+        <h3>Step 2: Calculate Heat Released</h3>
+
+        <p class="explanation">
+        প্রতি সেকেন্ডে যতটুকু বাষ্প ঘনীভূত হচ্ছে,
+        তার মাধ্যমে নির্গত তাপের পরিমাণ:
+        </p>
+
+        <div class="formula">
+            Q/t = (m/t) × L<sub>v</sub>
+        </div>
+
+        <p>মান বসিয়ে পাই,</p>
+
+        <div class="formula">
+            Q/t = 2.5 × 540
+        </div>
+
+        <div class="formula">
+            Q/t = 1350 cal/s
+        </div>
+
+        <p class="explanation">
+        অর্থাৎ প্রতি সেকেন্ডে 1350 ক্যালরি তাপ
+        তামার সিলিন্ডারের মধ্য দিয়ে প্রবাহিত হচ্ছে।
+        </p>
+    </div>
+
+    <div class="step">
+        <h3>Step 3: Apply Fourier's Law</h3>
+
+        <div class="formula">
+            Q/t = kA(T₁ - T₂)/d
+        </div>
+
+        <p>এখানে T₂ হলো বাইরের পৃষ্ঠের অজানা তাপমাত্রা।</p>
+
+        <p>এখন সব মান বসাই:</p>
+
+        <div class="formula">
+            1350 = (0.8 × 200 × (100 - T₂))/1
+        </div>
+
+        <div class="formula">
+            1350 = 160(100 - T₂)
+        </div>
+    </div>
+
+    <div class="step">
+        <h3>Step 4: Calculate Temperature Difference</h3>
+
+        <p>উভয় পাশে 160 দিয়ে ভাগ করে পাই,</p>
+
+        <div class="formula">
+            100 - T₂ = 1350/160
+        </div>
+
+        <div class="formula">
+            100 - T₂ = 8.4375°C
+        </div>
+
+        <p>সুতরাং,</p>
+
+        <div class="formula">
+            T₂ = 100 - 8.4375
+        </div>
+
+        <div class="formula">
+            T₂ = 91.5625°C
+        </div>
+    </div>
+
+    <div class="result">
+        <h2>Final Answer</h2>
+        <p class="answer">T₂ ≈ 91.6°C</p>
+        <p>Correct Option: (d)</p>
+    </div>
+</section>
+
+<!-- OPTIONS -->
+<section class="card">
+    <h2>4. MCQ Answer Verification</h2>
+
+    <div class="option">
+        (a) 108°C
+    </div>
+
+    <div class="option">
+        (b) 8.4°C
+    </div>
+
+    <div class="option">
+        (c) 98.4°C
+    </div>
+
+    <div class="option correct">
+        (d) 91.6°C ✓ Correct Answer
+    </div>
+</section>
+
+<!-- IMPORTANT NOTE -->
+<section class="card">
+    <h2>5. Important Exam Tips</h2>
+
+    <p class="explanation">
+    <b>1.</b> mm থেকে cm-এ রূপান্তর করতে ভুলবে না।
+    10 mm = 1 cm।
+    </p>
+
+    <p class="explanation">
+    <b>2.</b> বাষ্পের হার g/min-এ দেওয়া আছে,
+    কিন্তু তাপ পরিবাহিতার এককে second আছে।
+    তাই 60 দিয়ে ভাগ করে g/s করতে হবে।
+    </p>
+
+    <p class="explanation">
+    <b>3.</b> তাপ সবসময় উচ্চ তাপমাত্রা থেকে নিম্ন
+    তাপমাত্রার দিকে প্রবাহিত হয়। তাই বাইরের পৃষ্ঠের
+    তাপমাত্রা 100°C-এর চেয়ে কম হবে।
+    </p>
+
+    <p class="explanation">
+    <b>4.</b> 8.4°C হলো তাপমাত্রার পার্থক্য,
+    বাইরের পৃষ্ঠের তাপমাত্রা নয়।
+    বাইরের পৃষ্ঠের তাপমাত্রা = 100 - 8.4 = 91.6°C।
+    </p>
+</section>
+
+<footer>
+    IUT Admission Preparation | Physics | 2024-25
+</footer>
+
+</div>
+
+</body>
+  </html>
