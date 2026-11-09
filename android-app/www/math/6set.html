@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Mathematics Topics</title>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #080c14;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    padding: 40px 20px;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+}
+
+h1 {
+    text-align: center;
+    font-size: 35px;
+    margin-bottom: 12px;
+    color: #ffffff;
+}
+
+.subtitle {
+    text-align: center;
+    color: #9ca9bd;
+    margin-bottom: 40px;
+    font-size: 16px;
+}
+
+.topic-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+}
+
+.topic-card {
+    display: block;
+    text-decoration: none;
+    color: white;
+    background: #151d2b;
+    border: 1px solid #303c50;
+    border-radius: 16px;
+    padding: 28px;
+    min-height: 175px;
+    transition: 0.3s ease;
+}
+
+.topic-card:hover {
+    background: #202c40;
+    border-color: #5795ff;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.topic-card h3 {
+    font-size: 22px;
+    margin-bottom: 12px;
+    color: #83b2ff;
+}
+
+.topic-card p {
+    color: #aab6c9;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+.open-text {
+    display: block;
+    margin-top: 20px;
+    color: #75aaff;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+@media (max-width: 650px) {
+
+    .topic-grid {
+        grid-template-columns: 1fr;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    .topic-card {
+        min-height: 150px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Mathematics</h1>
+
+    <p class="subtitle">
+        Select a topic to explore concepts and solutions.
+    </p>
+
+    <div class="topic-grid">
+
+        <!-- SET 01: Functions and Calculus -->
+        <a href="diff.html" class="topic-card">
+
+            <h3>Functions and Calculus</h3>
+
+            <p>
+                Functions, graphs, differentiation and integration.
+            </p>
+
+            <span class="open-text">Explore Topic →</span>
+
+        </a>
+
+
+        <!-- SET 02: Trigonometry -->
+        <a href="coming-soon.html" class="topic-card">
+
+            <h3>Trigonometry</h3>
+
+            <p>
+                Trigonometric ratios, angles and equations.
+            </p>
+
+            <span class="open-text">Explore Topic →</span>
+
+        </a>
+
+
+        <!-- SET 03: Coordinate Geometry -->
+        <a href="coming-soon.html" class="topic-card">
+
+            <h3>Coordinate Geometry</h3>
+
+            <p>
+                Straight lines, circles and conics.
+            </p>
+
+            <span class="open-text">Explore Topic →</span>
+
+        </a>
+
+
+        <!-- SET 04: Algebra and Number Systems -->
+        <a href="coming-soon.html" class="topic-card">
+
+            <h3>Algebra and Number Systems</h3>
+
+            <p>
+                Real numbers, complex numbers, polynomials
+                and linear programming.
+            </p>
+
+            <span class="open-text">Explore Topic →</span>
+
+        </a>
+
+
+        <!-- SET 05: Counting, Statistics and Probability -->
+        <a href="coming-soon.html" class="topic-card">
+
+            <h3>Counting, Statistics and Probability</h3>
+
+            <p>
+                Permutations, combinations, binomial expansion
+                and probability.
+            </p>
+
+            <span class="open-text">Explore Topic →</span>
+
+        </a>
+
+
+        <!-- SET 06: Vectors and Mechanics -->
+        <a href="coming-soon.html" class="topic-card">
+
+            <h3>Vectors and Mechanics</h3>
+
+            <p>
+                Vectors, statics and motion of particles in a plane.
+            </p>
+
+            <span class="open-text">Explore Topic →</span>
+
+        </a>
+
+    </div>
+
+</div>
+
+
+<!--
+==================================================
+IMPORTANT: HOW TO ADD THE NEXT HTML PAGES
+==================================================
+
+প্রতিটি বাটনের জন্য আলাদা HTML ফাইল তৈরি করবে।
+
+১. functions-calculus.html
+২. trigonometry.html
+৩. coordinate-geometry.html
+৪. algebra-number-systems.html
+৫. counting-statistics-probability.html
+৬. vectors-mechanics.html
+
+সব HTML ফাইল একই folder-এর মধ্যে রাখবে।
+
+যখন কোনো বাটনে ক্লিক করবে, তখন তার নির্দিষ্ট
+HTML পেজ ওপেন হবে।
+
+পরবর্তীতে প্রতিটি HTML পেজের নিজস্ব কোড
+সেই ফাইলের <body> ট্যাগের মধ্যে লিখবে।
+
+নতুন বাটন যোগ করতে চাইলে topic-grid-এর
+ভেতরে নতুন <a class="topic-card"> তৈরি করবে।
+
+==================================================
+-->
+
+</body>
+</html>

@@ -1,0 +1,956 @@
+
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mathematics Notes | IUT</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+
+    <style>
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            background: #05070f;
+            color: #f1f5f9;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        header {
+            padding: 22px;
+            background: #0a1020;
+            border-bottom: 1px solid #263449;
+        }
+
+        .header-content, .container {
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        header h1 {
+            color: #38bdf8;
+            font-size: 25px;
+            margin: 0;
+        }
+
+        header p {
+            color: #94a3b8;
+            font-size: 13px;
+        }
+
+        .menu {
+            background: #0f172a;
+            border-bottom: 1px solid #263449;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .menu-content {
+            max-width: 1000px;
+            margin: auto;
+            padding: 12px 15px;
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #cbd5e1;
+            background: #172238;
+            border: 1px solid #263449;
+            border-radius: 8px;
+            padding: 9px 15px;
+            white-space: nowrap;
+            font-size: 13px;
+        }
+
+        .menu a:hover, .menu a.active {
+            color: #38bdf8;
+            border-color: #38bdf8;
+        }
+
+        .container {
+            padding: 30px 15px;
+        }
+
+        .topic-title {
+            color: #38bdf8;
+            font-size: 21px;
+            margin-bottom: 18px;
+        }
+
+        .formula-card {
+            background: #0f172a;
+            border: 1px solid #263449;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 15px;
+        }
+
+        .formula-card h3 {
+            color: #94a3b8;
+            font-size: 14px;
+            margin: 0 0 15px;
+        }
+
+        .formula {
+            background: #080d19;
+            border-radius: 8px;
+            padding: 18px 8px;
+            text-align: center;
+            overflow-x: auto;
+            margin-bottom: 15px;
+        }
+
+        .options {
+            color: #cbd5e1;
+            line-height: 2;
+            text-align: left;
+            padding-left: 15px;
+        }
+
+        .solution {
+            color: #cbd5e1;
+            line-height: 1.8;
+        }
+
+        .answer {
+            color: #34d399;
+            font-weight: bold;
+        }
+
+        @media (max-width: 500px) {
+            header h1 { font-size: 21px; }
+            .formula-card { padding: 15px; }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-content">
+        <h1>Mathematics Formula Notes</h1>
+        <p>IUT Mathematics | Formula Collection</p>
+    </div>
+</header>
+
+<!-- TOPIC MENU -->
+<nav class="menu">
+    <div class="menu-content">
+        <a href="#limit" class="active">Limit</a>
+        <a href="#continuity">Continuity</a>
+        <a href="#differentiation">Differentiation</a>
+        <a href="#integration">Integration</a>
+        <a href="#Theory/Concept">Theory/Concept</a>
+    </div>
+</nav>
+
+<main class="container">
+
+    <!-- LIMIT TOPIC -->
+    <section id="limit">
+
+        <h2 class="topic-title">Limit</h2>
+
+        <!-- Formula 01 -->
+        <div class="formula-card">
+            <h3>01. Standard Exponential Limit</h3>
+
+            <div class="formula">
+                \[
+                \boxed{
+                \lim_{x\to 0}\frac{a^x-1}{x}=\ln a
+                }
+                \]
+            </div>
+        </div>
+
+
+
+
+
+        <!-- Question 02 -->
+<div class="formula-card">
+    <h3>Question 02</h3>
+
+    <div class="formula">
+        \[
+        \lim_{x \to 0} \frac{1}{a}
+        \left[
+        \frac{1}{\sqrt{x+a}}-\frac{1}{\sqrt{x}}
+        \right] = ?
+        \]
+    </div>
+
+    <div class="options">
+        <p>(a) \( -\frac{1}{2}a^{\frac{3}{2}} \)</p>
+        <p>(b) \( 2 \)</p>
+        <p>(c) \( -\frac{3}{2}a^{\frac{3}{2}} \)</p>
+        <p>(d) অস্তিত্ব নেই</p>
+    </div>
+
+    <div class="solution">
+        <h4>Solution</h4>
+        <p>
+            যেহেতু \(x \to 0^+\),
+            \[
+            \frac{1}{\sqrt{x}} \to \infty
+            \]
+            এবং
+            \[
+            \frac{1}{\sqrt{x+a}} \to \frac{1}{\sqrt a}
+            \]
+            তাই,
+            \[
+            \lim_{x\to 0^+}\frac{1}{a}
+            \left[
+            \frac{1}{\sqrt{x+a}}-\frac{1}{\sqrt{x}}
+            \right] = -\infty
+            \]
+        </p>
+    </div>
+
+    <div class="answer">
+        Correct Answer: (d) অস্তিত্ব নেই
+    </div>
+</div>
+
+
+
+
+
+
+<!-- Question 03 -->
+<div class="formula-card">
+    <h3>Question 03</h3>
+
+    <div class="formula">
+        \[
+        \lim_{x \to \infty}
+        \sqrt{\frac{x+\sin x}{x-\cos x}} = ?
+        \]
+    </div>
+
+    <div class="options">
+        <p>(a) \(0\)</p>
+        <p>(b) \(1\)</p>
+        <p>(c) \(-1\)</p>
+        <p>(d) \(\infty\)</p>
+    </div>
+
+    <div class="solution">
+        <h4>Solution</h4>
+        \[
+        = \lim_{x\to\infty}
+        \sqrt{\frac{1+\frac{\sin x}{x}}
+        {1-\frac{\cos x}{x}}}
+        \]
+
+        যেহেতু,
+        \[
+        -1\leq \sin x\leq 1
+        \quad \text{and} \quad
+        -1\leq \cos x\leq 1
+        \]
+
+        তাই,
+        \[
+        \lim_{x\to\infty}\frac{\sin x}{x}=0
+        \]
+        \[
+        \lim_{x\to\infty}\frac{\cos x}{x}=0
+        \]
+
+        সুতরাং,
+        \[
+        =\sqrt{\frac{1+0}{1-0}}
+        =\sqrt{1}=1
+        \]
+    </div>
+
+    <div class="answer">
+        Correct Answer: (b) \(1\)
+    </div>
+</div>
+
+
+
+<!-- Question 04 -->
+<div class="formula-card">
+    <h3>Question 04</h3>
+
+    <div class="formula">
+        \[
+        \lim_{x \to -3}
+        \left(\frac{x+5}{x+3}\right)^{x+3} = ?
+        \]
+    </div>
+
+    <div class="options">
+        <p>(a) \(1\)</p>
+        <p>(b) \(-1\)</p>
+        <p>(c) \(3\)</p>
+        <p>(d) \(\frac{5}{3}\)</p>
+    </div>
+
+    <div class="solution">
+        <h4>Solution</h4>
+
+        ধরি, \(t=x+3\)। তাহলে \(x=t-3\) এবং \(t\to0\)।
+
+        \[
+        \begin{aligned}
+        L&=\lim_{t\to0}
+        \left(\frac{t+2}{t}\right)^t\\
+        &=\lim_{t\to0}
+        \exp\left[t\ln\left(\frac{t+2}{t}\right)\right]
+        \end{aligned}
+        \]
+
+        যেহেতু,
+        \[
+        \lim_{t\to0^+}
+        t\ln\left(\frac{t+2}{t}\right)=0
+        \]
+
+        তাই,
+        \[
+        L=e^0=1
+        \]
+    </div>
+
+    <div class="answer">
+        Correct Answer: (a) \(1\)
+    </div>
+</div>
+
+        
+        
+
+        <!-- Question 05 -->
+        <div class="formula-card">
+
+            <h3>Question 05</h3>
+
+            <div class="formula">
+                \[
+                \lim_{h\to 0}
+                \frac{(a+h)^2\sin(a+h)-a^2\sin a}{h}
+                =?
+                \]
+            </div>
+
+            <div class="options">
+                (a) \(2a^2\cos a+a\sin a\)<br>
+                (b) \(a^2\cos a+2a\sin a\)<br>
+                (c) \(2\alpha^2\cos a+a\sin a\)<br>
+                (d) কোনটিই নয়
+            </div>
+
+            <h3>Solution</h3>
+
+            <div class="solution">
+                \[
+                =\frac{d}{da}(a^2\sin a)
+                \]
+
+                \[
+                =2a\sin a+a^2\cos a
+                \]
+
+                \[
+                \boxed{a^2\cos a+2a\sin a}
+                \]
+            </div>
+
+            <p class="answer">Correct Answer: (b)</p>
+
+        </div>
+
+        <!-- নতুন Limit Formula / Question এখানে যোগ করবে -->
+
+    </section>
+
+
+
+
+
+
+
+
+
+    
+
+
+    <!-- CONTINUITY TOPIC -->
+    <section id="continuity">
+        <h2 class="topic-title">Continuity</h2>
+
+        <!-- Continuity-এর Formula / Question এখানে যোগ করবে -->
+
+    </section>
+
+
+
+
+
+
+
+
+
+    
+
+
+    <!-- DIFFERENTIATION TOPIC -->
+    <section id="differentiation">
+        <h2 class="topic-title">Differentiation</h2>
+
+    
+
+
+<!-- Question 01 -->
+<div class="formula-card">
+    <h3>Question 01</h3>
+
+    <div class="formula">
+        \[
+        f(x)=|x| \text{ হলে, }
+        \left(\frac{d|x|}{dx}\right)_{x=0} = ?
+        \]
+    </div>
+
+    <div class="options">
+        <p>(a) \(1\)</p>
+        <p>(b) \(-1\)</p>
+        <p>(c) \(0\)</p>
+        <p>(d) None</p>
+    </div>
+
+    <div class="solution">
+        <h4>Solution</h4>
+
+        ডেরিভেটিভের সংজ্ঞা অনুযায়ী,
+
+        \[
+        f'(0)=\lim_{h\to0}
+        \frac{f(0+h)-f(0)}{h}
+        \]
+
+        \[
+        =\lim_{h\to0}\frac{|h|}{h}
+        \]
+
+        ডানদিক থেকে,
+        \[
+        \lim_{h\to0^+}\frac{|h|}{h}=1
+        \]
+
+        বামদিক থেকে,
+        \[
+        \lim_{h\to0^-}\frac{|h|}{h}=-1
+        \]
+
+        যেহেতু বাম ও ডানদিকের লিমিট সমান নয়, তাই
+        \[
+        f'(0) \text{ does not exist}
+        \]
+    </div>
+
+    <div class="answer">
+        Correct Answer: (d) None
+    </div>
+</div>
+
+
+       <!-- Differentiation-এর Formula / Question এখানে যোগ করবে -->
+        
+    </section>
+
+
+
+
+
+
+
+
+    
+
+    <!-- INTEGRATION TOPIC -->
+    <section id="integration">
+        <h2 class="topic-title">Integration</h2>
+
+
+        
+
+        <!-- Integration-এর Formula / Question এখানে যোগ করবে -->
+
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+<!-- Concept TOPIC -->
+    <section id="Theory/Concept">
+        <h2 class="topic-title">Theory/Concept</h2>
+
+
+<!-- Point of Inflection -->
+<div class="formula-card">
+
+    <h3>Point of Inflection</h3>
+
+    <p>
+        কোনো বিন্দুতে Function-এর Concavity পরিবর্তন হলে
+        সেই বিন্দুকে Point of Inflection বলে।
+    </p>
+
+    <h4>Step 1: Second Derivative বের করো</h4>
+
+    \[
+    f'(x), \quad f''(x)
+    \]
+
+    <h4>Step 2: সম্ভাব্য Inflection Point নির্ণয়</h4>
+
+    \[
+    f''(x)=0
+    \]
+
+    অথবা যেখানে \(f''(x)\) undefined,
+    সেই বিন্দুগুলো চিহ্নিত করো।
+
+    <h4>Step 3: Sign Test করো</h4>
+
+    প্রতিটি সম্ভাব্য বিন্দুর বাম ও ডান পাশে
+    \(f''(x)\)-এর চিহ্ন পরীক্ষা করো।
+
+    <div class="formula">
+        <p><b>Case 1: Positive → Negative</b></p>
+        \[
+        f''(x): + \rightarrow -
+        \]
+        Concave Up → Concave Down
+        <p><b>এটি Inflection Point।</b></p>
+    </div>
+
+    <div class="formula">
+        <p><b>Case 2: Negative → Positive</b></p>
+        \[
+        f''(x): - \rightarrow +
+        \]
+        Concave Down → Concave Up
+        <p><b>এটিও Inflection Point।</b></p>
+    </div>
+
+    <div class="formula">
+        <p><b>Case 3: Positive → Positive</b></p>
+        \[
+        f''(x): + \rightarrow +
+        \]
+        Concavity পরিবর্তন হয়নি।
+        <p><b>Inflection Point নয়।</b></p>
+    </div>
+
+    <div class="formula">
+        <p><b>Case 4: Negative → Negative</b></p>
+        \[
+        f''(x): - \rightarrow -
+        \]
+        Concavity পরিবর্তন হয়নি।
+        <p><b>Inflection Point নয়।</b></p>
+    </div>
+
+    <h4>Step 4: বিশেষ পরিস্থিতি</h4>
+
+    <ul>
+        <li>
+            <b>যদি \(f''(a)=0\):</b>
+            সরাসরি Inflection Point ধরে নেবে না।
+            Sign Test করতে হবে।
+        </li>
+
+        <li>
+            <b>যদি \(f''(a)\) undefined:</b>
+            বিন্দুটি Function-এর Domain-এ আছে কি না দেখো।
+            তারপর দুই পাশের Concavity পরীক্ষা করো।
+        </li>
+
+        <li>
+            <b>যদি \(f''(a)=0\), কিন্তু Sign পরিবর্তন না হয়:</b>
+            সেটি Inflection Point নয়।
+        </li>
+
+        <li>
+            <b>যদি Function ওই বিন্দুতে undefined:</b>
+            সেটি Inflection Point হতে পারে না।
+        </li>
+    </ul>
+
+    <h4>Step 5: Coordinate বের করো</h4>
+
+    Inflection Point-এর \(x=a\) পাওয়া গেলে,
+
+    \[
+    y=f(a)
+    \]
+
+    অতএব Inflection Point:
+
+    \[
+    \boxed{(a,f(a))}
+    \]
+
+    <div class="answer">
+        <b>Final Checklist:</b>
+        <ol>
+            <li>Second Derivative বের করো।</li>
+            <li>\(f''(x)=0\) বা undefined বিন্দু বের করো।</li>
+            <li>বাম ও ডান পাশের Sign Test করো।</li>
+            <li>Concavity পরিবর্তন হয়েছে কি না দেখো।</li>
+            <li>Function-এর Domain যাচাই করো।</li>
+            <li>Coordinate \((a,f(a))\) লেখো।</li>
+        </ol>
+    </div>
+
+</div>
+
+
+
+
+
+        <!-- Maclaurin Series -->
+<div class="formula-card">
+    <h3>Maclaurin Series</h3>
+
+    <div class="formula">
+        \[
+        \boxed{
+        f(x)=f(0)+xf'(0)+
+        \frac{x^2}{2!}f''(0)+
+        \frac{x^3}{3!}f'''(0)+\cdots
+        }
+        \]
+
+        \[
+        \boxed{
+        f(x)=\sum_{n=0}^{\infty}
+        \frac{f^{(n)}(0)}{n!}x^n
+        }
+        \]
+    </div>
+</div>
+
+
+
+
+
+
+        <!-- Leibniz Series -->
+<div class="formula-card">
+    <h3>Leibniz Series</h3>
+
+    <div class="formula">
+        \[
+        \boxed{
+        \frac{\pi}{4}
+        =
+        1-\frac{1}{3}
+        +\frac{1}{5}
+        -\frac{1}{7}
+        +\frac{1}{9}
+        -\cdots
+        }
+        \]
+
+        \[
+        \boxed{
+        \frac{\pi}{4}
+        =
+        \sum_{n=0}^{\infty}
+        \frac{(-1)^n}{2n+1}
+        }
+        \]
+    </div>
+</div>
+
+         <!-- Minimum Surface Area: 1 Litre Container -->
+<div class="formula-card">
+
+    <h3>Minimum Surface Area for 1 Litre Container</h3>
+
+    <p>
+        আমাদের লক্ষ্য হলো এমন একটি পাত্র তৈরি করা,
+        যার ভেতরের আয়তন ঠিক ১ লিটার
+        (1000 cm³), কিন্তু টিনের প্রয়োজনীয় ক্ষেত্রফল
+        সর্বনিম্ন।
+    </p>
+
+    <div class="formula">
+        \[
+        V=1000\text{ cm}^3
+        \]
+    </div>
+
+    <h4>Different Shapes, Same Volume</h4>
+
+    <div style="display:flex; justify-content:space-around;
+                align-items:center; flex-wrap:wrap; gap:15px;
+                text-align:center; margin:20px 0;">
+
+        <!-- Sphere -->
+        <div>
+            <svg width="95" height="95" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="38"
+                    fill="#38bdf8" fill-opacity=".2"
+                    stroke="#38bdf8" stroke-width="2"/>
+                <ellipse cx="50" cy="50" rx="38" ry="12"
+                    fill="none" stroke="#38bdf8"
+                    stroke-dasharray="4 3"/>
+            </svg>
+            <p>Sphere</p>
+        </div>
+
+        <!-- Cylinder -->
+        <div>
+            <svg width="95" height="95" viewBox="0 0 100 100">
+                <path d="M15 25 V75 A35 12 0 0 0 85 75 V25"
+                    fill="#38bdf8" fill-opacity=".2"
+                    stroke="#38bdf8" stroke-width="2"/>
+                <ellipse cx="50" cy="25" rx="35" ry="12"
+                    fill="#0f172a" stroke="#38bdf8"
+                    stroke-width="2"/>
+                <path d="M15 75 A35 12 0 0 0 85 75"
+                    fill="none" stroke="#38bdf8"
+                    stroke-width="2"/>
+            </svg>
+            <p>Cylinder</p>
+        </div>
+
+        <!-- Cuboid -->
+        <div>
+            <svg width="95" height="95" viewBox="0 0 100 100">
+                <path d="M15 35 L50 15 L85 35 L85 75
+                         L50 92 L15 75 Z"
+                    fill="#38bdf8" fill-opacity=".2"
+                    stroke="#38bdf8" stroke-width="2"/>
+                <path d="M15 35 L50 55 L85 35 M50 55 V92"
+                    fill="none" stroke="#38bdf8"
+                    stroke-width="2"/>
+            </svg>
+            <p>Cuboid</p>
+        </div>
+    </div>
+
+    <p>
+        তিনটি পাত্রের আয়তন সমান হলেও তাদের
+        Surface Area সমান নয়।
+    </p>
+
+    <h4>Which Shape Requires the Least Material?</h4>
+
+    <p>
+        একই আয়তনের সব বন্ধ আকৃতির মধ্যে
+        গোলকের Surface Area সর্বনিম্ন।
+    </p>
+
+    <h4>Calculation for a Sphere</h4>
+
+    \[
+    V=\frac{4}{3}\pi r^3=1000
+    \]
+
+    \[
+    r=\sqrt[3]{\frac{3000}{4\pi}}
+    \approx 6.20\text{ cm}
+    \]
+
+    \[
+    A=4\pi r^2
+    \]
+
+    \[
+    \boxed{A\approx483.6\text{ cm}^2}
+    \]
+
+    <div class="answer">
+        <b>Conclusion:</b>
+        ১ লিটার ধারণক্ষমতার আদর্শ বন্ধ পাত্র
+        তৈরি করতে গোলকের Surface Area সবচেয়ে কম।
+    </div>
+
+    <p style="color:#94a3b8; font-size:13px;">
+        Note: Thickness খুব ছোট হলে টিনের আয়তন
+        আনুমানিক A × t। বাস্তবে জোড়া, মুখ,
+        ঢাকনা ও নির্মাণের জন্য অতিরিক্ত উপাদান লাগবে।
+    </p>
+
+</div>
+
+        <!-- Right Circular Cone: Formula Card -->
+<div class="formula-card">
+
+  <h2>সমবৃত্তাকার কোনক (Right Circular Cone)</h2>
+
+  <!-- Cone Figure -->
+  <div style="text-align:center; margin:20px 0;">
+    <svg viewBox="0 0 340 280" width="100%"
+         style="max-width:340px;">
+
+      <!-- Cone body -->
+      <path d="M170 25 L65 220
+               M170 25 L275 220"
+            stroke="#38bdf8" stroke-width="2.5"
+            fill="none"/>
+
+      <!-- Base ellipse -->
+      <path d="M65 220 A105 25 0 0 0 275 220"
+            stroke="#38bdf8" stroke-width="2.5"
+            fill="none"/>
+
+      <path d="M65 220 A105 25 0 0 1 275 220"
+            stroke="#38bdf8" stroke-width="2"
+            stroke-dasharray="5 5"
+            fill="none"/>
+
+      <!-- Height -->
+      <line x1="170" y1="25" x2="170" y2="220"
+            stroke="#facc15" stroke-width="2"
+            stroke-dasharray="5 4"/>
+
+      <!-- Radius -->
+      <line x1="170" y1="220" x2="275" y2="220"
+            stroke="#4ade80" stroke-width="2"/>
+
+      <!-- Slant height -->
+      <line x1="170" y1="25" x2="275" y2="220"
+            stroke="#fb923c" stroke-width="2"/>
+
+      <!-- Labels -->
+      <text x="180" y="120" fill="#facc15"
+            font-size="14">h</text>
+
+      <text x="225" y="235" fill="#4ade80"
+            font-size="14">r</text>
+
+      <text x="230" y="115" fill="#fb923c"
+            font-size="14">l</text>
+
+      <text x="170" y="15" fill="#e2e8f0"
+            font-size="12" text-anchor="middle">শীর্ষবিন্দু</text>
+
+      <text x="170" y="265" fill="#94a3b8"
+            font-size="12" text-anchor="middle">বৃত্তাকার ভূমি</text>
+    </svg>
+  </div>
+
+  <p><b>চিত্রের প্রতীক:</b></p>
+  <ul>
+    <li><b>r</b> = ভূমির ব্যাসার্ধ (Radius)</li>
+    <li><b>h</b> = লম্ব উচ্চতা (Vertical Height)</li>
+    <li><b>l</b> = তির্যক উচ্চতা (Slant Height)</li>
+  </ul>
+
+  <h3>১. তির্যক উচ্চতার সূত্র</h3>
+  <div class="formula">
+    l = √(r² + h²)
+  </div>
+
+  <h3>২. বক্রতলের ক্ষেত্রফল (Curved Surface Area)</h3>
+  <div class="formula">
+    CSA = πrl
+  </div>
+
+  <h3>৩. ভূমির ক্ষেত্রফল (Base Area)</h3>
+  <div class="formula">
+    Base Area = πr²
+  </div>
+
+  <h3>৪. সম্পূর্ণ পৃষ্ঠতলের ক্ষেত্রফল (Total Surface Area)</h3>
+  <div class="formula">
+    TSA = πrl + πr²
+  </div>
+  <div class="formula">
+    TSA = πr(l + r)
+  </div>
+
+  <h3>৫. আয়তন (Volume)</h3>
+  <div class="formula">
+    V = ⅓πr²h
+  </div>
+
+  <hr style="border-color:#263449; margin:20px 0;">
+
+  <h3>বাস্তব প্রয়োগ</h3>
+  <p>
+    যদি কোনক আকৃতির একটি পাত্র তৈরি করতে হয়:
+  </p>
+  <ul>
+    <li>শুধু বক্র অংশের উপাদান লাগলে: πrl</li>
+    <li>বক্র অংশ ও নিচের ভূমি দুটোই থাকলে: πr(l + r)</li>
+    <li>পাত্রের ধারণক্ষমতা নির্ণয়ে: ⅓πr²h</li>
+  </ul>
+
+</div>
+
+
+        
+
+        <!-- nwe concept এর Formula এখানে যোগ করবে -->
+
+    </section>
+    
+
+
+
+
+
+
+
+    
+
+
+</main>
+
+<script>
+    window.addEventListener("load", function () {
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: "$$", right: "$$", display: true},
+                {left: "\\[", right: "\\]", display: true},
+                {left: "\\(", right: "\\)", display: false}
+            ],
+            throwOnError: false
+        });
+    });
+
+    document.querySelectorAll(".menu a").forEach(link => {
+        link.addEventListener("click", function () {
+            document.querySelectorAll(".menu a")
+                .forEach(item => item.classList.remove("active"));
+
+            this.classList.add("active");
+        });
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,453 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080b14">
+
+<title>Physics | Learning Portal</title>
+
+<style>
+
+/* ==============================
+   GLOBAL SETTINGS
+============================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --background: #080b14;
+    --card: #161e2d;
+    --card-hover: #202e43;
+    --blue: #80adff;
+    --text: #ffffff;
+    --muted: #a3aec1;
+    --border: #29364b;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--background);
+    color: var(--text);
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+}
+
+/* ==============================
+   MAIN CONTAINER
+============================== */
+
+.container {
+    width: 100%;
+    max-width: 850px;
+    margin: auto;
+    padding: 0 22px;
+}
+
+/* ==============================
+   HERO SECTION
+============================== */
+
+.hero {
+    text-align: center;
+    padding: 58px 0 72px;
+}
+
+.hero h1 {
+    font-size: clamp(34px, 7vw, 54px);
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    color: #ffffff;
+}
+
+.hero p {
+    max-width: 600px;
+    margin: 25px auto 0;
+    color: var(--muted);
+    font-size: clamp(16px, 3vw, 22px);
+    line-height: 1.65;
+}
+
+/* ==============================
+   GROUP CARDS
+============================== */
+
+.groups {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding-bottom: 70px;
+}
+
+.group-card {
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    color: inherit;
+
+    background: var(--card);
+    border: 2px solid var(--border);
+    border-radius: 31px;
+
+    padding: 52px 52px 48px;
+
+    transition:
+        background .25s ease,
+        border-color .25s ease,
+        transform .25s ease,
+        box-shadow .25s ease;
+}
+
+/* CARD HOVER EFFECT */
+
+.group-card:hover {
+    background: var(--card-hover);
+    border-color: #568cff;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(0,0,0,.2);
+}
+
+/* GROUP TITLE */
+
+.group-card h2 {
+    color: var(--blue);
+    font-size: clamp(23px, 4vw, 36px);
+    font-weight: 750;
+    line-height: 1.35;
+    margin-bottom: 22px;
+}
+
+/* GROUP DESCRIPTION */
+
+.group-card p {
+    color: var(--muted);
+    font-size: clamp(16px, 3vw, 23px);
+    line-height: 1.85;
+    margin-bottom: 40px;
+}
+
+/* CHAPTER PREVIEW */
+
+.chapter-preview {
+    color: #8190a8;
+    font-size: 14px;
+    line-height: 1.9;
+    margin-top: -23px;
+    margin-bottom: 32px;
+}
+
+/* EXPLORE BUTTON */
+
+.explore {
+    display: inline-block;
+    color: var(--blue);
+    font-size: clamp(16px, 3vw, 21px);
+    font-weight: 750;
+    transition: .2s ease;
+}
+
+.group-card:hover .explore {
+    letter-spacing: .5px;
+}
+
+/* ==============================
+   FOOTER
+============================== */
+
+footer {
+    text-align: center;
+    padding: 25px 15px 35px;
+    color: #657187;
+    font-size: 12px;
+    letter-spacing: 1px;
+    border-top: 1px solid #1c2534;
+}
+
+/* ==============================
+   MOBILE RESPONSIVE
+============================== */
+
+@media (max-width: 600px) {
+
+    .container {
+        padding: 0 22px;
+    }
+
+    .hero {
+        padding: 57px 0 75px;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    .hero p {
+        margin-top: 25px;
+        font-size: 18px;
+        line-height: 1.5;
+    }
+
+    .groups {
+        gap: 32px;
+    }
+
+    .group-card {
+        padding: 50px 54px 48px;
+        border-radius: 31px;
+        min-height: 310px;
+    }
+
+    .group-card h2 {
+        font-size: 30px;
+        margin-bottom: 23px;
+    }
+
+    .group-card p {
+        font-size: 20px;
+        line-height: 1.85;
+        margin-bottom: 40px;
+    }
+
+    .chapter-preview {
+        font-size: 14px;
+    }
+
+    .explore {
+        font-size: 19px;
+    }
+}
+
+/* SMALL MOBILE */
+
+@media (max-width: 380px) {
+
+    .container {
+        padding: 0 16px;
+    }
+
+    .group-card {
+        padding: 35px 27px;
+    }
+
+    .group-card h2 {
+        font-size: 26px;
+    }
+
+    .group-card p {
+        font-size: 17px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- ==================================
+         MAIN HEADING
+    =================================== -->
+
+    <section class="hero">
+
+        <h1>Physics</h1>
+
+        <p>
+            Select a topic to explore concepts and
+            solutions.
+        </p>
+
+    </section>
+
+
+    <!-- ==================================
+         PHYSICS GROUPS
+         TOTAL: 06 GROUPS
+    =================================== -->
+
+    <main class="groups">
+
+
+        <!-- ==================================
+             GROUP 01
+             PAGE: group-1.html
+             CONTENT: Classical Mechanics
+        =================================== -->
+
+        <a href="coming-soon.html" class="group-card">
+
+            <h2>Classical Mechanics</h2>
+
+            <p>
+                Vectors, dynamics, Newton's laws,
+                work, energy, power and gravitation.
+            </p>
+
+            
+            <span class="explore">
+                Explore Topic →
+            </span>
+
+        </a>
+
+
+        <!-- ==================================
+             GROUP 02
+             PAGE: group-2.html
+             CONTENT: Electricity & Magnetism
+        =================================== -->
+
+        <a href="group-2.html" class="group-card">
+
+            <h2>Electricity & Magnetism</h2>
+
+            <p>
+                Electronics, electric charges, current,
+                magnetic fields and electromagnetic induction.
+            </p>
+
+            
+            <span class="explore">
+                Explore Topic →
+            </span>
+
+        </a>
+
+
+        <!-- ==================================
+             GROUP 03
+             PAGE: group-3.html
+             CONTENT: Waves & Optics
+        =================================== -->
+
+        <a href="coming-soon.html" class="group-card">
+
+            <h2>Waves & Optics</h2>
+
+            <p>
+                Periodic motion, wave phenomena, light,
+                reflection, refraction and optical principles.
+            </p>
+
+            
+
+            <span class="explore">
+                Explore Topic →
+            </span>
+
+        </a>
+
+
+        <!-- ==================================
+             GROUP 04
+             PAGE: group-4.html
+             CONTENT: Modern Physics & Astronomy
+        =================================== -->
+
+        <a href="coming-soon.html" class="group-card">
+
+            <h2>Modern Physics & Astronomy</h2>
+
+            <p>
+                Physical measurements, the universe,
+                astronomical phenomena and modern physics.
+            </p>
+
+            
+
+            <span class="explore">
+                Explore Topic →
+            </span>
+
+        </a>
+
+
+        <!-- ==================================
+             GROUP 05
+             PAGE: group-5.html
+             CONTENT: Thermal Physics
+        =================================== -->
+
+        <a href="group-5.html" class="group-card">
+
+            <h2>Thermal Physics</h2>
+
+            <p>
+                Gas laws, molecular motion, temperature,
+                heat, internal energy and thermodynamics.
+            </p>
+
+            
+
+            <span class="explore">
+                Explore Topic →
+            </span>
+
+        </a>
+
+
+        <!-- ==================================
+             GROUP 06
+             PAGE: group-6.html
+             CONTENT: Matter & Nuclear Physics
+        =================================== -->
+
+        <a href="coming-soon.html" class="group-card">
+
+            <h2>Matter & Nuclear Physics</h2>
+
+            <p>
+                Structure of matter, atomic models,
+                nuclei and fundamental nuclear phenomena.
+            </p>
+
+            
+
+            <span class="explore">
+                Explore Topic →
+            </span>
+
+        </a>
+
+
+        <!-- ==================================
+             ADD NEW GROUPS HERE
+
+             নতুন গ্রুপ যোগ করতে চাইলে
+             উপরের group-card এর মতো
+             নতুন HTML card তৈরি করবে।
+
+        =================================== -->
+
+
+    </main>
+
+</div>
+
+
+<!-- ==================================
+     FOOTER
+=================================== -->
+
+<footer>
+
+    PHYSICS LEARNING PORTAL
+
+    <br><br>
+
+    EXPLORE · LEARN · DISCOVER
+
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Delta-Star Transformation | Circuit Theory</title>
+
+<style>
+:root {
+    --bg: #070d1a;
+    --surface: #0d1729;
+    --surface2: #142744;
+    --blue: #3185ff;
+    --light: #65b3ff;
+    --text: #f4f7ff;
+    --muted: #9aabc4;
+    --border: rgba(133,170,220,.18);
+    --green: #65e6ad;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Inter, "Segoe UI", Arial, sans-serif;
+    background:
+        radial-gradient(ellipse at 50% -15%,
+        rgba(36,103,190,.22), transparent 48%),
+        var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    line-height: 1.7;
+}
+
+.container {
+    width: min(1000px, 92%);
+    margin: auto;
+    padding: 45px 0;
+}
+
+.back {
+    color: var(--light);
+    text-decoration: none;
+    font-size: 14px;
+}
+
+header {
+    text-align: center;
+    padding: 35px 0;
+}
+
+.eyebrow {
+    color: var(--light);
+    letter-spacing: 3px;
+    font-size: 11px;
+    font-weight: 800;
+}
+
+h1 {
+    font-size: clamp(28px, 5vw, 43px);
+    line-height: 1.2;
+    margin: 12px 0;
+    background: linear-gradient(110deg,#fff,#65b3ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.subtitle {
+    color: var(--muted);
+    max-width: 650px;
+    margin: auto;
+}
+
+.section {
+    background: linear-gradient(145deg,#142744,#0b1628);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 25px;
+    margin-bottom: 23px;
+    box-shadow: 0 15px 35px rgba(0,0,0,.2);
+}
+
+h2 {
+    font-size: 21px;
+    margin-bottom: 16px;
+    color: #dcecff;
+}
+
+h3 {
+    font-size: 16px;
+    margin: 18px 0 10px;
+    color: var(--light);
+}
+
+p, li {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+ul {
+    padding-left: 22px;
+}
+
+li {
+    margin: 7px 0;
+}
+
+.formula {
+    background: rgba(49,133,255,.09);
+    border: 1px solid rgba(49,133,255,.25);
+    border-radius: 10px;
+    padding: 17px;
+    margin: 12px 0;
+    overflow-x: auto;
+    text-align: center;
+    color: #d9eaff;
+    font-family: Georgia, serif;
+    font-size: clamp(15px, 2.5vw, 19px);
+}
+
+.highlight {
+    color: var(--green);
+    font-weight: 700;
+}
+
+.trick {
+    background: rgba(49,133,255,.10);
+    border-left: 4px solid var(--blue);
+    border-radius: 7px;
+    padding: 15px;
+    margin-top: 15px;
+}
+
+.diagram {
+    background: #080f1d;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 12px;
+    margin: 15px 0;
+    overflow: hidden;
+}
+
+.diagram svg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.diagram line {
+    stroke: #65b3ff;
+    stroke-width: 3;
+    stroke-linecap: round;
+}
+
+.diagram circle {
+    fill: #3185ff;
+    stroke: #d9eaff;
+    stroke-width: 2;
+}
+
+.diagram text {
+    fill: #f4f7ff;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    text-anchor: middle;
+}
+
+.diagram .res {
+    fill: #65b3ff;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.diagram .node {
+    fill: #65e6ad;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.table-wrap {
+    overflow-x: auto;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 450px;
+    margin-top: 15px;
+}
+
+th, td {
+    border: 1px solid var(--border);
+    padding: 12px;
+    text-align: center;
+    font-size: 13px;
+}
+
+th {
+    color: var(--light);
+    background: rgba(49,133,255,.12);
+}
+
+td {
+    color: var(--muted);
+}
+
+.answer {
+    color: var(--green);
+    font-weight: bold;
+}
+
+footer {
+    text-align: center;
+    padding: 25px;
+    color: #71839e;
+    font-size: 12px;
+    border-top: 1px solid var(--border);
+}
+
+@media(max-width:600px) {
+    .section {
+        padding: 18px;
+    }
+
+    .container {
+        padding-top: 25px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<main class="container">
+
+<a class="back" href="../index.html">← Back to Home</a>
+
+<header>
+    <span class="eyebrow">CIRCUIT THEORY</span>
+
+    <h1>Delta-Star Transformation</h1>
+
+    <p class="subtitle">
+        Learn Δ to Y and Y to Δ conversion
+        with diagrams, formulas and memory tricks.
+    </p>
+</header>
+
+
+<!-- INTRODUCTION -->
+
+<section class="section">
+
+<h2>1. What is Delta-Star Transformation?</h2>
+
+<p>
+Delta-Star Transformation is a technique used in
+electrical circuit analysis to convert a three-terminal
+Delta (Δ) network into an equivalent Star (Y) network,
+or vice versa.
+</p>
+
+<p style="margin-top:10px;">
+It is especially useful when a circuit cannot be
+simplified directly using ordinary series and
+parallel resistance rules.
+</p>
+
+</section>
+
+
+<!-- DELTA TO STAR -->
+
+<section class="section">
+
+<h2>2. Delta (Δ) to Star (Y) Conversion</h2>
+
+<p>
+In Delta to Star conversion, each Star resistance
+is calculated by multiplying the two adjacent
+Delta resistances and dividing by the total sum
+of all three Delta resistances.
+</p>
+
+<h3>Delta Network Diagram</h3>
+
+<div class="diagram">
+<svg viewBox="0 0 360 270">
+
+    <line x1="180" y1="35" x2="55" y2="220"/>
+    <line x1="180" y1="35" x2="305" y2="220"/>
+    <line x1="55" y1="220" x2="305" y2="220"/>
+
+    <rect x="105" y="105" width="65" height="28"
+          rx="5" fill="#142744" stroke="#65b3ff"/>
+    <text x="137" y="124" class="res">RCA</text>
+
+    <rect x="190" y="105" width="65" height="28"
+          rx="5" fill="#142744" stroke="#65b3ff"/>
+    <text x="222" y="124" class="res">RAB</text>
+
+    <rect x="145" y="205" width="70" height="28"
+          rx="5" fill="#142744" stroke="#65b3ff"/>
+    <text x="180" y="224" class="res">RBC</text>
+
+    <circle cx="180" cy="35" r="5"/>
+    <circle cx="55" cy="220" r="5"/>
+    <circle cx="305" cy="220" r="5"/>
+
+    <text x="180" y="19" class="node">A</text>
+    <text x="35" y="245" class="node">C</text>
+    <text x="325" y="245" class="node">B</text>
+
+</svg>
+</div>
+
+<h3>Equivalent Star Network</h3>
+
+<div class="diagram">
+<svg viewBox="0 0 360 270">
+
+    <line x1="180" y1="135" x2="180" y2="30"/>
+    <line x1="180" y1="135" x2="55" y2="220"/>
+    <line x1="180" y1="135" x2="305" y2="220"/>
+
+    <rect x="192" y="65" width="65" height="28"
+          rx="5" fill="#142744" stroke="#65b3ff"/>
+    <text x="224" y="84" class="res">RA</text>
+
+    <rect x="75" y="165" width="65" height="28"
+          rx="5" fill="#142744" stroke="#65b3ff"/>
+    <text x="107" y="184" class="res">RC</text>
+
+    <rect x="220" y="165" width="65" height="28"
+          rx="5" fill="#142744" stroke="#65b3ff"/>
+    <text x="252" y="184" class="res">RB</text>
+
+    <circle cx="180" cy="135" r="6"/>
+    <circle cx="180" cy="30" r="5"/>
+    <circle cx="55" cy="220" r="5"/>
+    <circle cx="305" cy="220" r="5"/>
+
+    <text x="180" y="15" class="node">A</text>
+    <text x="35" y="245" class="node">C</text>
+    <text x="325" y="245" class="node">B</text>
+    <text x="180" y="158" class="node">O</text>
+
+</svg>
+</div>
+
+<h3>Conversion Formulas</h3>
+
+<div class="formula">
+RA = (RAB × RCA) / (RAB + RBC + RCA)
+</div>
+
+<div class="formula">
+RB = (RAB × RBC) / (RAB + RBC + RCA)
+</div>
+
+<div class="formula">
+RC = (RBC × RCA) / (RAB + RBC + RCA)
+</div>
+
+<div class="trick">
+    <h3>Memory Trick: Adjacent Product / Total Sum</h3>
+
+    <p>
+        <span class="highlight">Numerator:</span>
+        Multiply the two Delta resistances
+        connected to the corresponding node.
+    </p>
+
+    <p>
+        <span class="highlight">Denominator:</span>
+        Add all three Delta resistances.
+    </p>
+
+    <p style="margin-top:8px;">
+        Short trick: Adjacent × Adjacent ÷ Total.
+    </p>
+</div>
+
+</section>
+
+
+<!-- STAR TO DELTA -->
+
+<section class="section">
+
+<h2>3. Star (Y) to Delta (Δ) Conversion</h2>
+
+<p>
+In Star to Delta conversion, first calculate
+the sum of all pairwise products of the three
+Star resistances. Then divide this sum by the
+Star resistance opposite to the required Delta side.
+</p>
+
+<h3>Star Network</h3>
+
+<div class="diagram">
+<svg viewBox="0 0 360 270">
+
+    <line x1="180" y1="135" x2="180" y2="30"/>
+    <line x1="180" y1="135" x2="55" y2="220"/>
+    <line x1="180" y1="135" x2="305" y2="220"/>
+
+    <rect x="192" y="65" width="65" height="28"
+          rx="5" fill="#142744" stroke="#65b3ff"/>
+    <text x="224" y="84" class="res">RA</text>
+
+    <rect x="75" y="165" width="65" height="28"
+          rx="5" fill="#142744" stroke="#65b3ff"/>
+    <text x="107" y="184" class="res">RC</text>
+
+    <rect x="220" y="165" width="65" height="28"
+          rx="5" fill="#142744" stroke="#65b3ff"/>
+    <text x="252" y="184" class="res">RB</text>
+
+    <circle cx="180" cy="135" r="6"/>
+    <circle cx="180" cy="30" r="5"/>
+    <circle cx="55" cy="220" r="5"/>
+    <circle cx="305" cy="220" r="5"/>
+
+    <text x="180" y="15" class="node">A</text>
+    <text x="35" y="245" class="node">C</text>
+    <text x="325" y="245" class="node">B</text>
+    <text x="180" y="158" class="node">O</text>
+
+</svg>
+</div>
+
+<h3>Equivalent Delta Network</h3>
+
+<div class="diagram">
+<svg viewBox="0 0 360 270">
+
+    <line x1="180" y1="35" x2="55" y2="220"/>
+    <line x1="180" y1="35" x2="305" y2="220"/>
+    <line x1="55" y1="220" x2="305" y2="220"/>
+
+    <rect x="105" y="105" width="65" height="28"
+          rx="5" fill="#142744" stroke="#65b3ff"/>
+    <text x="137" y="124" class="res">RCA</text>
+
+    <rect x="190" y="105" width="65" height="28"
+          rx="5" fill="#142744" stroke="#65b3ff"/>
+    <text x="222" y="124" class="res">RAB</text>
+
+    <rect x="145" y="205" width="70" height="28"
+          rx="5" fill="#142744" stroke="#65b3ff"/>
+    <text x="180" y="224" class="res">RBC</text>
+
+    <circle cx="180" cy="35" r="5"/>
+    <circle cx="55" cy="220" r="5"/>
+    <circle cx="305" cy="220" r="5"/>
+
+    <text x="180" y="19" class="node">A</text>
+    <text x="35" y="245" class="node">C</text>
+    <text x="325" y="245" class="node">B</text>
+
+</svg>
+</div>
+
+<h3>Conversion Formulas</h3>
+
+<p>First calculate the common numerator:</p>
+
+<div class="formula">
+S = RA×RB + RB×RC + RC×RA
+</div>
+
+<p>Then calculate each Delta resistance:</p>
+
+<div class="formula">
+RAB = S / RC
+</div>
+
+<div class="formula">
+RBC = S / RA
+</div>
+
+<div class="formula">
+RCA = S / RB
+</div>
+
+<div class="trick">
+    <h3>Memory Trick: Sum of Pairwise Products / Opposite Arm</h3>
+
+    <p>
+        <span class="highlight">Numerator:</span>
+        Multiply every possible pair of Star
+        resistances and add them.
+    </p>
+
+    <p>
+        <span class="highlight">Denominator:</span>
+        Use the Star resistance opposite to
+        the Delta side being calculated.
+    </p>
+
+    <p style="margin-top:8px;">
+        Example: To find RAB, divide by RC
+        because RC is opposite to side AB.
+    </p>
+</div>
+
+</section>
+
+
+<!-- COMPARISON -->
+
+<section class="section">
+
+<h2>4. Both Conversion Tricks at a Glance</h2>
+
+<div class="table-wrap">
+<table>
+    <tr>
+        <th>Conversion</th>
+        <th>Numerator</th>
+        <th>Denominator</th>
+    </tr>
+
+    <tr>
+        <td>Δ → Y</td>
+        <td>Adjacent product</td>
+        <td>Sum of all Delta resistances</td>
+    </tr>
+
+    <tr>
+        <td>Y → Δ</td>
+        <td>Sum of all pairwise products</td>
+        <td>Opposite Star arm</td>
+    </tr>
+</table>
+</div>
+
+</section>
+
+
+<!-- NUMERICAL EXAMPLE -->
+
+<section class="section">
+
+<h2>5. Numerical Example: Star to Delta</h2>
+
+<p>
+Suppose the three Star resistances are:
+</p>
+
+<div class="formula">
+RA = 2Ω, RB = 3Ω, RC = 6Ω
+</div>
+
+<p>Step 1: Calculate the common numerator.</p>
+
+<div class="formula">
+S = (2×3) + (3×6) + (6×2)
+</div>
+
+<div class="formula">
+S = 6 + 18 + 12 = 36
+</div>
+
+<p>Step 2: Calculate the Delta resistances.</p>
+
+<div class="formula">
+RAB = 36 / 6 = 6Ω
+</div>
+
+<div class="formula">
+RBC = 36 / 2 = 18Ω
+</div>
+
+<div class="formula">
+RCA = 36 / 3 = 12Ω
+</div>
+
+<p class="answer">
+Final Answer: RAB = 6Ω, RBC = 18Ω, RCA = 12Ω
+</p>
+
+</section>
+
+
+<!-- PRACTICE -->
+
+<section class="section">
+
+<h2>6. Practice Problem</h2>
+
+<p>
+A Star network has the following resistances:
+</p>
+
+<div class="formula">
+RA = 4Ω, RB = 5Ω, RC = 10Ω
+</div>
+
+<p>
+Find the equivalent Delta resistances
+RAB, RBC and RCA.
+</p>
+
+<h3>Try to solve it yourself</h3>
+
+<p>
+Remember:
+</p>
+
+<div class="formula">
+S = RA×RB + RB×RC + RC×RA
+</div>
+
+<p>
+Then divide S by the opposite Star arm
+for each Delta side.
+</p>
+
+</section>
+
+
+<footer>
+    CIRCUIT THEORY · DELTA-STAR TRANSFORMATION
+    <br><br>
+    © Created by Tanzim Ahmmed
+</footer>
+
+</main>
+</body>
+</html>
