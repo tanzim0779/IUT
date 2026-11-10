@@ -46,6 +46,11 @@ jobs:
         working-directory: android-app
         run: npx cap add android
 
+      - name: Configure Android system Back navigation
+        run: |
+          mkdir -p android-app/android/app/src/main/java/com/tanzim/iutlearning
+          cp android-app/MainActivity.java android-app/android/app/src/main/java/com/tanzim/iutlearning/MainActivity.java
+
       - name: Sync bundled web content
         working-directory: android-app
         run: npx cap sync android
