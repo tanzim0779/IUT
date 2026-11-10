@@ -2,41 +2,50 @@ from pathlib import Path
 from PIL import Image, ImageDraw
 
 ROOT = Path("android-app/android/app/src/main/res")
-SIZE = 1024
 
-def make_logo(transparent=False):
-    bg = (0, 0, 0, 0) if transparent else (3, 4, 4, 255)
-    image = Image.new("RGBA", (SIZE, SIZE), bg)
-    draw = ImageDraw.Draw(image)
-    scale, offset = 0.80, 102
-    # Rectangles reproduce the red, green and white geometric IUT mark.
-    shapes = [
-        (116, 160, 200, 238, (242, 60, 59, 255)),
-        (116, 331, 200, 678, (242, 60, 59, 255)),
-        (257, 162, 340, 678, (0, 216, 77, 255)),
-        (340, 599, 494, 682, (0, 216, 77, 255)),
-        (493, 329, 582, 682, (0, 216, 77, 255)),
-        (417, 158, 717, 238, (245, 245, 245, 255)),
-        (627, 331, 711, 685, (245, 245, 245, 255)),
-    ]
-    for x1, y1, x2, y2, color in shapes:
-        box = tuple(round(v * scale + offset) for v in (x1, y1, x2, y2))
-        draw.rounded_rectangle(box, radius=5, fill=color)
-    return image
+# Coordinates are measured from the supplied 1536x1536 logo image.
+# Crop a centered square around the actual mark so it fills the launcher tile.
+CROP_LEFT, CROP_TOP, CROP_SIZE = 100, 150, 1050
+SHAPES = [
+    (173, 240, 299, 358, (242, 60, 59, 255)),
+    (173, 496, 299, 1017, (242, 60, 59, 255)),
+    (385, 242, 509, 1018, (0, 216, 77, 255)),
+    (508, 899, 741, 1021, (0, 216, 77, 255)),
+    (740, 494, 873, 1020, (0, 216, 77, 255)),
+    (625, 237, 1076, 358, (245, 245, 245, 255)),
+    (941, 496, 1067, 1025, (245, 245, 245, 255)),
+]
 
-# Legacy launcher icons for older Android launchers.
-legacy = make_logo(False)
-for density, pixels in {"mdpi":48, "hdpi":72, "xhdpi":96, "xxhdpi":144, "xxxhdpi":192}.items():
+def draw_mark(canvas, scale, offset_x, offset_y):
+    draw = ImageDraw.Draw(canvas)
+    for x1, y1, x2, y2, color in SHAPES:
+        coords = [
+            (x1 - CROP_LEFT) * scale + offset_x,
+            (y1 - CROP_TOP) * scale + offset_y,
+            (x2 - CROP_LEFT) * scale + offset_x,
+            (y2 - CROP_TOP) * scale + offset_y,
+        ]
+        draw.rounded_rectangle(tuple(round(v) for v in coords), radius=max(2, round(5 * scale)), fill=color)
+
+# Full-bleed legacy icon, with the artwork centered and at a useful size.
+legacy = Image.new("RGBA", (1024, 1024), (3, 4, 4, 255))
+draw_mark(legacy, 1024 / CROP_SIZE, 0, 0)
+
+for density, pixels in {"mdpi": 48, "hdpi": 72, "xhdpi": 96, "xxhdpi": 144, "xxxhdpi": 192}.items():
     folder = ROOT / f"mipmap-{density}"
     folder.mkdir(parents=True, exist_ok=True)
     icon = legacy.resize((pixels, pixels), Image.Resampling.LANCZOS)
     icon.save(folder / "ic_launcher.png", optimize=True)
     icon.save(folder / "ic_launcher_round.png", optimize=True)
 
-# Adaptive icon foreground; the black background is supplied separately.
+# Adaptive foreground: keep all colored geometry inside Android's central safe area.
+foreground = Image.new("RGBA", (432, 432), (0, 0, 0, 0))
+safe_scale = (432 * 0.66) / CROP_SIZE
+mark_size = CROP_SIZE * safe_scale
+draw_mark(foreground, safe_scale, (432 - mark_size) / 2, (432 - mark_size) / 2)
 drawable = ROOT / "drawable"
 drawable.mkdir(parents=True, exist_ok=True)
-make_logo(True).resize((432, 432), Image.Resampling.LANCZOS).save(drawable / "ic_launcher_foreground.png", optimize=True)
+foreground.save(drawable / "ic_launcher_foreground.png", optimize=True)
 
 adaptive = ROOT / "mipmap-anydpi-v26"
 adaptive.mkdir(parents=True, exist_ok=True)
@@ -55,4 +64,4 @@ values.mkdir(parents=True, exist_ok=True)
     """<?xml version="1.0" encoding="utf-8"?>
 <resources><color name="ic_launcher_background">#030404</color></resources>
 """, encoding="utf-8")
-print("Generated legacy and adaptive launcher icons.")
+print("Generated centered legacy and adaptive launcher icons.")
