@@ -51,6 +51,11 @@ jobs:
           mkdir -p android-app/android/app/src/main/java/com/tanzim/iutlearning
           cp android-app/MainActivity.java android-app/android/app/src/main/java/com/tanzim/iutlearning/MainActivity.java
 
+      - name: Generate custom Android launcher icons
+        run: |
+          python -m pip install --quiet pillow
+          python android-app/generate_launcher_icons.py
+
       - name: Sync bundled web content
         working-directory: android-app
         run: npx cap sync android
